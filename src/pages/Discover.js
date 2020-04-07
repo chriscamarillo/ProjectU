@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { db } from '../services/firebase'
-import { UserContext } from '../UserProvider'
 
 function GetProjects(){
     const [projects, setProjects] = useState([])
- 
     useEffect(()=>{
         db
             .collection('projects')
@@ -13,30 +11,27 @@ function GetProjects(){
                     id: project.id,
                     ...project.data()
                 }))
-
                 setProjects(newProjects)
             })
     },[])
-
     return projects
 }
 
 const Discover = () => {
-  const user = useContext(UserContext)
   const projects = GetProjects()
 
   return (
     <div>
         <h1>discover!</h1>
-        <ol>
-            {projects.map((project)=>
-               <li>
+        <ul>
+            {projects.map((project,i)=>
+               <li key={i}>
                    <h2>{project.title}</h2>
-                   <h4>posted by {project.createdBy}</h4>
                    <p>{project.description}</p>
+                   <h4>posted by {project.createdBy}</h4>
                 </li>
             )}
-        </ol>
+        </ul>
     </div>
   )
 }

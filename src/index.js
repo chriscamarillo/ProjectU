@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './services/serviceWorker';
-import UserProvider from './UserProvider'
+import UserProvider from './components/UserProvider';
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>

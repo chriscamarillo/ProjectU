@@ -1,6 +1,6 @@
 //importing dependencies
 import React, { useContext } from "react"
-import { UserContext } from './UserProvider'
+import { UserContext } from './components/UserProvider'
 import { signInWithGoogle, signOut } from './services/firebase'
 
 //import other components here:
@@ -16,14 +16,14 @@ function App() {
   const user = useContext(UserContext);
   return (
     (user)?(
-    // checks if user exists
+    // checks if user is signed in
       <div>
         <CreateProject />
         <Discover />
-        <button onClick={()=> {signOut()} }> Sign out</button>
+        <button onClick={()=> {signOut()}}>Sign out</button>
       </div>
     ):(
-      <button onClick={signInWithGoogle}> Sign in with Google</button>
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
     )
     // else prompt user to sign in
   );

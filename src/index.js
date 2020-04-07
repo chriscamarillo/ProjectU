@@ -8,11 +8,11 @@ ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <App />
-    </UserProvider>
-    
+    </UserProvider>   
   </React.StrictMode>,
   document.getElementById('root')
 );
 serviceWorker.unregister();
 // this is the top of the heiarchy, the root of the tree
 // please refrain from making any modifications
+// userProvider component keeps track of user session and manages its state

@@ -6,6 +6,9 @@ import { signInWithGoogle, signOut } from './services/firebase'
 //import other components here:
 import CreateProject from './components/CreateProject'
 
+//import pages/routes:
+import Discover from './pages/Discover'
+
 //import styling...
 import './styles/App.css'
 
@@ -16,6 +19,7 @@ function App() {
     // checks if user exists
       <div>
         <CreateProject />
+        <Discover />
         <button onClick={()=> {signOut()} }> Sign out</button>
       </div>
     ):(

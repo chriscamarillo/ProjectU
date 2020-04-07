@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-import { db } from '../services/firebase'
+import { db, stat} from '../services/firebase'
 import { UserContext } from '../UserProvider'
 
 const CreateProject = () => {
@@ -18,7 +18,9 @@ const CreateProject = () => {
         description,
         //these first two properties are only assigned values when the form is submitted  
         owner: user.uid,
-        //this property is assigned to an already existing value (user id)
+        createdBy: user.displayName,
+        created: stat.FieldValue.serverTimestamp(),
+        //these properties are immedietly assigned values
         //eventually other properties of projects will follow (check the schema)
       }).then(()=>{
         setTitle("")

@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCWVNbn7JtGV7PFmqExHY4aOsG-KJMsJJQ",
+    apiKey: "", // PLACE UR API KEY IN HERE BEFORE RUNNING!
     authDomain: "projectu-51ef9.firebaseapp.com",
     databaseURL: "https://projectu-51ef9.firebaseio.com",
     projectId: "projectu-51ef9",

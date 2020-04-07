@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-import { db } from '../services/firebase';
+import { db } from '../services/firebase'
 import { UserContext } from '../UserProvider'
 
 const CreateProject = () => {
@@ -24,8 +24,8 @@ const CreateProject = () => {
     <div>
         <h1>{user.displayName}'s Project</h1>
         <form>
-            <input type="text" placeHolder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>
-            <input type="text" placeHolder="project description" value={description} onChange={e => setDescription(e.target.value)}></input>
+            <input type="text" placeholder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>
+            <input type="text" placeholder="project description" value={description} onChange={e => setDescription(e.target.value)}></input>
             <button type="submit" onClick={createProject}>Submit</button>
         </form>
     </div>

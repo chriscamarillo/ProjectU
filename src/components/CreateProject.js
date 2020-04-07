@@ -8,16 +8,24 @@ const CreateProject = () => {
   const [description, setDescription] = useState("")
   const createProject = (e) => {
     e.preventDefault()
+    // overides the default function execution
     db
+    // instantiates a connection to firestore
       .collection("projects")
+      // modifies the above collection
       .add({
         title,
         description,
+        //these first two properties are only assigned values when the form is submitted  
         owner: user.uid,
+        //this property is assigned to an already existing value (user id)
+        //eventually other properties of projects will follow (check the schema)
       }).then(()=>{
         setTitle("")
         setDescription("")
+        //empties out the text inputs once values are recoded to db
       })
+      
   }
 
   return (

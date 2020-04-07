@@ -12,7 +12,8 @@ import './styles/App.css'
 function App() {
   const user = useContext(UserContext);
   return (
-    (user) ? (
+    (user)?(
+    // checks if user exists
       <div>
         <CreateProject />
         <button onClick={()=> {signOut()} }> Sign out</button>
@@ -20,7 +21,9 @@ function App() {
     ):(
       <button onClick={signInWithGoogle}> Sign in with Google</button>
     )
+    // else prompt user to sign in
   );
+  // this entire return statement will be rewritten once react router is set-up
 }
 
 export default App

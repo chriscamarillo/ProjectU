@@ -22,7 +22,7 @@ const Discover = () => {
 
   return (
     <div>
-        <h1>discover!</h1>
+        <h1>discover new projects</h1>
         <ul>
             {projects.map((project,i)=>
                <li key={i}>

@@ -32,7 +32,7 @@ const CreateProject = () => {
 
   return (
     <div>
-        <h1>{user.displayName}'s Project</h1>
+        <h1>Create a new Project</h1>
         <form>
             <input type="text" placeholder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>
             <input type="text" placeholder="project description" value={description} onChange={e => setDescription(e.target.value)}></input>

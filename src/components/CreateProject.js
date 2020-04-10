@@ -8,27 +8,50 @@ const CreateProject = () => {
   const [description, setDescription] = useState("")
   const createProject = (e) => {
     e.preventDefault()
+
+    let date_created = stat.FieldValue.serverTimestamp();
+
+    // setup new project
+    let project_fields = {
+      title,
+      description,
+      owner: user.uid,
+      date_created,
+      date_last_modified: date_created,
+      archived: false, // Find out what this is for.
+      status: 0, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
+    };
+
     // overides the default function execution
-    db
     // instantiates a connection to firestore
+    // modifies the above collection
+    db
       .collection("projects")
-      // modifies the above collection
-      .add({
-        title,
-        description,
-        //these first two properties are only assigned values when the form is submitted  
-        owner: user.uid,
-        createdBy: user.displayName,
-        created: stat.FieldValue.serverTimestamp(),
-        //these properties are immedietly assigned values
-        //eventually other properties of projects will follow (check the schema)
-      }).then(()=>{
+      .add(project_fields).then((new_project) => {
+
+        // add project to owner's list
+        db
+          .doc(`users/${user.uid}`)
+          .collection('projects').doc(new_project.id)
+          .set({
+            favorited: false,
+            pinned: true,
+        });
+
+        // attach owner to project
+        db
+          .doc(`projects/${new_project.id}`)
+          .collection('admins').doc(user.uid)
+          .set({
+            date_added: date_created,
+            is_owner: true,
+          });
+
+        // empty text inputs 
         setTitle("")
         setDescription("")
-        //empties out the text inputs once values are recoded to db
       })
-      
-  }
+    }
 
   return (
     <div>

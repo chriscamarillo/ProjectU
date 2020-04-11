@@ -20,6 +20,7 @@ const CreateProject = () => {
       date_last_modified: date_created,
       archived: false, // Find out what this is for.
       status: 0, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
+      createdBy: user.displayName
     };
 
     // overides the default function execution

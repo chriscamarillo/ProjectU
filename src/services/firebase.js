@@ -19,7 +19,7 @@ export const signOut = () => {
     auth.signOut();
 }
 
-export const generateUserDocument = async (user,...additionalData) => {
+export const generateUserDocument = async (user) => {
     if (!user) return;
     const userRef = db.doc(`users/${user.uid}`);
     const snapshot = await userRef.get();
@@ -31,7 +31,9 @@ export const generateUserDocument = async (user,...additionalData) => {
           displayName,
           email,
           photoURL,
-          ...additionalData
+          bio: '',
+          // resume?,
+          // status?
         });
       } catch (error) {
         console.error("Error creating user document", error);

@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react"
-import { db, stat} from '../services/firebase'
-import { UserContext } from './UserProvider'
+import React, { useState } from "react"
+import { db, stat } from '../services/firebase'
+import { useUser } from './UserProvider'
 
 const CreateProject = () => {
-  const user = useContext(UserContext)
+  const user = useUser()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const createProject = (e) => {
@@ -37,7 +37,7 @@ const CreateProject = () => {
           .set({
             favorited: false,
             pinned: true,
-        });
+          });
 
         // attach owner to project
         db

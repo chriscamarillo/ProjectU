@@ -9,10 +9,11 @@ const Navbar = () => {
             <Link to="/">Discover </Link>
             {(signedIn)?(
                 <span>
-                    
                     <Link to="/Profile">Profile </Link>
                     <Link to="/Projects">Projects </Link>
-                    <button onClick={()=> {signOut()}}>Sign out</button>
+                    <Link to ="/">
+                        <button onClick={()=> {signOut()}}>Sign out</button>
+                    </Link>
                 </span>
             ):(<button onClick={signInWithGoogle}>Sign in with Google</button>)}
             

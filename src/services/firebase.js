@@ -12,11 +12,12 @@ export const stat = firebase.firestore;
 const provider = new firebase.auth.GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
-    auth.signInWithPopup(provider);
+   auth.signInWithPopup(provider);
 };
 
 export const signOut = () => {
-    auth.signOut();
+    auth.signOut()
+    localStorage.removeItem('authUser');
 }
 
 export const generateUserDocument = async (user) => {

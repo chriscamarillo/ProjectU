@@ -1,6 +1,6 @@
 import React from "react"
-import { UserContext } from '../components/UserProvider'
-import { db } from '../services/firebase'
+//import { UserContext } from '../components/UserProvider'
+//import { db } from '../services/firebase'
 
 const Profile = () => {
     

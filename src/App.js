@@ -5,10 +5,12 @@ import { Route, Switch } from 'react-router-dom';
 //import other components here:
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar'
+
 //import pages/routes:
 import Discover from './pages/Discover'
 import Profile from './pages/Profile'
 import Projects from './pages/Projects'
+
 //import styling...
 import './styles/App.css'
 
@@ -24,7 +26,6 @@ function App() {
       </Switch>
     </main>
   );
-  // this entire return statement will be rewritten once react router is set-up
 }
 
 export default App

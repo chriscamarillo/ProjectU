@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react"
-import { UserContext } from '../components/UserProvider'
+import React, { useState, useEffect} from "react"
+import { useUser } from '../components/UserProvider'
 import { db } from '../services/firebase'
 
 // import components here
@@ -22,24 +22,23 @@ function GetMyProjects(uid){
     return projects
 }
 
-const Discover = () => {
-    const user = useContext(UserContext);
-    const projects = GetMyProjects(user.uid)
-    return (
+const Projects = () => {
+    const user = useUser()
+    const projects =  GetMyProjects(user.uid)
+    return(
         <div>
-            
             <CreateProject />
             <h1>My Projects</h1>
             <ul>
                 {projects.map((project,i)=>
-                <li key={i}>
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                    <h4>posted by {project.createdBy}</h4>
+                    <li key={i}>
+                        <h2>{project.title}</h2>
+                        <p>{project.description}</p>
+                        <h4>posted by {project.createdBy}</h4>
                     </li>
                 )}
             </ul>
         </div>
     )
 }
-export default Discover
+export default Projects

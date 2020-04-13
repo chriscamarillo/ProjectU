@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { UserContext } from './UserProvider';
+import { useUser } from './UserProvider';
 export default ({ render, ...routeProps }) => {
-  const { authenticated } = useContext(UserContext);
+  
+  const authenticated = useUser()
   return (
     <Route
       {...routeProps}

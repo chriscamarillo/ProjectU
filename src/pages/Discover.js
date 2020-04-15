@@ -26,7 +26,7 @@ const Discover = () => {
         <ul>
             {projects.map((project,i)=>
                <li key={i}>
-                   <h2>{project.title}</h2>
+                   <Link to={`projects/${project.id}`}><h2>{project.title}</h2></Link>
                    <p>{project.description}</p>
                    <Link to={`/users/${project.owner}`}><h4>posted by {project.createdBy}</h4></Link>
                 </li>

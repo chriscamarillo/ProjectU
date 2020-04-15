@@ -10,7 +10,7 @@ const Navbar = () => {
             {(currentUser)?(
                 <span>
                     <Link to={`/users/${currentUser.uid}`}>Profile </Link>
-                    <Link to="/Projects">Projects </Link>
+                    <Link to="/MyProjects">Projects </Link>
                     <Link to ="/">
                         <button onClick={()=> {signOut()}}>Sign out</button>
                     </Link>

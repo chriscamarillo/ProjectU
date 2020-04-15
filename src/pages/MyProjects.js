@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react"
 import { useUser } from '../components/UserProvider'
 import { db } from '../services/firebase'
+import { Link } from "react-router-dom"
 
 // import components here
 import CreateProject from '../components/CreateProject'
@@ -22,16 +23,18 @@ function GetMyProjects(uid){
     return projects
 }
 
-const Projects = () => {
+const MyProjects = () => {
     const projects =  GetMyProjects(useUser().uid)
     return(
+        // Components for these project entries would make these messy links easier
+        // to organize and style
         <div>
             <CreateProject />
             <h1>My Projects</h1>
             <ul>
                 {projects.map((project,i)=>
                     <li key={i}>
-                        <h2>{project.title}</h2>
+                        <Link to={`/projects/${project.id}`}><h2>{project.title}</h2></Link>
                         <p>{project.description}</p>
                         <h4>posted by {project.createdBy}</h4>
                     </li>
@@ -41,4 +44,4 @@ const Projects = () => {
         </div>
     )
 }
-export default Projects
+export default MyProjects

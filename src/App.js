@@ -20,6 +20,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path='/' component={Discover} exact />
+        <Route path='/users/:uid' component={Profile} exact />
         <ProtectedRoute path='/profile' component={Profile} />
         <ProtectedRoute path='/projects' component={Projects} />
         <Route component={Error} />

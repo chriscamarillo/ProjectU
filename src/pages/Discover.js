@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { db } from '../services/firebase'
-
+import { Link } from "react-router-dom"
 function GetProjects(){
     const [projects, setProjects] = useState([])
     useEffect(()=>{
@@ -28,7 +28,7 @@ const Discover = () => {
                <li key={i}>
                    <h2>{project.title}</h2>
                    <p>{project.description}</p>
-                   <h4>posted by {project.createdBy}</h4>
+                   <Link to={`/users/${project.owner}`}><h4>posted by {project.createdBy}</h4></Link>
                 </li>
             )}
         </ul>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { db, stat } from '../services/firebase'
 import { useUser } from './../components/UserProvider'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const EditProfile = () => {
   const user = useUser()
@@ -11,8 +11,7 @@ const EditProfile = () => {
   const [status, setStatus] = useState("online")
   // TODO: qualifications somehow
   
-  let updateFirebase = (e) => {
-      e.preventDefault()
+  let updateFirebase = () => {
 
       // overides the default function execution
       // instantiates a connection to firestore
@@ -25,8 +24,6 @@ const EditProfile = () => {
             contactEmail,
             resumeLink,
             status
-          }).then(() => {
-            // redirect
           })
       }
   }
@@ -58,7 +55,9 @@ const EditProfile = () => {
             <label style={{color: 'gray'}}>Offline</label>
             <input type="radio" id="offline" name="status" value="offline" onChange={handleChange} />
             <br />
-          <button type="submit" onClick={updateFirebase}>Save Changes</button>
+          <Link to={`/users/${user.uid}`}>
+            <button onClick={() => updateFirebase()}>Save Changes</button>
+          </Link>  
         </form>
       </div>
   );

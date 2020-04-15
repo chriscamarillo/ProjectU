@@ -1,15 +1,15 @@
-import React, { useContext }  from "react";
+import React from "react";
 import { Link } from "react-router-dom"
-import { UserContext } from './UserProvider'
+import { useUser } from './UserProvider'
 import { signInWithGoogle, signOut} from "../services/firebase"
 const Navbar = () => {
-    var signedIn = useContext(UserContext)
+    var user = useUser()
     return(
         <div>
             <Link to="/">Discover </Link>
-            {(signedIn)?(
+            {(user)?(
                 <span>
-                    <Link to="/Profile">Profile </Link>
+                    <Link to={`/users/${user.uid}`}>Profile </Link>
                     <Link to="/Projects">Projects </Link>
                     <Link to ="/">
                         <button onClick={()=> {signOut()}}>Sign out</button>

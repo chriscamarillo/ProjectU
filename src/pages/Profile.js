@@ -5,7 +5,7 @@ import { db } from '../services/firebase'
 
 const Profile = () => {
     const uid = useParams().uid
-    const currentUser = useUser()
+    const currentUser = useUser() || {uid: null}
     const [user, setUser] = useState()
     useEffect(()=>{
         db
@@ -16,8 +16,9 @@ const Profile = () => {
             })
         },[uid])
     if(user){
+        
         return(
-            (uid == currentUser.uid)?(
+            (uid === currentUser.uid)?(
                 <div>
                     <h1>my profile</h1>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
@@ -27,6 +28,7 @@ const Profile = () => {
                     <h1>{user.displayName}'s profile</h1>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
                 </div>
+                //profile components should replace these divs
             )
         )
     }else{

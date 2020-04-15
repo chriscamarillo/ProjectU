@@ -23,8 +23,7 @@ function GetMyProjects(uid){
 }
 
 const Projects = () => {
-    const user = useUser()
-    const projects =  GetMyProjects(user.uid)
+    const projects =  GetMyProjects(useUser().uid)
     return(
         <div>
             <CreateProject />
@@ -36,6 +35,7 @@ const Projects = () => {
                         <p>{project.description}</p>
                         <h4>posted by {project.createdBy}</h4>
                     </li>
+                    //project component should replace this
                 )}
             </ul>
         </div>

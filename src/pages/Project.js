@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react"
 import { useUser } from '../components/UserProvider'
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { db } from '../services/firebase'
 
 const Project = () => {
@@ -23,24 +23,26 @@ const Project = () => {
         color: '#d4af37'
     }
 
-    if(currentUser.uid && details){
+    if(details){
         // TODO: get the rest of the details (collaborator list and thread)
-        
-        return(
-            (currentUser.uid === details.owner)?(
+        if(currentUser.uid === details.owner){
+            return(
                 <div>
                     <h2>{details.title}</h2>
                     <p>{details.description}</p>
                     <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
                 </div>
-            ):(
+            )
+        }else{
+            return(
                 <div>
                     <h2>{details.title}</h2>
                     <p>{details.description}</p>
-                    <h4>a project made by {details.createdBy}</h4>
+                    <h4>posted by <Link to={`/users/${details.owner}`}>{details.createdBy}</Link></h4>
                 </div>
             )
-        )
+        }
+        
     }else{
         return (
             <h1>Loading...</h1>

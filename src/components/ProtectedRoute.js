@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         if (authenticated) {
           return <Component {...rest} {...props} />
         } else {
-          window.alert("log in to acces this page")
+          window.alert("log in to access this page")
           return <Redirect to='/' />
         }
       }

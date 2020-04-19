@@ -34,6 +34,7 @@ const Profile = () => {
                 <div>
                     <h1>{user.displayName}'s profile</h1>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
+                    <p>{user.bio}</p>
                 </div>
                 //profile components should replace these divs
             )

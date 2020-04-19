@@ -39,7 +39,7 @@ const EditProfile = () => {
         <h1>{user.displayName}</h1>
         <form>
           Bio
-            <input type="text" placeholder="" value={bio} onChange={e => setBio(e.target.value)} ></input>
+            <input type="text" placeholder={user.bio}  onChange={e => setBio(e.target.value)} ></input>
           <br />
           Contact Email
             <input type="text" placeholder="" value={contactEmail} onChange={e => setContactEmail(e.target.value)}></input>

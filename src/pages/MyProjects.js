@@ -38,9 +38,8 @@ const MyProjects = () => {
                 {projects.map((project,i)=>
                     <li key={i}>
                         <Link to={`/projects/${project.id}`}><h2>{project.title}</h2></Link>
-                        <Link to={`/delete/project/${project.id}`}>delete</Link>
                         <p>{project.description}</p>
-                        <h4>posted by {project.createdBy}</h4>
+                        <Link to={`/delete/project/${project.id}`}>delete</Link>
                     </li>
                     //project component should replace this
                 )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { db, stat } from '../services/firebase'
+import { db } from '../services/firebase'
 import { useUser } from './../components/UserProvider'
 import { Link } from 'react-router-dom'
 

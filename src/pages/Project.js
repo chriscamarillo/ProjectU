@@ -6,7 +6,7 @@ import { db } from '../services/firebase'
 const Project = () => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
-    const [user, setUser] = useState()
+    
     const [details, setDetails] = useState()
 
     useEffect(()=>{
@@ -17,8 +17,6 @@ const Project = () => {
                 setDetails(details.data())
             })
         },[pid])
-
-    console.log(details)
     
     // need this to be all located in some other file for styling 
     let someStyle = {

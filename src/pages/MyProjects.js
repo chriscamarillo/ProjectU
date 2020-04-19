@@ -9,6 +9,7 @@ import CreateProject from '../components/CreateProject'
 function GetMyProjects(uid){
     const [projects, setProjects] = useState([])
     useEffect(()=>{
+        const unsubscribe = 
         db
             .collection('projects')
             .where("owner", "==", uid)
@@ -19,6 +20,8 @@ function GetMyProjects(uid){
                 }))
                 setProjects(myProjects)
             })
+        
+        return () => unsubscribe()
     },[uid])
     return projects
 }
@@ -35,6 +38,7 @@ const MyProjects = () => {
                 {projects.map((project,i)=>
                     <li key={i}>
                         <Link to={`/projects/${project.id}`}><h2>{project.title}</h2></Link>
+                        <Link to={`/delete/project/${project.id}`}>delete</Link>
                         <p>{project.description}</p>
                         <h4>posted by {project.createdBy}</h4>
                     </li>

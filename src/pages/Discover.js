@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 function GetProjects(){
     const [projects, setProjects] = useState([])
     useEffect(()=>{
+        const unsubscribe = 
         db
             .collection('projects')
             .onSnapshot((snapshot)=> {
@@ -13,6 +14,7 @@ function GetProjects(){
                 }))
                 setProjects(newProjects)
             })
+        return () => unsubscribe()
     },[])
     return projects
 }

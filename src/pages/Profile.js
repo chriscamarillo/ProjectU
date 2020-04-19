@@ -22,9 +22,13 @@ const Profile = () => {
         return(
             (uid === currentUser.uid)?(
                 <div>
-                    <h1>my profile</h1>
+                    <div>
+                        <h1>my profile</h1>
+                        <Link to='/edit/profile'>Edit Profile</Link>
+                    </div>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
-                    <Link to='/edit/profile'>Edit Profile</Link>
+                    <p>{user.bio}</p>
+                    
                 </div>
             ):(
                 <div>

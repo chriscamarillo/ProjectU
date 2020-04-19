@@ -1,16 +1,21 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { useUser } from './UserProvider';
-export default ({ render, ...routeProps }) => {
-  
-  const authenticated = useUser()
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const authenticated = useUser() || undefined
   return (
-    <Route
-      {...routeProps}
-      render={() => (authenticated ? 
-        render() : 
-        <Redirect to='/' />)
+    <Route {...rest} render={
+      props => {
+        if (authenticated) {
+          return <Component {...rest} {...props} />
+        } else {
+          window.alert("log in to acces this page")
+          return <Redirect to='/' />
+        }
       }
-    />
-  );
-};
+    } />
+  )
+}
+
+export default ProtectedRoute

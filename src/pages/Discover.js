@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { db } from '../services/firebase'
+import React from "react"
 import { Link } from "react-router-dom"
-function GetProjects(){
-    const [projects, setProjects] = useState([])
-    useEffect(()=>{
-        const unsubscribe = 
-        db
-            .collection('projects')
-            .onSnapshot((snapshot)=> {
-                const newProjects = snapshot.docs.map((project)=>({
-                    id: project.id,
-                    ...project.data()
-                }))
-                setProjects(newProjects)
-            })
-        return () => unsubscribe()
-    },[])
-    return projects
-}
+import { GetProjects } from '../components/Backend'
 
 const Discover = () => {
+    // Backend call
   const projects = GetProjects()
 
   return (

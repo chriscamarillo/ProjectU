@@ -1,23 +1,14 @@
-import React, { useState, useEffect} from "react"
+import React from "react"
 import { useUser } from '../components/UserProvider'
 import { useParams, Link } from "react-router-dom";
-import { db } from '../services/firebase'
+import { GetProject } from './../components/Backend'
 
 const Project = () => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
     
-    const [details, setDetails] = useState()
+    let details = GetProject(pid);
 
-    useEffect(()=>{
-        db
-            .collection('projects')
-            .doc(pid)
-            .onSnapshot((details)=>{
-                setDetails(details.data())
-            })
-        },[pid])
-    
     // need this to be all located in some other file for styling 
     let someStyle = {
         color: '#d4af37'

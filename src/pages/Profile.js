@@ -1,22 +1,16 @@
-import React, { useState, useEffect} from "react"
+import React from "react"
 import { useUser } from '../components/UserProvider'
 import { useParams } from "react-router";
-import { db } from '../services/firebase'
+import { GetProfile } from '../components/Backend'
 import { Link } from "react-router-dom"
 
 const Profile = () => {
     const uid = useParams().uid
     const currentUser = useUser() || {uid: null}
-    const [user, setUser] = useState()
 
-    useEffect(()=>{
-        db
-            .collection('users')
-            .doc(uid)
-            .onSnapshot((user)=>{
-                setUser(user.data())
-            })
-        },[uid])
+    // Backend call
+    let user = GetProfile(uid)
+    
     if(user){
         
         return(

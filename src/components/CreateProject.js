@@ -1,17 +1,19 @@
 import React, { useState } from "react"
-import { db, stat } from '../services/firebase'
+import { stat } from '../services/firebase'
 import { useUser } from './UserProvider'
-
+import { createProject } from './Backend'
+// TODO: refactor this
 const CreateProject = () => {
   const user = useUser()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-  const createProject = (e) => {
+  
+  const createAndEmpty = (e) => {
     e.preventDefault()
 
     let date_created = stat.FieldValue.serverTimestamp();
 
-    // setup new project
+    // setup new project fields
     let project_fields = {
       title,
       description,
@@ -23,35 +25,12 @@ const CreateProject = () => {
       createdBy: user.displayName
     };
 
-    // overides the default function execution
-    // instantiates a connection to firestore
-    // modifies the above collection
-    db
-      .collection("projects")
-      .add(project_fields).then((new_project) => {
-
-        // add project to owner's list
-        db
-          .doc(`users/${user.uid}`)
-          .collection('projects').doc(new_project.id)
-          .set({
-            favorited: false,
-            pinned: true,
-          });
-
-        // attach owner to project
-        db
-          .doc(`projects/${new_project.id}`)
-          .collection('admins').doc(user.uid)
-          .set({
-            date_added: date_created,
-            is_owner: true,
-          });
-
-        // empty text inputs 
-        setTitle("")
-        setDescription("")
-      })
+    // create entry in firebase
+    createProject(user, project_fields).then(() => {
+      // empty text inputs 
+      setTitle("")
+      setDescription("")
+    })
     }
 
   return (
@@ -60,7 +39,7 @@ const CreateProject = () => {
         <form>
             <input type="text" placeholder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>
             <input type="text" placeholder="project description" value={description} onChange={e => setDescription(e.target.value)}></input>
-            <button type="submit" onClick={createProject}>Submit</button>
+            <button type="submit" onClick={createAndEmpty}>Submit</button>
         </form>
     </div>
   )

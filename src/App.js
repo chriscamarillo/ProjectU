@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 //import other components here:
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar'
-import DeleteProject from './components/DeleteProject'
+import {DeleteProject} from './components/Backend'
 
 //import pages/routes:
 import Discover from './pages/Discover'

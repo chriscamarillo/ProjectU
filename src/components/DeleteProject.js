@@ -1,7 +1,9 @@
 import React from "react"
 import { db} from '../services/firebase'
 import { useParams, Redirect } from "react-router";
-import{useUser} from "./UserProvider"
+import { useUser } from "./UserProvider"
+import { client } from "firebase-tools";
+
 const DeleteProject = () => {
     const pid = useParams().pid
     const uid = useUser().uid
@@ -13,12 +15,19 @@ const DeleteProject = () => {
                 const prompt = window.confirm("delete this project?")
                 //checks to see whether the selected project is owned by the logged-in user
                 if(prompt){
-                    db
-                    .collection('projects')
-                    .doc(pid)
-                    .delete()
+                    // FULL RECURSIVE DELETE
+                    client
+                    .delete(`users/${uid}/projects/${pid}`, {
+                        project: process.env.GCLOUD_PROJECT,
+                        recursive: true,
+                        yes: true
+                    });
+                    // db
+                    // .collection('projects')
+                    // .doc(pid)
+                    // .delete()
 
-                    ref.delete()
+                    // ref.delete()
                     //dont know how to delete the 'admins' collection in the project page
                 }
             }else{

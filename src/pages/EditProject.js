@@ -7,10 +7,24 @@ const EditProject = () => {
     const pid = useParams().pid;
     const currentUser = useUser() || {uid: null};
 
-    console.log(pid + '\t' + currentUser.uid)
+    //console.log(pid + '\t' + currentUser.uid)
     const project = GetProject(pid);
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+
+    function UpdateAndRedirect() {
+        let fields = {title, 
+                    description, 
+                    createdBy: project.createdBy, 
+                    owner: project.owner} 
+
+        if(title == "")
+            fields.title = project.title
+        if(description == "")
+            fields.description = project.description
+        
+        UpdateProject(pid, fields)
+    } 
 
     if (currentUser.uid && project) {
         if(project.owner == currentUser.uid) {
@@ -26,10 +40,7 @@ const EditProject = () => {
                     </form>
                     <Link to={`/projects/${pid}`}>
                         <button 
-                            onClick={() => UpdateProject(pid, 
-                                {title, description, 
-                                createdBy: project.createdBy, 
-                                owner: project.owner})}
+                            onClick={() => UpdateAndRedirect()}
                         >
                                 Save Changes
                         </button>

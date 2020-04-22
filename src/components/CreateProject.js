@@ -11,26 +11,28 @@ const CreateProject = () => {
   const createAndEmpty = (e) => {
     e.preventDefault()
 
-    let date_created = stat.FieldValue.serverTimestamp();
+    if(title != null && title != "" && description != null && description != "") {
+      let date_created = stat.FieldValue.serverTimestamp();
 
-    // setup new project fields
-    let project_fields = {
-      title,
-      description,
-      owner: user.uid,
-      date_created,
-      date_last_modified: date_created,
-      archived: false, // Find out what this is for.
-      status: 0, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
-      createdBy: user.displayName
-    };
+      // setup new project fields
+      let project_fields = {
+        title,
+        description,
+        owner: user.uid,
+        date_created,
+        date_last_modified: date_created,
+        archived: false, // Find out what this is for.
+        status: 0, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
+        createdBy: user.displayName
+      };
 
-    // create entry in firebase
-    createProject(user, project_fields).then(() => {
-      // empty text inputs 
-      setTitle("")
-      setDescription("")
-    })
+        // create entry in firebase
+        createProject(user, project_fields).then(() => {
+        // empty text inputs 
+        setTitle("")
+        setDescription("")
+        })
+      }
     }
 
   return (

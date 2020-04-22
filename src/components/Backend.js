@@ -83,8 +83,12 @@ function GetProjects(){
     return projects
 }
 
-function UpdateProject(updated_fields) {
-    // TODO: 
+function UpdateProject(pid, fields) {
+    if (pid) {
+        db
+          .collection("projects").doc(pid)
+          .update(fields)
+      }
 } 
 
 // I can probably replace the param with useUser() in the body of the function instead

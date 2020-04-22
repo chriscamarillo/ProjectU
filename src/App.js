@@ -12,8 +12,10 @@ import {DeleteProject} from './components/Backend'
 import Discover from './pages/Discover'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
+import EditProject from './pages/EditProject'
 import MyProjects from './pages/MyProjects'
 import Project from './pages/Project'
+
 
 //import styling...
 import './styles/App.css'
@@ -28,6 +30,7 @@ function App() {
         <Route path='/projects/:pid' component={Project} exact />
         
         <ProtectedRoute path='/edit/profile' component={EditProfile} exact />
+        <ProtectedRoute path='/edit/project/:pid' component={EditProject} exact />
         <ProtectedRoute path='/delete/project/:pid' component={DeleteProject} exact />
         <ProtectedRoute path='/profile' component={Profile} />
         <ProtectedRoute path='/MyProjects' component={MyProjects} />

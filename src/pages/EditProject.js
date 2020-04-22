@@ -1,0 +1,40 @@
+import React, { useState } from "react"
+import { useUser } from '../components/UserProvider'
+import { useParams, Link } from 'react-router-dom'
+import { UpdateProject, GetProject } from '../components/Backend'
+
+const EditProject = () => {
+    const pid = useParams().pid;
+    const currentUser = useUser() || {uid: null};
+
+    console.log(pid + '\t' + currentUser.uid)
+    const project = GetProject(pid);
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+
+    if (currentUser.uid && project) {
+        if(project.owner == currentUser.uid) {
+            return(
+                <div>
+                    <h5><i>A better form component later</i></h5>
+                    <h3>Edit Project</h3>
+                    <form>
+                        Title
+                        <input type="text" placeholder={project.title}  onChange={e => setTitle(e.target.value)} ></input>
+                        Description
+                        <input type="text" placeholder={project.description}  onChange={e => setDescription(e.target.value)} ></input>
+                    </form>
+                    <Link to={`/projects/${pid}`}>
+                        <button onClick={() => UpdateProject(pid, {title, description})}>Save Changes</button>
+                    </Link>  
+                </div>
+            )
+        }
+    }
+
+    return(
+        <h1>You don't have permission</h1>
+    );
+}
+
+export default EditProject

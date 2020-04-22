@@ -14,7 +14,6 @@ const Project = () => {
     let someStyle = {
         color: '#d4af37'
     }
-
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
@@ -23,7 +22,10 @@ const Project = () => {
                     <h2>{details.title}</h2>
                     <p>{details.description}</p>
                     <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
+                    <Link to={`/edit/project/${pid}`}>Edit Project</Link>
+
                 </div>
+
             )
         }else{
             return(

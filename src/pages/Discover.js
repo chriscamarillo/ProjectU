@@ -18,7 +18,6 @@ const Discover = () => {
   
   // Search bar functionality 
   useEffect(() => {
-    console.log('this would have been fetched')
     const searchClient = algoliasearch(algoliaConfig.appID, algoliaConfig.searchOnlyKey)
     const index = searchClient.initIndex('projects')
     index.search(text).then(results => {

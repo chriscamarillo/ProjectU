@@ -1,6 +1,7 @@
 //importing dependencies
 import React from "react"
 import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //import other components here:
 import ProtectedRoute from './components/ProtectedRoute'

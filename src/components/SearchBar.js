@@ -1,24 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { db } from '../services/firebase'
-
+import { algoliaConfig } from '../services/config'
+import algoliasearch from 'algoliasearch';
 
 function SearchBar(props) {
-//    const SearchButton = () =>{
-//         const pid = useParams().pid
-//         const uid = useUser().uid
-//         const ref = db.collection('users').doc(uid).collection('projects').doc(pid)
-//         db
-//         .collection("projects");
-//         .doc(`projects/${}`)
-//     }
 
-        return(    
-        <form>
-            <input keyboard = "text" placeholder = "Search Bar" /> 
-            <button type="Search" onClick={SearchButton}>Search</button>
-        </form>
-        
-    
+    function handleTextChange(e) {
+        e.preventDefault()
+        props.handleTextChange(e.target.value)
+    }
+
+    return(    
+        <input type = "text" placeholder = "Search Bar" value={props.text} onChange={props.handleTextChange}/>         
     );
 }
 export default SearchBar;

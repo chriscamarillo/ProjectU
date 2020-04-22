@@ -1,23 +1,38 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { GetProjects } from '../components/Backend'
+import SearchBar from '../components/SearchBar'
+import ProjectList from '../components/ProjectList'
+import algoliasearch from 'algoliasearch'
+import { algoliaConfig } from '../services/config'
 
 const Discover = () => {
-    // Backend call
-  const projects = GetProjects()
-
+  // state management
+  const [text, setText] = useState('')
+  const [projects, setProjects] = useState([])
+  // const projects = GetProjects()
+  
+  function handleTextChange(e) {
+    setText(e.target.value);
+  }
+  
+  // Search bar functionality 
+  useEffect(() => {
+    console.log('this would have been fetched')
+    const searchClient = algoliasearch(algoliaConfig.appID, algoliaConfig.searchOnlyKey)
+    const index = searchClient.initIndex('projects')
+    index.search(text).then(results => {
+      setProjects(results.hits); 
+    });
+  }, [text]);
+  
   return (
     <div>
-        <h1>discover new projects</h1>
-        <ul>
-            {projects.map((project,i)=>
-               <li key={i}>
-                   <Link to={`projects/${project.id}`}><h2>{project.title}</h2></Link>
-                   <p>{project.description}</p>
-                   <Link to={`/users/${project.owner}`}><h4>posted by {project.createdBy}</h4></Link>
-                </li>
-            )}
-        </ul>
+       <div className='searchArea'>
+            <h1>discover new projects</h1>
+            <SearchBar text={text} handleTextChange={handleTextChange} />
+            <ProjectList projects={projects} />
+        </div>
     </div>
   )
 }

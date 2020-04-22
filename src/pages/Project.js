@@ -7,6 +7,7 @@ const Project = () => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
     
+    // Backend call
     let details = GetProject(pid);
 
     // need this to be all located in some other file for styling 

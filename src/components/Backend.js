@@ -1,8 +1,9 @@
 import React, { useState, useEffect} from "react"
 import { useParams, Redirect } from "react-router";
 import { db } from '../services/firebase'
-import {useUser} from "./UserProvider"
-
+import { useUser } from "./UserProvider"
+import algoliasearch from 'algoliasearch'
+import { algoliaConfig } from '../services/config'
 /*
     Most Backend function calls
     will handle state for subsequent database updates
@@ -30,7 +31,6 @@ function createProject(user, project_fields) {
             date_added: project_fields.date_created,
             is_owner: true,
         });
-
     })
 }
 

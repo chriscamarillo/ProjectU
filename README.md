@@ -3,14 +3,14 @@ A platform for project exploration and collaboration
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# `yarn install`
+### `yarn install`
 Run this after cloning for the first time!
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-# `yarn start`
+### `yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

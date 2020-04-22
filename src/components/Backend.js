@@ -119,9 +119,13 @@ function UpdateProject(pid, fields) {
                 title,
                 description,
                 createdBy,
-                owner
+                owner,
+                id: pid
             })
           })
+      }
+      else {
+          console.log('no pid passed')
       }
 } 
 

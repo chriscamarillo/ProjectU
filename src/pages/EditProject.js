@@ -25,7 +25,14 @@ const EditProject = () => {
                         <input type="text" placeholder={project.description}  onChange={e => setDescription(e.target.value)} ></input>
                     </form>
                     <Link to={`/projects/${pid}`}>
-                        <button onClick={() => UpdateProject(pid, {title, description})}>Save Changes</button>
+                        <button 
+                            onClick={() => UpdateProject(pid, 
+                                {title, description, 
+                                createdBy: project.createdBy, 
+                                owner: project.owner})}
+                        >
+                                Save Changes
+                        </button>
                     </Link>  
                 </div>
             )

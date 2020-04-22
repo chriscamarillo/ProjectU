@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react"
 import { useParams, Redirect } from "react-router";
 import { db } from '../services/firebase'
 import { useUser } from "./UserProvider"
-import algoliasearch from 'algoliasearch'
+import algoliasearch from 'algoliasearch';
 import { algoliaConfig } from '../services/config'
 /*
     Most Backend function calls
@@ -13,7 +13,12 @@ function createProject(user, project_fields) {
     return db
     .collection("projects")
     .add(project_fields).then((new_project) => {
-
+        const {appID, adminKey } = algoliaConfig;
+        const client = algoliasearch(appID, adminKey);
+        const index = client.initIndex('projects')
+        const {title, description, createdBy, owner} = project_fields
+        const objectID = new_project.id;
+        
         // add project to owner's list
         db
         .doc(`users/${user.uid}`)
@@ -31,7 +36,19 @@ function createProject(user, project_fields) {
             date_added: project_fields.date_created,
             is_owner: true,
         });
-    })
+
+        // add projects to algolia
+        console.log('saving project...');
+        console.log('index:')
+        console.log(index.saveObject)
+        index.saveObject({title,
+            objectID,
+            title,
+            description,
+            createdBy
+        }).then(({objectID}) => console.log);
+    });
+    
 }
 
 function GetProfile(uid) {
@@ -87,7 +104,22 @@ function UpdateProject(pid, fields) {
     if (pid) {
         db
           .collection("projects").doc(pid)
-          .update(fields)
+          .update(fields).then((updated) => {
+            const {appID, adminKey } = algoliaConfig;
+            const client = algoliasearch(appID, adminKey);
+            const index = client.initIndex('projects')
+            const {title, description, createdBy, owner} = fields
+            const objectID = pid;
+            
+            // update project in algolia
+            index.saveObject({title,
+                objectID,
+                title,
+                description,
+                createdBy,
+                owner
+            })
+          })
       }
 } 
 
@@ -114,30 +146,10 @@ function GetMyProjects(uid){
     return projects
 }
 
-function Search(keywords)  {
-    // oh boy
-    // const [projects, setProjects] = useState([])
-    // useEffect(() => {
-    //     const unsubscribe = 
-    //     db
-    //         .collection('projects')
-    //         .where("owner", "==", uid)
-    //         .onSnapshot((snapshot)=> {
-    //             const myProjects = snapshot.docs.map((project)=>({
-    //                 id: project.id,
-    //                 ...project.data()
-    //             }))
-    //             setProjects(myProjects)
-    //         })
-        
-    //     return () => unsubscribe()
-    // },[uid])
-    // return projects
-}
-
 const DeleteProject = () => {
     const pid = useParams().pid
     const uid = useUser().uid
+    // WILL CHANGE TO REFERENCES.. (admins and owner all removed)
     const ref = db.collection('users').doc(uid).collection('projects').doc(pid)
 
         ref.get().then((project)=>{
@@ -146,10 +158,18 @@ const DeleteProject = () => {
                 const prompt = window.confirm("delete this project?")
                 //checks to see whether the selected project is owned by the logged-in user
                 if(prompt){
+                    // recursive delete
+                    // ALSO MUST REMOVE EVERY ADMIN!
                     db
                     .collection('projects')
                     .doc(pid)
                     .delete()
+                    .then(() => {
+                        const {appID, adminKey } = algoliaConfig;
+                        const client = algoliasearch(appID, adminKey);
+                        const index = client.initIndex('projects')
+                        index.deleteObject(pid)
+                    });
 
                     ref.delete()
                     //dont know how to delete the 'admins' collection in the project page
@@ -173,7 +193,7 @@ function UpdateProfile (user, fields) {
     }
 }
 
-export {createProject,                                                  // C
-        GetProfile, GetProject, GetProjects, GetMyProjects, Search,     // R
-        UpdateProfile, UpdateProject,                                   // U
-        DeleteProject}                                                  // D
+export {createProject,                                          // C
+        GetProfile, GetProject, GetProjects, GetMyProjects,     // R
+        UpdateProfile, UpdateProject,                           // U
+        DeleteProject}                                          // D

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { GetProjects } from '../components/Backend'
 import SearchBar from '../components/SearchBar'
 import ProjectList from '../components/ProjectList'
 import algoliasearch from 'algoliasearch'

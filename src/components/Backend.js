@@ -45,7 +45,9 @@ function createProject(user, project_fields) {
             objectID,
             title,
             description,
-            createdBy
+            createdBy,
+            owner,
+            id:objectID
         }).then(({objectID}) => console.log);
     });
     

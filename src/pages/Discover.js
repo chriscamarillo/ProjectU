@@ -4,6 +4,7 @@ import ProjectList from '../components/ProjectList'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
 import ProjectEntry from '../components/ProjectEntry'
+import '../styles/Discover.css'
 
 const Discover = () => {
   // state management
@@ -25,19 +26,19 @@ const Discover = () => {
   }, [text]);
   
   return (
-    <div>
-       <div className='searchArea'>
-            <h1>discover new projects</h1>
-            <SearchBar text={text} handleTextChange={handleTextChange} />
-            <ProjectList projects={projects} />
-        </div>
-
+    <div className='Discover'>
+        <SearchBar text={text} handleTextChange={handleTextChange} />
+        <ProjectList projects={projects} />
+    
 {/* random section for test code */}
-        <div>
-          <ProjectEntry title='some bullshit'
-                        owner='shitty owner'
+        <div class='Test Area'>
+          <h>~~~~~~~~~~~~~~~~~ I Test Stuff Here ~~~~~~~~~~~~~~~~~</h>
+          <ProjectEntry title='I test my code here...'
+                        owner='some owner'
                         description='let me see if it works haha'
-                        createdBy='me i think' />
+                        createdBy='Me' 
+          />
+
         </div>
     </div>
   )

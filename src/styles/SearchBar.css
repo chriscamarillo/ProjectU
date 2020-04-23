@@ -1,0 +1,14 @@
+/* 
+    Tweak values and figure out what it does.
+    add your own things in as well.
+*/
+ .SearchBar {
+    width: 50%;
+    text-align: center; 
+    margin: auto; /* place entire component in the center of the page */
+    padding: 20px; 
+ }
+
+ .SearchBar input {
+    width: 100%;
+}

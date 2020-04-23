@@ -1,0 +1,26 @@
+/* 
+    This sort of models the example doc for creating components 
+    and shows how the styling would work.
+    Feel free to play with this and make the rest of the .css files
+    for the other components in this folder, then import them for the component.
+*/
+
+.ProjectEntry {
+    border: 5px solid green;
+    margin-bottom: 50px; /* spacings between entries */
+}
+
+.ProjectEntry h2 {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px; /* spacings between title and description */
+}
+
+.ProjectEntry p {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin-bottom: 10px; /* spacing between description and creator */
+}
+
+.ProjectEntry h4 {
+    font-style: italic;
+}

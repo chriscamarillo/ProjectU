@@ -1,0 +1,19 @@
+/* 
+    This sort of models the example doc for creating components 
+    and shows how the styling would work.
+    Feel free to play with this and make the rest of the .css files
+    for the other components in this folder, then import them for the component.
+*/
+
+.ProjectList {
+    width: 75%;
+    margin: auto;
+}
+
+ul {
+    list-style-type: none;
+    /* text-align: center; */
+    border: 4px solid orange;
+    padding: 20px 20px 20px 20px;
+}
+

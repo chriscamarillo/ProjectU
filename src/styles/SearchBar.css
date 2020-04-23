@@ -6,7 +6,10 @@
     width: 50%;
     text-align: center; 
     margin: auto; /* place entire component in the center of the page */
-    padding: 20px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 4px solid #0099ff;
  }
 
  .SearchBar input {

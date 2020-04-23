@@ -188,6 +188,89 @@ const DeleteProject = () => {
     return(<Redirect to="/MyProjects" />)
 }
 
+
+function GetUserSkills(uid) {
+    const [skills, setSkills] = useState([])
+    useEffect(() => {
+        async function GetSkills() {
+            if(uid) {
+                let skills_ref = db.collection("users").doc(uid).collection("skills")
+                let skills_promise = await skills_ref.get()
+                //console.log(skills)
+                setSkills(await skills_promise.docs.map(x => x.data().word))
+            }
+        }
+        GetSkills()
+    })
+    return skills
+}
+
+
+//TODO: maybe fix this if it has errors
+async function AddUserSkill(uid, skill) {
+    skill = skill.toLowerCase()
+    if(uid) {
+    // get user skill and keyword references
+        let user_skills_ref = db.collection("users").doc(uid).collection("skills")
+        let keywords_ref = db.collection("keywords")
+    
+    // retrieve user skills collection
+        let user_skills_promise = await user_skills_ref.get()
+        let user_skills = await user_skills_promise.docs.map(x => x.data().word)
+        console.log(user_skills)
+    
+    // retrieve array of skills matching parameter
+        let matching_skills_promise = await user_skills_ref.where('word', '==', skill).get()
+        let matching_skills = await matching_skills_promise.docs.map(x => x.data().word)
+        console.log(matching_skills)
+    
+    // if matching skills is empty (there is no matching skill) <-- it must be added to user skill
+    // collection at the end of the if statement
+        if(matching_skills.length == 0) {
+        // retrieve the keyword collection and find matching skills
+            let keywords_promise = await keywords_ref.where('word', '==', skill).get()
+            let keywords = await keywords_promise.docs.map(x => x.data().word)
+        // if matching keywords is empty (there is no matching skill) add new skill to keywords
+            if(keywords.length == 0) {
+                keywords_ref.add({word:skill})
+            } else {
+                console.log("Skill already exists in the keywords collection")
+            }
+        // add new skill to user's skill collection
+            user_skills_ref.add({word:skill})
+
+        } else {
+             console.log("Skill already in user's skills")
+        }
+    }
+}
+
+//TODO: remove user skill
+async function removeUserSkill(uid, skill) {
+    skill = skill.toLowerCase()
+    if(uid) {
+
+    }
+}
+
+//TODO: get project skill requirements
+function GetProjectRequirements(pid) {
+
+}
+
+//TODO: add skill requirements to project
+function AddProjectRequirement(pid, skill) {
+    if(pid) {
+        
+    }
+}
+
+//TODO: remove skill requirement to projects
+function RemoveProjectRequirement(pid, skill) {
+    
+}
+
+
 function UpdateProfile (user, fields) {
     // modifies the current user's profile
     //   const user = useUser()
@@ -199,7 +282,9 @@ function UpdateProfile (user, fields) {
     }
 }
 
+
 export {createProject,                                          // C
         GetProfile, GetProject, GetProjects, GetMyProjects,     // R
         UpdateProfile, UpdateProject,                           // U
-        DeleteProject}                                          // D
+        DeleteProject, AddUserSkill,
+        GetUserSkills}                                          // D

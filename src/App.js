@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 //import other components here:
 import ProtectedRoute from './components/ProtectedRoute'
-import Navbar from './components/Navbar'
+import NavigationBar from './components/NavigationBar'
 import {DeleteProject} from './components/Backend'
 
 //import pages/routes:
@@ -23,7 +23,7 @@ import './styles/App.css'
 function App() {
   return (
     <main>
-      <Navbar />
+      <NavigationBar />
       <Switch>
         <Route path='/' component={Discover} exact />
         <Route path='/users/:uid' component={Profile} exact />

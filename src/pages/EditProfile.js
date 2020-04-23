@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { useUser } from './../components/UserProvider'
 import { Link } from 'react-router-dom'
-import { UpdateProfile } from '../components/Backend'
+import { UpdateProfile, AddUserSkill, GetUserSkills} from '../components/Backend'
+import SkillsList from '../components/SkillsList' 
 
 const EditProfile = () => {
   const user = useUser()
@@ -9,10 +10,17 @@ const EditProfile = () => {
   const [contactEmail, setContactEmail] = useState("")
   const [resumeLink, setResumeLink] = useState("")
   const [status, setStatus] = useState("online")
+  const [skill, setSkill] = useState("")
+
+  const skills = GetUserSkills(user.uid);
 
   let handleChange = (e) => {
     setStatus(e.target.value)
   }
+
+  let handleSkill = (e) => {
+    setSkill(e.target.value)
+}
 
   return (
       <div>
@@ -37,9 +45,20 @@ const EditProfile = () => {
             <label style={{color: 'gray'}}>Offline</label>
             <input type="radio" id="offline" name="status" value="offline" onChange={handleChange} />
             <br />
+          {(skills)?(<SkillsList skills={skills} />):(<h1>No skills loaded</h1>)}
+          Qualifications
+            <input type="text" placeholder="Skills" onChange={handleSkill}></input>
+            <button onClick={(e) => {
+              e.preventDefault()
+              AddUserSkill(user.uid, skill)
+              console.log(skill)
+              console.log(skills)
+            }
+            }>Add</button>
+          <br />
           <Link to={`/users/${user.uid}`}>
             <button onClick={() => UpdateProfile(user, {bio, contactEmail, resumeLink, status})}>Save Changes</button>
-          </Link>  
+          </Link> 
         </form>
       </div>
   );

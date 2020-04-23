@@ -187,6 +187,8 @@ const DeleteProject = () => {
     
     return(<Redirect to="/MyProjects" />)
 }
+
+
 function GetUserSkills(uid) {
     const [skills, setSkills] = useState([])
     useEffect(() => {
@@ -204,7 +206,7 @@ function GetUserSkills(uid) {
 }
 
 
-//TODO: adds skills to a user's profile and keywords collection (if it isnt there already) for searching
+//TODO: maybe fix this if it has errors
 async function AddUserSkill(uid, skill) {
     skill = skill.toLowerCase()
     if(uid) {
@@ -243,6 +245,7 @@ async function AddUserSkill(uid, skill) {
     }
 }
 
+//TODO: remove user skill
 async function removeUserSkill(uid, skill) {
     skill = skill.toLowerCase()
     if(uid) {
@@ -250,12 +253,22 @@ async function removeUserSkill(uid, skill) {
     }
 }
 
+//TODO: get project skill requirements
+function GetProjectRequirements(pid) {
+
+}
+
 //TODO: add skill requirements to project
-function AddProjectRequirement(pid) {
+function AddProjectRequirement(pid, skill) {
     if(pid) {
         
     }
-} 
+}
+
+//TODO: remove skill requirement to projects
+function RemoveProjectRequirement(pid, skill) {
+    
+}
 
 
 function UpdateProfile (user, fields) {

@@ -3,6 +3,10 @@ import SearchBar from '../components/SearchBar'
 import ProjectList from '../components/ProjectList'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
+import Thread from '../components/Thread'
+import ThreadEntry from '../components/ThreadEntry'
+import ProjectEntry from '../components/ProjectEntry'
+
 
 const Discover = () => {
   // state management
@@ -29,8 +33,16 @@ const Discover = () => {
             <h1>discover new projects</h1>
             <SearchBar text={text} handleTextChange={handleTextChange} />
             <ProjectList projects={projects} />
+            <Thread projects={projects} />
+        </div>
+
+        <div>
+          {/*<ProjectEntry id="1234" title="Title" description="blah blah blah" createdBy="Melanie" owner="Me"/>*/}
+          <ThreadEntry from="Mel1" date="4/23/2020" msg="Hello, world!"/>
+          <ThreadEntry from="Mel2" date="4/23/2020" msg="Hello, again!"/>
         </div>
     </div>
   )
 }
+
 export default Discover

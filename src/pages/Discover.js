@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar'
 import ProjectList from '../components/ProjectList'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
+import ProjectEntry from '../components/ProjectEntry'
 
 const Discover = () => {
   // state management
@@ -29,6 +30,14 @@ const Discover = () => {
             <h1>discover new projects</h1>
             <SearchBar text={text} handleTextChange={handleTextChange} />
             <ProjectList projects={projects} />
+        </div>
+
+{/* random section for test code */}
+        <div>
+          <ProjectEntry title='some bullshit'
+                        owner='shitty owner'
+                        description='let me see if it works haha'
+                        createdBy='me i think' />
         </div>
     </div>
   )

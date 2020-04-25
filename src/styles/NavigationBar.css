@@ -2,9 +2,10 @@
 .NavigationBar{
     font-size: large;
     font: arial;
-    border: 5px solid grey;
+    
 }
 
 .NavigationBar span{
     margin-right: 15px;
 }
+

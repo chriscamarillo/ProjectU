@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useUser } from './../components/UserProvider'
 import { Link } from 'react-router-dom'
 import { UpdateProfile } from '../components/Backend'
+import '../styles/EditProfile.css'
 
 const EditProfile = () => {
   const user = useUser()
@@ -15,7 +16,7 @@ const EditProfile = () => {
   }
 
   return (
-      <div>
+      <div className= 'EditProfile'>
         <h5><i>A better form component later</i></h5>
         <h3>Edit Profile</h3>
         <h1>{user.displayName}</h1>

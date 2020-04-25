@@ -1,0 +1,22 @@
+.CreateProject{
+    border: 5px solid lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 300px;
+    margin-right: 300px;
+    
+}
+
+.CreateProject h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-left: 200px;
+}
+
+.CreateProject form {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+    margin-left: 170px;
+}

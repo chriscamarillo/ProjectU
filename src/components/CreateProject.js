@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { stat } from '../services/firebase'
 import { useUser } from './UserProvider'
 import { createProject } from './Backend'
+import '../styles/CreateProject.css'
+
 // TODO: refactor this
 const CreateProject = () => {
   const user = useUser()
@@ -36,7 +38,7 @@ const CreateProject = () => {
     }
 
   return (
-    <div>
+    <div className='CreateProject'>
         <h1>Create a new Project</h1>
         <form>
             <input type="text" placeholder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>

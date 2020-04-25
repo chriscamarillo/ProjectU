@@ -1,0 +1,35 @@
+.EditProfile {
+    border: 7px solid pink;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 30px;
+}
+
+.EditProfile h3{
+    margin-left: 500px;
+    font-size: xx-large;
+}
+
+.EditProfile h1{
+    margin-left: 50px;
+    font-size: xxxx-large;
+    margin-bottom: 15px;    
+}
+
+.EditProfile form{
+    margin-left: 100px;
+    font-size: large;
+    margin-bottom: 50px;
+}
+
+.EditProfile input{
+    margin-left: 20px ;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+.EditProfile button{
+    color: black;
+    background-color: lightgray;
+    margin-top: 15px;
+}

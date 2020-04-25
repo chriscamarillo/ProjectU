@@ -4,6 +4,7 @@ import { useUser } from './UserProvider'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import { signInWithGoogle, signOut} from "../services/firebase"
 import styled from 'styled-components' 
+import '../styles/NavigationBar.css'
 
 const Styles = styled.div`
   .navbar { background-color: #222; }
@@ -21,12 +22,13 @@ const Styles = styled.div`
     left: 25%;
     right: 25%;
   }
-`;
+;
+`
 
 const NavigationBar = () => {
     var currentUser = useUser()
     return(
-      <Styles>
+    <Styles className='NavigationBar'>
       <Navbar expand="lg">
         <Navbar.Brand href="/">Discover</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>

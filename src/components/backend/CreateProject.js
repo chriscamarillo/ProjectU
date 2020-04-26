@@ -5,7 +5,6 @@ import algoliasearch from 'algoliasearch';
 import { algoliaConfig } from '../../services/config'
 import { db} from '../../services/firebase'
 import '../../styles/CreateProject.css'
-import Logo from '../../ProjectULogo.png'
 
 // TODO: refactor this into backend
 function createProject(user, project_fields) {
@@ -86,7 +85,6 @@ const CreateProject = () => {
 
   return (
     <div className='CreateProject'>
-        <img src= {Logo}/>
         <h1>Create a New Project</h1>
         <form>
             <input type="text" placeholder="project title" value={title} onChange={e => setTitle(e.target.value)} ></input>

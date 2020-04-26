@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { db } from '../../services/firebase'
 import { algoliaConfig } from '../../services/config'
 import algoliasearch from 'algoliasearch';
-import Logo from '../../ProjectULogo.png'
 import '../../styles/SearchBar.css'
 
 function SearchBar(props) {
@@ -14,7 +13,6 @@ function SearchBar(props) {
 
     return(    
         <div className='SearchBar'>
-            <img src= {Logo}/>
             <h1>Discover New Projects</h1>
             <input type = "text" placeholder = "Search Bar" value={props.text} onChange={props.handleTextChange}/>         
         </div>

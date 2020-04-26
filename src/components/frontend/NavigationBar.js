@@ -5,7 +5,7 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import { signInWithGoogle, signOut} from "../../services/firebase"
 import styled from 'styled-components' 
 import '../../styles/NavigationBar.css'
-import Logo from '../../Logo.png'
+import Logo from '../../ProjectULogo.png'
 
 const Styles = styled.div`
   .navbar { background-color: #222; }
@@ -30,6 +30,7 @@ const NavigationBar = () => {
     var currentUser = useUser()
     return(
     <Styles className='NavigationBar'>
+      
       <Navbar expand="lg">
         <Navbar.Brand href="/">Discover</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -60,6 +61,7 @@ const NavigationBar = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <img src= {Logo}/>
     </Styles>
 
     )

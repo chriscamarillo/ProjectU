@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom"
 import ProjectList from '../components/frontend/ProjectList'
 import GetProfile from '../components/backend/GetProfile'
+import '../styles/Profile.css'
+
 
 const Profile = () => {
     const uid = useParams().uid
@@ -22,15 +24,15 @@ const Profile = () => {
         
         return(
             (uid === currentUser.uid)?(
-                <div>
+                <div className= 'Profile'>
                     <div>
-                        <h1>my profile</h1>
+                        <h1>My Profile</h1>
+                        <h3>{user.displayName}</h3>
                         <Link to='/edit/profile'>Edit Profile</Link>
                     </div>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
                     <p>{user.bio}</p>
-
-                    <h1>My Projects</h1>
+                    <h2>My Projects</h2>
                     {/* <ProjectList projects={projects} /> */}
                 </div>
             ):(

@@ -6,7 +6,7 @@
 */
 
 .ProjectList {
-    width: 95%;
+    width: 90%;
     margin: auto;
 }
 
@@ -16,5 +16,6 @@ ul {
     border: 5px solid rgb(63, 62, 62);
     padding: 20px 20px 20px 20px ;
     background-image: url(../Background.png);
+    
 }
 

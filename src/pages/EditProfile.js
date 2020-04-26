@@ -3,7 +3,6 @@ import { useUser } from '../components/backend/UserProvider'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { db } from '../services/firebase'
-
 import ProfileForm from '../components/frontend/forms/ProfileForm'
 
 //That's the way uhhu uhhu i like it...

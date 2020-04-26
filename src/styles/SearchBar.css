@@ -6,7 +6,6 @@
     width: 75%;
     text-align: center; 
     margin: auto; /* place entire component in the center of the page */
-    margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
     
@@ -16,9 +15,6 @@
     width: 100%;
 }
 
-.SearchBar img{
-    width: 30%;
-}
 .SearchBar h1{
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold;

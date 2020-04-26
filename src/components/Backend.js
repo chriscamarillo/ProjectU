@@ -55,16 +55,90 @@ function createProject(user, project_fields) {
 
 function GetProfile(uid) {
     const [user, setUser] = useState()
+    const [skills, setSkills] = useState()
+    const [links, setLinks] = useState()
+    const [applications, setApps] = useState()
+    const [projects, setProjects] = useState()
 
+    var projsArr = [];
+    var linksArr = [];
+    var skillsArr = [];
+    var appsObj = {};
+
+    var docRef; 
+
+    //get shallow data
     useEffect(()=>{
         db
             .collection('users')
             .doc(uid)
-            .onSnapshot((user)=>{
-                setUser(user.data())
+            .onSnapshot((usr)=>{
+                setUser(usr.data());
             })
+
+    //get skills
+        db
+            .collection('users')
+            .doc(uid)
+            .collection('skills')
+            .get().
+                then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        skillsArr.push(doc.data());
+                    });
+                    setSkills(skillsArr);
+                });
+    
+    //get links
+        db
+            .collection('users')
+            .doc(uid)
+            .collection('links')
+            .get().
+                then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        linksArr.push(doc.data());
+                    });
+                    setLinks(linksArr);
+                });
+
+    //get projects
+        db
+            .collection('users')
+            .doc(uid)
+            .collection('projects')
+            .get().
+                then(function (querySnapshot) {
+                    if(querySnapshot.length > 0){
+                        querySnapshot.forEach(function (doc) {
+                            doc.data().proj_ref.get()
+                            .then(res => { 
+                                projsArr.push(res.data());
+                            }) 
+                        });
+                    }
+                    setProjects(projsArr);
+                });            
+                
+                
+
+    //get applications
+        db
+            .collection('users')
+            .doc(uid)
+            .collection('applications')
+            .get().
+                then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        appsObj[doc.data().proj_ref] = doc.data();
+                        
+                    });
+                    setApps(appsObj);
+                });
+
         },[uid]);
-    return user;
+    
+    return {user, skills, applications, projects, links};
 }
 
 function GetProject(pid) {
@@ -207,6 +281,9 @@ function GetUserSkills(uid) {
 
 
 //TODO: maybe fix this if it has errors
+        /*
+            this does not match the DB schema
+        */
 async function AddUserSkill(uid, skill) {
     skill = skill.toLowerCase()
     if(uid) {
@@ -282,9 +359,8 @@ function UpdateProfile (user, fields) {
     }
 }
 
-
 export {createProject,                                          // C
         GetProfile, GetProject, GetProjects, GetMyProjects,     // R
         UpdateProfile, UpdateProject,                           // U
-        DeleteProject, AddUserSkill,
+        DeleteProject, AddUserSkill, 
         GetUserSkills}                                          // D

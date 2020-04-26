@@ -3,6 +3,7 @@ import { useUser } from '../components/backend/UserProvider'
 import { Link } from 'react-router-dom'
 import UpdateProfile from '../components/backend/UpdateProfile'
 import '../styles/EditProfile.css'
+import Logo from '../ProjectULogo.png'
 
 
 const EditProfile = () => {
@@ -18,6 +19,7 @@ const EditProfile = () => {
 
   return (
       <div className= 'EditProfile'>
+        <img src= {Logo}/>
         <h5><i>A better form component later</i></h5>
         <h3>Edit Profile</h3>
         <h1>{user.displayName}</h1>

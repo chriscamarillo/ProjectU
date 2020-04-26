@@ -410,12 +410,22 @@ async function AddApplication (uid, project_ref){
     let date = new Date();
     let timestamp = date.getTime();
     let readTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
-    let app_ref = db.collection('users').doc(uid).collection('applications');
-
-    let matching_proj_promise = await app_ref.where('proj_ref', '==', project_ref).get()
-    let matching_proj = await matching_proj_promise.docs.map(x => x.data().proj_ref)
     
-    if(matching_proj.length === 0){
+    //check if user has already applied
+    let app_ref_usr = db.collection('users').doc(uid).collection('applications');
+    let matching_proj_app_promise = await app_ref_usr.where('proj_ref', '==', project_ref).get()
+    let matching_proj_app = await matching_proj_app_promise.docs.map(x => x.data().proj_ref)
+
+    //check if user is member
+    let app_ref_proj = db.collection('projects').doc(project_ref.id).collection('pending_applications');
+    let matching_usr_app_promise = await app_ref_proj.where('user', '==', db.doc(`users/${uid}`)).get()
+    let matching_usr_app = await matching_usr_app_promise.docs.map(x => x.data().user)
+
+    //check if user is owner
+    let uidIsOwner = (project_ref.owner == uid) ? true : false;
+
+    
+    if(matching_proj_app.length === 0 && matching_usr_app.length === 0 && !uidIsOwner){
         console.log("ADDED APPLICATION");
         if(uid && project_ref){
             db

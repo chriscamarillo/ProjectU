@@ -145,6 +145,7 @@ function GetProject(pid) {
     // not sure how to outsource this one
     // refer to /pages/Project.js
     const [details, setDetails] = useState()
+    const user = useUser() || {uid : null}
 
     useEffect(()=>{
         db
@@ -155,6 +156,12 @@ function GetProject(pid) {
             })
         },[pid])
 
+    //check if owner or admin in order to give more info
+    if(user.uid == details.createdBy){
+        console.log("USER IS OWNER");
+    }
+
+    //if not owner or admin return shallow details
     return details;
 }
 

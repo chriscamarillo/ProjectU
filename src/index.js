@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './services/serviceWorker';
-import UserProvider from './components/UserProvider';
+import UserProvider from './components/backend/UserProvider';
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>

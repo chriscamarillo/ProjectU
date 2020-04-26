@@ -1,5 +1,5 @@
 import React from "react"
-import { useUser } from '../components/UserProvider'
+import { useUser } from '../components/backend/UserProvider'
 import { useParams } from "react-router";
 import { GetProfile } from '../components/Backend'
 import { Link } from "react-router-dom"

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { useUser } from './../components/UserProvider'
+import { useUser } from '../components/backend/UserProvider'
 import { Link } from 'react-router-dom'
 import { UpdateProfile } from '../components/Backend'
 import '../styles/EditProfile.css'
+
 
 const EditProfile = () => {
   const user = useUser()

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
-import SearchBar from '../components/SearchBar'
-import ProjectList from '../components/ProjectList'
+import SearchBar from '../components/frontend/SearchBar'
+import ProjectList from '../components/frontend/ProjectList'
+import ProjectEntry from '../components/frontend/ProjectEntry'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
-import ProjectEntry from '../components/ProjectEntry'
 import '../styles/Discover.css'
 
 const Discover = () => {

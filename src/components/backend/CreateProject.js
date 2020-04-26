@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { stat } from '../services/firebase'
+import { stat } from '../../services/firebase'
 import { useUser } from './UserProvider'
-import { createProject } from './Backend'
-import '../styles/CreateProject.css'
+import { createProject } from '../Backend'
+import '../../styles/CreateProject.css'
 
 // TODO: refactor this
 const CreateProject = () => {

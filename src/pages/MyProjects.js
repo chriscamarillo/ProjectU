@@ -1,9 +1,9 @@
 import React from "react"
-import { useUser } from '../components/UserProvider'
+import { useUser } from '../components/backend/UserProvider'
 import { Link } from "react-router-dom"
 
 // import components here
-import CreateProject from '../components/CreateProject'
+import CreateProject from '../components/backend/CreateProject'
 import {GetMyProjects} from '../components/Backend'
 // Moved GetMyProjects
 

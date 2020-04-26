@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { db } from '../services/firebase'
-import { algoliaConfig } from '../services/config'
+import { db } from '../../services/firebase'
+import { algoliaConfig } from '../../services/config'
 import algoliasearch from 'algoliasearch';
-import Logo from '../ProjectULogo.png'
-import '../styles/SearchBar.css'
+import Logo from '../../ProjectULogo.png'
+import '../../styles/SearchBar.css'
 
 function SearchBar(props) {
 

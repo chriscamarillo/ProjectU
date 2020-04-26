@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 //import other components here:
-import ProtectedRoute from './components/ProtectedRoute'
-import NavigationBar from './components/NavigationBar'
+import ProtectedRoute from './components/backend/ProtectedRoute'
+import NavigationBar from './components/frontend/NavigationBar'
 import {DeleteProject} from './components/Backend'
 
 //import pages/routes:

@@ -1,57 +1,73 @@
 import React, { useState, useEffect} from "react"
 import { useParams, Redirect } from "react-router";
 import { db } from '../services/firebase'
-import { useUser } from "./backend/UserProvider"
+import { useUser } from "./UserProvider"
 import algoliasearch from 'algoliasearch';
 import { algoliaConfig } from '../services/config'
+
 /*
-    Most Backend function calls
-    will handle state for subsequent database updates
+
 */
 
-function createProject(user, project_fields) {
-    return db
-    .collection("projects")
-    .add(project_fields).then((new_project) => {
-        const {appID, adminKey } = algoliaConfig;
-        const client = algoliasearch(appID, adminKey);
-        const index = client.initIndex('projects')
-        const {title, description, createdBy, owner} = project_fields
-        const objectID = new_project.id;
-        
-        // add project to owner's list
-        db
-        .doc(`users/${user.uid}`)
-        .collection('projects').doc(new_project.id)
-        .set({
-            favorited: false,
-            pinned: true,
-        });
+function CreateDoc(c_path, id) {
 
-        // attach owner to project
-        db
-        .doc(`projects/${new_project.id}`)
-        .collection('admins').doc(user.uid)
-        .set({
-            date_added: project_fields.date_created,
-            is_owner: true,
-        });
+}
 
-        // add projects to algolia
-        console.log('saving project...');
-        console.log('index:')
-        console.log(index.saveObject)
-        index.saveObject({title,
-            objectID,
-            title,
-            description,
-            createdBy,
-            owner,
-            id:objectID
-        }).then(({objectID}) => console.log);
-    });
+function ReadDoc(c_path, id) {
+
+}
+
+function ReadCollection (c_path) {
     
 }
+
+function UpdateDoc(c_path, id) {
+
+}
+
+// function createProject(user, project_fields) {
+//     return db
+//     .collection("projects")
+//     .add(project_fields).then((new_project) => {
+//         const {appID, adminKey } = algoliaConfig;
+//         const client = algoliasearch(appID, adminKey);
+//         const index = client.initIndex('projects')
+//         const {title, description, createdBy, owner} = project_fields
+//         const objectID = new_project.id;
+        
+//         // add project to owner's list
+//         db
+//         .doc(`users/${user.uid}`)
+//         .collection('projects').doc(new_project.id)
+//         .set({
+//             favorited: false,
+//             pinned: true,
+//         });
+
+//         // attach owner to project
+//         db
+//         .doc(`projects/${new_project.id}`)
+//         .collection('admins').doc(user.uid)
+//         .set({
+//             date_added: project_fields.date_created,
+//             is_owner: true,
+//         });
+
+//         // add projects to algolia
+//         console.log('saving project...');
+//         console.log('index:')
+//         console.log(index.saveObject)
+//         index.saveObject({title,
+//             objectID,
+//             title,
+//             description,
+//             createdBy,
+//             owner,
+//             id:objectID
+//         }).then(({objectID}) => console.log);
+//     });
+    
+// }
 
 function GetProfile(uid) {
     const [user, setUser] = useState()

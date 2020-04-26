@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import { useUser } from '../components/UserProvider'
+import { useUser } from '../components/backend/UserProvider'
 import { useParams } from "react-router";
 import { GetProfile } from '../components/Backend'
 import { Link } from "react-router-dom"
-import ProjectEntry from '../components/ProjectEntry'
-import ProjectList from '../components/ProjectList'
+import ProjectEntry from '../components/frontend/ProjectEntry'
+import ProjectList from '../components/frontend/ProjectList'
 
 const Profile = () => {
     const uid = useParams().uid

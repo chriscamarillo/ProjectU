@@ -12,7 +12,7 @@ function GetProfile(uid) {
     var projsArr = [];
     var linksArr = [];
     var skillsArr = [];
-    var appsObj = {};
+    var appsArr = [];
 
     var docRef; 
 
@@ -79,10 +79,9 @@ function GetProfile(uid) {
             .get().
                 then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        appsObj[doc.data().proj_ref] = doc.data();
-                        
+                        appsArr.push(doc.data());
                     });
-                    setApps(appsObj);
+                    setApps(appsArr);
                 });
 
         },[uid]);

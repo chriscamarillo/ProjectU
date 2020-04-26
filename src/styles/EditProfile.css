@@ -1,35 +1,51 @@
 .EditProfile {
-    border: 7px solid pink;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 30px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+    border: 4px solid rgb(23, 119, 23);
+}
+
+.EditProfile img{
+    width: 20%;
 }
 
 .EditProfile h3{
-    margin-left: 500px;
-    font-size: xx-large;
+    font-size: 300%;
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold;
 }
 
 .EditProfile h1{
-    margin-left: 50px;
+    text-align: left;
     font-size: xxxx-large;
-    margin-bottom: 15px;    
+    margin-bottom: 15px;  
+    margin-left: 25px;
+    margin-top: 20px;
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold;  
 }
 
 .EditProfile form{
-    margin-left: 100px;
+    text-align: left;
     font-size: large;
+    margin-left: 25px;
     margin-bottom: 50px;
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold;
 }
 
 .EditProfile input{
-    margin-left: 20px ;
+    margin-left: 15px;
     margin-bottom: 10px;
     font-size: large;
+    
 }
 
 .EditProfile button{
-    color: black;
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold;
     background-color: lightgray;
     margin-top: 15px;
 }

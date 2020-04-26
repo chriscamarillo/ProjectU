@@ -33,7 +33,6 @@ const Profile = () => {
                     <p>{user.bio}</p>
 
                     <h1>My Projects</h1>
-                    {/* <ProjectList projects={projects} /> */}
                 </div>
             ):(
                 <div>
@@ -42,7 +41,6 @@ const Profile = () => {
                     <p>{user.bio}</p>
 
                     <h1>{user.displayName}'s Projects</h1>
-                    <ProjectList projects={projects} />
                 </div>
                 //profile components should replace these divs
             )

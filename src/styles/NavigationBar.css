@@ -15,4 +15,7 @@
 .NavigationBar span{
     margin-right: 15px;
 }
+.NavigationBar div{
+    color: white;
+}
 

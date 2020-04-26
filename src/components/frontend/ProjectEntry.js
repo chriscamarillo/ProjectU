@@ -13,10 +13,14 @@ const ProjectEntry = props => {
  
     return (
         <div className='ProjectEntry'>
-            <Link to={`projects/${props.id}`}><h2>{props.title} </h2></Link>
+            <div className= 'margin'>
+            <Link to={`projects/${props.id}`}><h2  >{props.title} </h2></Link>
+            <button   className= 'margin' onClick={e => AddApplication(currentUser.uid, firestore().doc(`projects/${props.id}`))}>Apply</button>
+            </div>
             <p>{props.description}</p>
+            
             <Link to={`/users/${props.owner}`}><h4>posted by {props.createdBy}</h4></Link>
-            <button onClick={e => AddApplication(currentUser.uid, firestore().doc(`projects/${props.id}`))}>Apply</button>
+            
          </div>
     )
 }

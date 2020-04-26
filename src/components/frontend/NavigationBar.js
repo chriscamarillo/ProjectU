@@ -30,7 +30,6 @@ const NavigationBar = () => {
     var currentUser = useUser()
     return(
     <Styles className='NavigationBar'>
-      
       <Navbar expand="lg">
         <Navbar.Brand href="/">Discover</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>

@@ -359,8 +359,39 @@ function UpdateProfile (user, fields) {
     }
 }
 
+async function AddApplication (uid, project_ref){
+    //allows a user to apply for a project  
+    let date = new Date();
+    let timestamp = date.getTime();
+    let readTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
+    let app_ref = db.collection('users').doc(uid).collection('applications');
+
+    let matching_proj_promise = await app_ref.where('proj_ref', '==', project_ref).get()
+    let matching_proj = await matching_proj_promise.docs.map(x => x.data().proj_ref)
+    
+    if(matching_proj.length === 0){
+        console.log("ADDED APPLICATION");
+        if(uid && project_ref){
+            db
+            .collection('users')
+            .doc(uid)
+            .collection('applications')
+            .add({date_applied: readTime, proj_ref:project_ref})
+
+            project_ref
+            .collection('pending_applications')
+            .add({date_applied: readTime, user: db.doc(`users/${uid}`)})
+        }
+
+    }
+    else{
+        console.log("USER ALREADY APPLIED");
+    }
+}
+
+
 export {createProject,                                          // C
         GetProfile, GetProject, GetProjects, GetMyProjects,     // R
         UpdateProfile, UpdateProject,                           // U
-        DeleteProject, AddUserSkill, 
+        DeleteProject, AddUserSkill, AddApplication,
         GetUserSkills}                                          // D

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useUser } from '../components/backend/UserProvider'
 import { Link } from 'react-router-dom'
-import { UpdateProfile } from '../components/Backend'
+import UpdateProfile from '../components/backend/UpdateProfile'
 import '../styles/EditProfile.css'
 
 
@@ -26,15 +26,15 @@ const EditProfile = () => {
             <input type="text" placeholder={user.bio}  onChange={e => setBio(e.target.value)} ></input>
           <br />
           Contact Email
-            <input type="text" placeholder="" value={contactEmail} onChange={e => setContactEmail(e.target.value)}></input>
+            <input type="text" placeholder={user.contactEmail} value={contactEmail} onChange={e => setContactEmail(e.target.value)}></input>
           <br />
           Resume Link
-            <input type="text" placeholder="" value={resumeLink} onChange={e => setResumeLink(e.target.value)}></input>
+            <input type="text" placeholder={user.resumeLink} value={resumeLink} onChange={e => setResumeLink(e.target.value)}></input>
           <br />
           <b>Status</b>
           <br />
             <label style={{color: 'green'}}>Online</label>
-            <input type="radio" id="online" name="status" value="online" onChange={handleChange} />
+            <input type="radio" id="online" name="status" value="online" onChange={handleChange} defaultChecked/>
             <br />
             <label style={{color: 'gray'}}>Offline</label>
             <input type="radio" id="offline" name="status" value="offline" onChange={handleChange} />

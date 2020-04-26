@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { useUser } from '../components/backend/UserProvider'
 import { useParams, Link } from 'react-router-dom'
-import { UpdateProject, GetProject } from '../components/Backend'
+import UpdateProject from '../components/backend/UpdateProject'
+import GetProject from '../components/backend/GetProject'
 
 const EditProject = () => {
     const pid = useParams().pid;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 // import components here
 import CreateProject from '../components/backend/CreateProject'
-import {GetMyProjects} from '../components/Backend'
+import GetMyProjects from '../components/backend/GetMyProjects'
 // Moved GetMyProjects
 
 const MyProjects = () => {

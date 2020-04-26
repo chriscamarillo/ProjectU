@@ -1,7 +1,7 @@
 import React from "react"
 import { useUser } from '../components/backend/UserProvider'
 import { useParams, Link } from "react-router-dom";
-import { GetProject } from './../components/Backend'
+import GetProject from './../components/backend/GetProject'
 
 const Project = () => {
     const pid = useParams().pid

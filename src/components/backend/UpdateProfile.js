@@ -1,3 +1,6 @@
+import React from 'react'
+import {db} from '../../services/firebase'
+
 /*
     Pass the user object and an object containing fields to update.
 */

@@ -1,10 +1,56 @@
 import React, { useState } from "react"
 import { stat } from '../../services/firebase'
 import { useUser } from './UserProvider'
-import { createProject } from '../Backend'
+import algoliasearch from 'algoliasearch';
+import { algoliaConfig } from '../../services/config'
+import { db} from '../../services/firebase'
 import '../../styles/CreateProject.css'
 
-// TODO: refactor this
+// TODO: refactor this into backend
+function createProject(user, project_fields) {
+  return db
+  .collection("projects")
+  .add(project_fields).then((new_project) => {
+      const {appID, adminKey } = algoliaConfig;
+      const client = algoliasearch(appID, adminKey);
+      const index = client.initIndex('projects')
+      const {title, description, createdBy, owner} = project_fields
+      const objectID = new_project.id;
+      
+      // add project to owner's list
+      db
+      .doc(`users/${user.uid}`)
+      .collection('projects').doc(new_project.id)
+      .set({
+          favorited: false,
+          pinned: true,
+      });
+
+      // attach owner to project
+      db
+      .doc(`projects/${new_project.id}`)
+      .collection('admins').doc(user.uid)
+      .set({
+          date_added: project_fields.date_created,
+          is_owner: true,
+      });
+
+      // add projects to algolia
+      console.log('saving project...');
+      console.log('index:')
+      console.log(index.saveObject)
+      index.saveObject({title,
+          objectID,
+          title,
+          description,
+          createdBy,
+          owner,
+          id:objectID
+      }).then(({objectID}) => console.log);
+  });
+  
+}
+
 const CreateProject = () => {
   const user = useUser()
   const [title, setTitle] = useState("")

@@ -1,12 +1,14 @@
 import React from "react"
-import { db} from '../services/firebase'
+import { db} from '../../services/firebase'
 import { useParams, Redirect } from "react-router";
 import { useUser } from "./UserProvider"
-import { client } from "firebase-tools";
+import algoliasearch from 'algoliasearch';
+import { algoliaConfig } from '../../services/config'
 
 const DeleteProject = () => {
     const pid = useParams().pid
     const uid = useUser().uid
+    // WILL CHANGE TO REFERENCES.. (admins and owner all removed)
     const ref = db.collection('users').doc(uid).collection('projects').doc(pid)
 
         ref.get().then((project)=>{
@@ -15,19 +17,20 @@ const DeleteProject = () => {
                 const prompt = window.confirm("delete this project?")
                 //checks to see whether the selected project is owned by the logged-in user
                 if(prompt){
-                    // FULL RECURSIVE DELETE
-                    client
-                    .delete(`users/${uid}/projects/${pid}`, {
-                        project: process.env.GCLOUD_PROJECT,
-                        recursive: true,
-                        yes: true
+                    // recursive delete
+                    // ALSO MUST REMOVE EVERY ADMIN!
+                    db
+                    .collection('projects')
+                    .doc(pid)
+                    .delete()
+                    .then(() => {
+                        const {appID, adminKey } = algoliaConfig;
+                        const client = algoliasearch(appID, adminKey);
+                        const index = client.initIndex('projects')
+                        index.deleteObject(pid)
                     });
-                    // db
-                    // .collection('projects')
-                    // .doc(pid)
-                    // .delete()
 
-                    // ref.delete()
+                    ref.delete()
                     //dont know how to delete the 'admins' collection in the project page
                 }
             }else{
@@ -38,4 +41,4 @@ const DeleteProject = () => {
     return(<Redirect to="/MyProjects" />)
 }
 
-export default DeleteProject
+export default DeleteProject;

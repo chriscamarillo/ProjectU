@@ -37,17 +37,17 @@ const NavigationBar = () => {
           <Nav className="ml-auto">
                {/* <Link to="/">Discover </Link> */}
                {(currentUser)?(
-                  <span>
+                  [
                       <Nav.Item>
                         <Nav.Link>
                           <Link to={`/users/${currentUser.uid}`}>Profile </Link>
                         </Nav.Link>
-                      </Nav.Item>
+                      </Nav.Item>,
                       <Nav.Item>
                         <Nav.Link>
                           <Link to="/MyProjects">Projects </Link>
                         </Nav.Link>
-                      </Nav.Item>
+                      </Nav.Item>,
                       <Nav.Item>
                         <Nav.Link>
                           <Link to ="/">
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                           </Link>
                         </Nav.Link>
                       </Nav.Item>
-                  </span>
+                  ]
               ):(<Nav.Item><button onClick={signInWithGoogle}>Sign in with Google</button></Nav.Item>)}              
           </Nav>
         </Navbar.Collapse>

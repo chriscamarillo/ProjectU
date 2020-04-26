@@ -8,7 +8,14 @@ const Project = () => {
     const currentUser = useUser() || {uid: null}
     
     // Backend call
-    let details = GetProject(pid);
+    let proj = GetProject(pid);
+
+    let details = proj.details
+    let apps = proj.apps;
+    let members = proj.members;
+    let thread = proj.thread;
+    
+    
 
     // need this to be all located in some other file for styling 
     let someStyle = {

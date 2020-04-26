@@ -18,7 +18,6 @@ const Profile = () => {
     let links = userObj.links;                  //links collection
     let projects = userObj.projects;            //projects collection
 
-    console.log(projects);
     if(user){
         
         return(

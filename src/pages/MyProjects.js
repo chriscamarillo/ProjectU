@@ -10,7 +10,7 @@ import GetMyProjects from '../components/backend/GetMyProjects'
 const MyProjects = () => {
     // Backend call
     const projects =  GetMyProjects(useUser().uid)
-
+    
     return(
         // Components for these project entries would make these messy links easier
         // to organize and style

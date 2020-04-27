@@ -14,12 +14,12 @@ const ProjectEntry = props => {
     const applyButton = <button className= 'margin' onClick={e => 
         AddApplication(currentUser.uid, firestore().doc(`projects/${props.id}`))
         }>Apply</button>;
-    
     // not sure how to handle COMPLETED behavior yet.
     return (
         <div className='ProjectEntry'>
             <div className= 'margin'>
-                <Link to={`projects/${props.id}`}><h2>{props.title}</h2></Link>
+                <Link to={{pathname: "/projects/" + props.id, state: props}}><h2>{props.title}</h2></Link>
+                
             </div>
             <p>{props.description}</p>
             {(props.canApply && props.owner !== currentUser.uid) ? 
@@ -28,7 +28,7 @@ const ProjectEntry = props => {
             }
             {(props.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
             <Link to={`/users/${props.owner}`}><h4>posted by {props.createdBy}</h4></Link>
-         </div>
+        </div>
     )
 }
 

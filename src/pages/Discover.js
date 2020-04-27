@@ -29,7 +29,7 @@ const Discover = () => {
     <div className='Discover'>
         <SearchBar text={text} handleTextChange={handleTextChange} />
         <ProjectList projects={projects} canApply={true}/>
-    
+        
 {/* random section for test code */}
         <div class='Test Area'>
           <h>~~~~~~~~~~~~~~~~~ I Test Stuff Here ~~~~~~~~~~~~~~~~~</h>

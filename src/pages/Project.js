@@ -10,13 +10,13 @@ const Project = (props) => {
     const currentUser = useUser() || {uid: null}
 
     // Backend call
-    let project = GetProject(pid);
-
-    let details = project.details
-    let apps = project.apps;
-    let members = project.members;
-    let thread = project.thread;
-
+    //let project = GetProject(pid);
+    let details = (props.location.state) ? (props.location.state) : GetProject(pid).details
+    //console.log(details)
+    //let apps = project.apps;
+    //let members = project.members;
+    //let thread = project.thread;
+    
     // This function will run batch reads and gather
     // information for each applicant and member in order
     // to display them as a list
@@ -25,6 +25,7 @@ const Project = (props) => {
     let someStyle = {
         color: '#d4af37'
     }
+
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
@@ -34,9 +35,9 @@ const Project = (props) => {
                     <p>{details.description}</p>
                     <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
                     {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}
-                    <Thread thread={project.thread}/>
-                    <MemberList members={members} />
-                    <Link to={{pathname: "/edit/project/" + pid, project: project,}}>Edit Project</Link>
+                    {/* <Thread thread={project.thread}/>
+                    <MemberList members={members} /> */}
+                    <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
 
                 </div>
 

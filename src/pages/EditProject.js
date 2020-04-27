@@ -15,7 +15,7 @@ const EditProject = (props) => {
     const project = props.location.project
     
     const onSubmit = (data) => {
-        const fields={createdBy: project.details.createdBy, owner: project.details.owner, ...data}
+        const fields={createdBy: project.createdBy, owner: project.owner, ...data}
         db
           .collection("projects").doc(pid)
           .update(fields).then((updated) => {
@@ -26,15 +26,16 @@ const EditProject = (props) => {
             // update project in algolia
             index.saveObject({
                 objectID: pid,
+                id: pid,
                 ...fields
             })
           })
         history.push(`/projects/${pid}`)
     }
     
-    if(project.details.owner === currentUser.uid) {
+    if(project.owner === currentUser.uid) {
         return(
-            <ProjectForm project={project.details} register={register({required: true})} handleSubmit={handleSubmit(onSubmit)} errors={errors} />
+            <ProjectForm project={project} register={register({required: true})} handleSubmit={handleSubmit(onSubmit)} errors={errors} />
         )
     }else{
         return(

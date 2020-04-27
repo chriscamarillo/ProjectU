@@ -1,57 +1,47 @@
-import React, { useState } from "react"
+import React from "react"
 import { useUser } from '../components/backend/UserProvider'
-import { useParams, Link } from 'react-router-dom'
-import UpdateProject from '../components/backend/UpdateProject'
-import GetProject from '../components/backend/GetProject'
+import { useParams, useHistory} from 'react-router-dom'
+import { useForm } from "react-hook-form"
+import { db } from '../services/firebase'
+import algoliasearch from 'algoliasearch';
+import { algoliaConfig } from '../services/config'
+import ProjectForm from '../components/frontend/forms/ProjectForm'
 
 const EditProject = (props) => {
     const pid = useParams().pid;
+    const history = useHistory()
     const currentUser = useUser() || {uid: null};
-
-    //console.log(pid + '\t' + currentUser.uid)
+    const {register, handleSubmit, errors} = useForm()
     const project = props.location.project
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-
-    function UpdateAndRedirect() {
-        let fields = {title, 
-                    description, 
-                    createdBy: project.details.createdBy, 
-                    owner: project.details.owner} 
-
-        if(title == "")
-            fields.title = project.title
-        if(description == "")
-            fields.description = project.description
-        
-        UpdateProject(pid, fields)
-    } 
-
-    if (currentUser.uid && project) {
-        if(project.details.owner == currentUser.uid) {
-            return(
-                <div>
-                    <h5><i>A better form component later</i></h5>
-                    <h3>Edit Project</h3>
-                    <form>
-                        Title
-                        <input type="text" placeholder={project.title}  onChange={e => setTitle(e.target.value)} ></input>
-                        Description
-                        <input type="text" placeholder={project.description}  onChange={e => setDescription(e.target.value)} ></input>
-                    </form>
-                    <Link to={`/projects/${pid}`}>
-                        <button onClick={() => UpdateAndRedirect()}>
-                            Save Changes
-                        </button>
-                    </Link>  
-                </div>
-            )
-        }
+    
+    const onSubmit = (data) => {
+        const fields={createdBy: project.details.createdBy, owner: project.details.owner, ...data}
+        db
+          .collection("projects").doc(pid)
+          .update(fields).then((updated) => {
+            const {appID, adminKey} = algoliaConfig;
+            const client = algoliasearch(appID, adminKey);
+            const index = client.initIndex('projects')
+            
+            // update project in algolia
+            index.saveObject({
+                objectID: pid,
+                ...fields
+            })
+          })
+        history.push(`/projects/${pid}`)
+    }
+    
+    if(project.details.owner === currentUser.uid) {
+        return(
+            <ProjectForm project={project.details} register={register({required: true})} handleSubmit={handleSubmit(onSubmit)} errors={errors} />
+        )
+    }else{
+        return(
+            <h1>You don't have permission</h1>
+        );
     }
 
-    return(
-        <h1>You don't have permission</h1>
-    );
 }
 
 export default EditProject

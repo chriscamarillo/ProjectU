@@ -1,7 +1,7 @@
 
 import {useState, useEffect} from 'react'
 import {db} from '../../services/firebase'
-import { useUser } from './UserProvider'
+
 
 function GetProject(pid) {
     // not sure how to outsource this one

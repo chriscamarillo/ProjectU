@@ -3,7 +3,6 @@ import '../../../styles/EditProfile.css'
 
 const ProfileForm = (props) =>{
     const user = props.user
-    console.log(props)
     return(
         <div className= 'EditProfile'>
         

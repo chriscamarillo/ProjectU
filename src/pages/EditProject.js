@@ -4,20 +4,20 @@ import { useParams, Link } from 'react-router-dom'
 import UpdateProject from '../components/backend/UpdateProject'
 import GetProject from '../components/backend/GetProject'
 
-const EditProject = () => {
+const EditProject = (props) => {
     const pid = useParams().pid;
     const currentUser = useUser() || {uid: null};
 
     //console.log(pid + '\t' + currentUser.uid)
-    const project = GetProject(pid);
+    const project = props.location.project
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
     function UpdateAndRedirect() {
         let fields = {title, 
                     description, 
-                    createdBy: project.createdBy, 
-                    owner: project.owner} 
+                    createdBy: project.details.createdBy, 
+                    owner: project.details.owner} 
 
         if(title == "")
             fields.title = project.title
@@ -28,7 +28,7 @@ const EditProject = () => {
     } 
 
     if (currentUser.uid && project) {
-        if(project.owner == currentUser.uid) {
+        if(project.details.owner == currentUser.uid) {
             return(
                 <div>
                     <h5><i>A better form component later</i></h5>
@@ -40,10 +40,8 @@ const EditProject = () => {
                         <input type="text" placeholder={project.description}  onChange={e => setDescription(e.target.value)} ></input>
                     </form>
                     <Link to={`/projects/${pid}`}>
-                        <button 
-                            onClick={() => UpdateAndRedirect()}
-                        >
-                                Save Changes
+                        <button onClick={() => UpdateAndRedirect()}>
+                            Save Changes
                         </button>
                     </Link>  
                 </div>

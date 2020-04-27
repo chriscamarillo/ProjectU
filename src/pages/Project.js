@@ -5,17 +5,17 @@ import GetProject from './../components/backend/GetProject'
 import Thread from '../components/frontend/Thread'
 import MemberList from "../components/frontend/MemberList";
 
-const Project = () => {
+const Project = (props) => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
 
     // Backend call
-    let proj = GetProject(pid);
+    let project = GetProject(pid);
 
-    let details = proj.details
-    let apps = proj.apps;
-    let members = proj.members;
-    let thread = proj.thread;
+    let details = project.details
+    let apps = project.apps;
+    let members = project.members;
+    let thread = project.thread;
 
     // This function will run batch reads and gather
     // information for each applicant and member in order
@@ -34,9 +34,9 @@ const Project = () => {
                     <p>{details.description}</p>
                     <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
                     {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}
-                    <Thread thread={proj.thread}/>
+                    <Thread thread={project.thread}/>
                     <MemberList members={members} />
-                    <Link to={`/edit/project/${pid}`}>Edit Project</Link>
+                    <Link to={{pathname: "/edit/project/" + pid, project: project,}}>Edit Project</Link>
 
                 </div>
 

@@ -411,37 +411,27 @@ async function AddApplication (uid, project_ref){
     let timestamp = date.getTime();
     let readTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
     
-    //check if user has already applied
-    let app_ref_usr = db.collection('users').doc(uid).collection('applications');
-    let matching_proj_app_promise = await app_ref_usr.where('proj_ref', '==', project_ref).get()
-    let matching_proj_app = await matching_proj_app_promise.docs.map(x => x.data().proj_ref)
+    //check if user already applied
+    let app_ref_proj = db.collection('applications')    
+    let matching_usr_app_promise = await app_ref_proj.where('user', '==', uid).where('project','==',project_ref).get()
+    let matching_usr_app = await matching_usr_app_promise.docs.map(x => x.data().user)
 
     //check if user is member
-    let app_ref_proj = db.collection('projects').doc(project_ref.id).collection('pending_applications');
-    let matching_usr_app_promise = await app_ref_proj.where('user', '==', db.doc(`users/${uid}`)).get()
-    let matching_usr_app = await matching_usr_app_promise.docs.map(x => x.data().user)
+    let m_ref_proj = db.collection('projects').doc(project_ref.id).collection('members');
+    let matching_m_promise = await m_ref_proj.where('user', '==', db.doc(`users/${uid}`)).get()
+    let matching_m = await matching_m_promise.docs.map(x => x.data().user)
 
     //check if user is owner
     let uidIsOwner = (project_ref.owner == uid) ? true : false;
-
     
-    if(matching_proj_app.length === 0 && matching_usr_app.length === 0 && !uidIsOwner){
-        console.log("ADDED APPLICATION");
-        if(uid && project_ref){
-            db
-            .collection('users')
-            .doc(uid)
-            .collection('applications')
-            .add({date_applied: readTime, proj_ref:project_ref})
-
-            project_ref
-            .collection('pending_applications')
-            .add({date_applied: readTime, user: db.doc(`users/${uid}`)})
-        }
-
+    if(matching_m.length === 0 && matching_usr_app.length === 0 && !uidIsOwner){
+            db.collection('applications').add({user:uid,project:project_ref,date:readTime}).then(()=>{
+                console.log("ADDED APPLICATION");
+            })
     }
     else{
         console.log("USER ALREADY APPLIED");
+        console.log(project_ref.id)
     }
 }
 

@@ -10,7 +10,6 @@ function GetProject(pid) {
     const [apps, setApps] = useState([])
     const [members, setMembers] = useState([])
     const [thread, setThread] = useState([])
-    const user = useUser() || {uid : null}
 
     var appArr = [];
     var memberArr = [];

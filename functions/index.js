@@ -15,27 +15,27 @@ const index = client.initIndex('projects')
 exports.addToIndex = functions.firestore.document('projects/{projectId}')
     .onCreate((snapshot) => {
         // Filter based off these items
-        const {title, description, createdBy, owner} = snapshot.data()
+        const {title, description, createdBy, status, owner} = snapshot.data()
         const objectID = snapshot.id;
-
-        // CLOUD DOESNT ALLOW OUTBOUND NETWORKING == NO OUTSIDE API CALLS :(
 
         return index.saveObject({title,
             title,
             description,
             createdBy,
+            status,
             objectID})
     })
 
 exports.updateIndex = functions.firestore.document('projects/{projectId}')
 .onUpdate((change) => {
-    const {title, description, createdBy, owner} = change.after.data()
+    const {title, description, createdBy, status, owner} = change.after.data()
     const objectID = snapshot.after.id;
 
     return index.saveObject({title,
         title,
         description,
         createdBy,
+        status,
         objectID})
 })
 

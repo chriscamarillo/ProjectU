@@ -15,6 +15,8 @@ const ProjectList = props => {
                             description={entry.description}
                             createdBy={entry.createdBy}
                             owner={entry.owner}
+                            status={entry.status}
+                            canApply={props.canApply}
                         />
                     </li>
                 )}

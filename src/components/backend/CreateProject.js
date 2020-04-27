@@ -14,7 +14,7 @@ function createProject(user, project_fields) {
       const {appID, adminKey } = algoliaConfig;
       const client = algoliasearch(appID, adminKey);
       const index = client.initIndex('projects')
-      const {title, description, createdBy, owner} = project_fields
+      const {title, description, createdBy, owner, status} = project_fields
       const objectID = new_project.id;
       
       // add project to owner's list
@@ -45,6 +45,7 @@ function createProject(user, project_fields) {
           description,
           createdBy,
           owner,
+          status,
           id:objectID
       }).then(({objectID}) => console.log);
   });
@@ -70,7 +71,7 @@ const CreateProject = () => {
         date_created,
         date_last_modified: date_created,
         archived: false, // Find out what this is for.
-        status: 0, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
+        status: 1, // 0 - COMPLETED, 1 ACCEPTING APPS, -1 NOT ACCEPTING APPS
         createdBy: user.displayName
       };
 

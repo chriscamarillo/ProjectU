@@ -8,7 +8,7 @@ import MemberList from "../components/frontend/MemberList";
 const Project = () => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
-    
+
     // Backend call
     let proj = GetProject(pid);
 
@@ -20,10 +20,6 @@ const Project = () => {
     // This function will run batch reads and gather
     // information for each applicant and member in order
     // to display them as a list
-
-    useEffect(() => {
-
-    },[apps, members]);
 
     // need this to be all located in some other file for styling 
     let someStyle = {

@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import MemberEntry from './MemberEntry'
+import {Link} from 'react-router-dom'
 
 /* 
-    takes in as properties
-    a list of MemberEntries with properties:
+    takes in an array of objects each with properties
         - id
         - displayName
         - photoURL

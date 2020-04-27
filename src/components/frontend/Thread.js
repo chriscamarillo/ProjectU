@@ -11,7 +11,7 @@ const Thread = props => {
                     {/*Don't use index as key b/c it will not print from latest -> earliest message*/}
                     <ThreadEntry // Based on Schema
                         from={entry.from} 
-                        date={entry.date}
+                        date={entry.date.toDate().toString()}
                         msg={entry.msg}
                     />
                 </li>

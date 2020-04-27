@@ -2,7 +2,7 @@ import React from 'react'
 import { useUser } from '../backend/UserProvider'
 import { Link } from 'react-router-dom'
 import '../../styles/ProjectEntry.css'
-import {AddApplication} from '../Backend'
+import AddApplication from '../backend/AddApplication'
 import { firestore } from 'firebase';
 
 

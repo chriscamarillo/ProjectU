@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from "react"
 import { useParams, Redirect } from "react-router";
-import { db } from '../services/firebase'
+import {db} from '../services/firebase'
 import { useUser } from "./backend/UserProvider"
 import algoliasearch from 'algoliasearch';
 import { algoliaConfig } from '../services/config'
+import CheckCanApply from "./backend/CheckCanApply";
 /*
     Most Backend function calls
     will handle state for subsequent database updates
@@ -119,25 +120,10 @@ function GetProfile(uid) {
                     }
                     setProjects(projsArr);
                 });            
-                
-                
-
-    //get applications
-        db
-            .collection('users')
-            .doc(uid)
-            .collection('applications')
-            .get().
-                then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        appsArr.push(doc.data());
-                    });
-                    setApps(appsArr);
-                });
 
         },[uid]);
     
-    return {user, skills, applications, projects, links};
+    return {user, skills, projects, links};
 }
 
 function GetProject(pid) {
@@ -405,39 +391,9 @@ function UpdateProfile (user, fields) {
     }
 }
 
-async function AddApplication (uid, project_ref){
-    //allows a user to apply for a project  
-    let date = new Date();
-    let timestamp = date.getTime();
-    let readTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
-    
-    //check if user already applied
-    let app_ref_proj = db.collection('applications')    
-    let matching_usr_app_promise = await app_ref_proj.where('user', '==', uid).where('project','==',project_ref).get()
-    let matching_usr_app = await matching_usr_app_promise.docs.map(x => x.data().user)
-
-    //check if user is member
-    let m_ref_proj = db.collection('projects').doc(project_ref.id).collection('members');
-    let matching_m_promise = await m_ref_proj.where('user', '==', db.doc(`users/${uid}`)).get()
-    let matching_m = await matching_m_promise.docs.map(x => x.data().user)
-
-    //check if user is owner
-    let uidIsOwner = (project_ref.owner == uid) ? true : false;
-    
-    if(matching_m.length === 0 && matching_usr_app.length === 0 && !uidIsOwner){
-            db.collection('applications').add({user:uid,project:project_ref,date:readTime}).then(()=>{
-                console.log("ADDED APPLICATION");
-            })
-    }
-    else{
-        console.log("USER ALREADY APPLIED");
-        console.log(project_ref.id)
-    }
-}
-
 
 export {createProject,                                          // C
         GetProfile, GetProject, GetProjects, GetMyProjects,     // R
         UpdateProfile, UpdateProject,                           // U
-        DeleteProject, AddUserSkill, AddApplication,
+        DeleteProject, AddUserSkill,
         GetUserSkills}                                          // D

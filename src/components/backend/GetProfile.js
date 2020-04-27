@@ -6,13 +6,11 @@ function GetProfile(uid) {
     const [user, setUser] = useState()
     const [skills, setSkills] = useState()
     const [links, setLinks] = useState()
-    const [applications, setApps] = useState()
     const [projects, setProjects] = useState()
 
     var projsArr = [];
     var linksArr = [];
     var skillsArr = [];
-    var appsArr = [];
 
     var docRef; 
 
@@ -68,25 +66,10 @@ function GetProfile(uid) {
                     }
                     setProjects(projsArr);
                 });            
-                
-                
-
-    //get applications
-        db
-            .collection('users')
-            .doc(uid)
-            .collection('applications')
-            .get().
-                then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        appsArr.push(doc.data());
-                    });
-                    setApps(appsArr);
-                });
 
         },[uid]);
     
-    return {user, skills, applications, projects, links};
+    return {user, skills,  projects, links};
 }
 
 export default GetProfile;

@@ -16,7 +16,6 @@ const Profile = () => {
     let userObj = GetProfile(uid);
     let user = userObj.user;                    //shallow user object
     let skills = userObj.skills;                //skills collection
-    let applications = userObj.applications;    //applications collection
     let links = userObj.links;                  //links collection
     let projects = userObj.projects;            //projects collection
 

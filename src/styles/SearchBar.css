@@ -8,11 +8,19 @@
     margin: auto; /* place entire component in the center of the page */
     margin-bottom: 20px;
     padding: 20px;
-    
  }
 
  .SearchBar input {
     width: 100%;
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+.SearchBar input:focus {
+    border: 3px solid green;
+    opacity: 1;
 }
 
 .SearchBar h1{

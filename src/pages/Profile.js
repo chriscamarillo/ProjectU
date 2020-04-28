@@ -32,7 +32,7 @@ const Profile = () => {
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
                     <p>{user.bio}</p>
                     <h2>My Projects</h2>
-                    {/* <ProjectList projects={projects} /> */}
+                    <ProjectList projects={projects} />
                 </div>
             ):(
                 <div>

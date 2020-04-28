@@ -10,7 +10,7 @@
     margin: auto;
 }
 
-ul {
+.ProjectList ul {
     list-style-type: none;
     /* text-align: center; */
     border: 5px solid rgb(63, 62, 62);

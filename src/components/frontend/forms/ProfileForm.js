@@ -11,7 +11,6 @@ const ProfileForm = (props) =>{
         <h1>{user.displayName}</h1>
         <div>
             <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
-            <form onSubmit={props.handleSubmit}>
             Bio
                 <input type="text" placeholder={user.bio} name="bio" ref={props.register}></input>
             <br />
@@ -22,7 +21,6 @@ const ProfileForm = (props) =>{
                 <input type="text" placeholder={user.resumeLink} name="resume" ref={props.register}></input>
             <br />
                 <input type ="submit" />
-            </form>
         </div>
         </div>
     )

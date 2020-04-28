@@ -13,10 +13,10 @@ async function AddApplication (uid, project_ref){
             console.log("ADDED APPLICATION");
         })
     }
-    else{
-        console.log("USER ALREADY APPLIED");
-        console.log(project_ref.id)
-    }
+    // else{
+    //     console.log("USER ALREADY APPLIED");
+    //     console.log(project_ref.id)
+    // }
 }
 
 export default AddApplication

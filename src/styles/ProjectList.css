@@ -8,14 +8,16 @@
 .ProjectList {
     width: 90%;
     margin: auto;
+    
 }
 
 .ProjectList ul {
     list-style-type: none;
     /* text-align: center; */
-    border: 5px solid rgb(63, 62, 62);
+    border: 2px solid rgba(63, 62, 62, 0.788);
     padding: 20px 20px 20px 20px ;
     background-image: url(../Background.png);
+    border-radius: 10px;
     
 }
 

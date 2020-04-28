@@ -5,6 +5,12 @@ import '../../../styles/EditProfile.css'
 const ProfileForm = (props) =>{
     
     const user = props.user
+    const skills = props.skills
+    // console.log(props.fields)
+    //skills.forEach(skill => props.append)
+    //props.append("hi")
+
+
     return(
         <div className= 'EditProfile'>
         
@@ -26,12 +32,14 @@ const ProfileForm = (props) =>{
             <h2>Qualifications</h2>
             <ul>
                 {props.fields.map((item, index) => {
+                //console.log(item)
+                // console.log("this is skills ", skills)
                 return (
                     <li key={item.id}>
                     <input
                         name={`skills[${index}].skill`}
                         defaultValue={`${item.skill}`} // make sure to set up defaultValue
-                        ref={props.register}
+                        ref={props.register()}
                     />
                     <button type="button" onClick={() => props.remove(index)}>
                         Delete
@@ -44,7 +52,7 @@ const ProfileForm = (props) =>{
                 <button
                 type="button"
                 onClick={() => {
-                    props.append({ skill: "appendBill" });
+                    props.append({ skill: "new skill" });
                 }}
                 >
                 Add Skill

@@ -23,8 +23,8 @@ const ProjectEntry = props => {
             </div>
             <p>{props.description}</p>
             {(props.canApply && props.owner !== currentUser.uid) ? 
-                applyButton : 
-                <></>
+                applyButton : <Link to={`/delete/project/${props.id}`}>delete</Link>
+                
             }
             {(props.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
             <Link to={`/users/${props.owner}`}><h4>posted by {props.createdBy}</h4></Link>

@@ -15,7 +15,7 @@ function GetProject(pid) {
     var memberArr = [];
     var threadArr = [];
 
-
+    
     useEffect(()=>{
         db
             .collection('projects')

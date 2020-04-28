@@ -14,9 +14,12 @@ const EditProfile =  () => {
   skills = GetUserSkills(user.uid)
   console.log(skills)
   //let sheit = skills[0]
-  let biggay = {poop:skills}
   const {register, control, handleSubmit, reset} = useForm({
-    defaultValues:biggay
+    defaultValues: {
+      poop: [{ skill: "Bill", id: "Lua" },
+      { skill: "caca", id: "pipi" },
+      { skill: "poo", id: "ca" }, GetUserSkills(user.uid)]
+    }
   });
   const { fields, append, remove} = useFieldArray(
     {

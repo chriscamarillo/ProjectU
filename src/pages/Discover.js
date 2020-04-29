@@ -29,19 +29,12 @@ const Discover = () => {
     <div className='Discover'>
         <div className="jumbotron jumbotron-fluid logo">
             <SearchBar text={text} handleTextChange={handleTextChange} />
+            <ProjectList projects={projects} canApply={true}/>
         </div>
-        <ProjectList projects={projects} canApply={true}/>
+        
         
 {/* random section for test code */}
-        <div class='Test Area'>
-          <h>~~~~~~~~~~~~~~~~~ I Test Stuff Here ~~~~~~~~~~~~~~~~~</h>
-          <ProjectEntry title='I test my code here...'
-                        owner='some owner'
-                        description='let me see if it works haha'
-                        createdBy='Me' 
-          />
-
-        </div>
+        
     </div>
   )
 }

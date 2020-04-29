@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import CreateProject from '../components/backend/CreateProject'
 import GetMyProjects from '../components/backend/GetMyProjects'
 // Moved GetMyProjects
+import '../styles/CreateProject.css'
 
 const MyProjects = () => {
     // Backend call
@@ -14,8 +15,9 @@ const MyProjects = () => {
     return(
         // Components for these project entries would make these messy links easier
         // to organize and style
-        <div class = "CreateProjectPage">
+        <div>
             <CreateProject />
+            <div classname = 'List'>
             <h1>My Projects</h1>
             <ul>
                 {projects.map((project,i)=>
@@ -27,6 +29,7 @@ const MyProjects = () => {
                     //project component should replace this
                 )}
             </ul>
+            </div>
         </div>
     )
 }

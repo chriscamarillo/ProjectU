@@ -1,11 +1,16 @@
+.form{
+    background-color: whitesmoke;
+}
+
 .EditProfile {
     width: 80%;
     margin-left: 10%;
     margin-top: 0%;
     margin-bottom: 10%;
     text-align: center;
-    border: 4px solid rgb(23, 119, 23);
+    border: 4px solid rgb(110, 185, 62);
 }
+
 .EditProfile div{
     justify-content: left;
     align-items: left;
@@ -16,6 +21,11 @@
     width: 100px;
     text-align: right;
     margin-left: 30px;
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
 }
 
 .EditProfile h3{
@@ -25,39 +35,46 @@
 }
 
 .EditProfile h1{
-    text-align: left;
     font-size: xxxx-large;
     margin-bottom: 15px;  
     margin-left: 25px;
     margin-top: 20px;
+    justify-content: center;
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold;  
 }
 
 .EditProfile form{
+    background-color: whitesmoke;
     text-align: left;
     font-size: large;
-    margin-left: 25px;
-    margin-bottom: 50px;
+  /*  margin-left: 25px;
+    margin-bottom: 50px;*/
+    display: block;
+    margin-left: 20%;
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold;
 }
 
 .EditProfile input{
-    margin-left: 15px;
+    margin-left: 20%;
     margin-bottom: 10px;
     font-size: large;
-    
 }
 
 .EditProfile button{
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold;
     background-color: lightgray;
-    margin-top: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .skills {
     margin: 40px;
-    background-color: green;
+    background-color: rgb(110, 185, 62);
+}
+
+.submit{
+    justify-content: center;
 }

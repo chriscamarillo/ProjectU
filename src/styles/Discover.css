@@ -1,12 +1,13 @@
 .Discover {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .jumbotron {
-    background-image: url('../Logo.png');
+    background-image: url('../Logo1.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-color:white;
-    height: 500px;
+    height: 380px; 
+    background-size: 600px;   
 }

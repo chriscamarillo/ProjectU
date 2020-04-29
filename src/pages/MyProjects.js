@@ -1,12 +1,12 @@
 import React from "react"
 import { useUser } from '../components/backend/UserProvider'
 import { Link } from "react-router-dom"
+import '../styles/MyProjects.css'
 
 // import components here
 import CreateProject from '../components/backend/CreateProject'
 import GetMyProjects from '../components/backend/GetMyProjects'
 // Moved GetMyProjects
-import '../styles/CreateProject.css'
 
 const MyProjects = () => {
     // Backend call
@@ -15,9 +15,9 @@ const MyProjects = () => {
     return(
         // Components for these project entries would make these messy links easier
         // to organize and style
-        <div className="CreateProject">
+        <div>
             <CreateProject />
-            <div classname = 'List'>
+            <div classname = 'List'  className='MyProjects'>
             <h1>My Projects</h1>
             <ul>
                 {projects.map((project,i)=>

@@ -14,7 +14,7 @@ const MyProjects = () => {
     return(
         // Components for these project entries would make these messy links easier
         // to organize and style
-        <div>
+        <div class = "CreateProjectPage">
             <CreateProject />
             <h1>My Projects</h1>
             <ul>

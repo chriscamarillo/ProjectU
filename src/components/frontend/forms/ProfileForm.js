@@ -6,10 +6,6 @@ const ProfileForm = (props) =>{
     
     const user = props.user
     const skills = props.skills
-    // console.log(props.fields)
-    //skills.forEach(skill => props.append)
-    //props.append("hi")
-
 
     return(
         <div className= 'EditProfile'>

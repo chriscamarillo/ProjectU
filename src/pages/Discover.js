@@ -27,7 +27,9 @@ const Discover = () => {
   
   return (
     <div className='Discover'>
-        <SearchBar text={text} handleTextChange={handleTextChange} />
+        <div className="jumbotron jumbotron-fluid logo">
+            <SearchBar text={text} handleTextChange={handleTextChange} />
+        </div>
         <ProjectList projects={projects} canApply={true}/>
         
 {/* random section for test code */}

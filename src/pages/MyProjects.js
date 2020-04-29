@@ -15,7 +15,7 @@ const MyProjects = () => {
     return(
         // Components for these project entries would make these messy links easier
         // to organize and style
-        <div>
+        <div className="CreateProject">
             <CreateProject />
             <div classname = 'List'>
             <h1>My Projects</h1>

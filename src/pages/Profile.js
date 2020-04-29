@@ -3,6 +3,7 @@ import { useUser } from '../components/backend/UserProvider'
 import { useParams } from "react-router";
 import { Link } from "react-router-dom"
 import ProjectList from '../components/frontend/ProjectList'
+import SkillsList from '../components/frontend/SkillsList'
 import GetProfile from '../components/backend/GetProfile'
 import '../styles/Profile.css'
 
@@ -18,33 +19,32 @@ const Profile = () => {
     let skills = userObj.skills;                //skills collection
     let links = userObj.links;                  //links collection
     let projects = userObj.projects;            //projects collection
-
+    
+    let match = uid == currentUser.uid
+    console.log(skills)
     if(user){
         
         return(
-            (uid === currentUser.uid)?(
-                <div className= 'Profile'>
-                    <div>
-                        <h1>My Profile</h1>
-                        <h3>{user.displayName}</h3>
-                        <Link to={{pathname: "/edit/profile/", skills: skills}}>Edit Profile</Link>
+            <div className='Profile'>
+                <div className= 'information'>
+                    <div className="profile-card">
+                        <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
+                        {(match)?(
+                            <>
+                                <h1>My Profile</h1>
+                                <Link to={{pathname: "/edit/profile/", skills: skills}}>Edit Profile</Link>
+                            </>
+                        ):<h1>{user.displayName}</h1>
+                        }
+                        <p>{user.bio}</p>
                     </div>
-                    <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
-                    <p>{user.bio}</p>
-                    <h2>My Projects</h2>
+                    <SkillsList skills={skills} />
+                </div>
+                <div className='projects-section'>
+                    <h1>Projects</h1>
                     <ProjectList projects={projects} />
                 </div>
-            ):(
-                <div>
-                    <h1>{user.displayName}'s profile</h1>
-                    <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
-                    <p>{user.bio}</p>
-
-                    <h1>{user.displayName}'s Projects</h1>
-                    <ProjectList projects={projects} />
-                </div>
-                //profile components should replace these divs
-            )
+            </div>
         )
     }else{
         return (

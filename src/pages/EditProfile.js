@@ -27,10 +27,10 @@ const EditProfile =  props => {
 
   const onSubmit = (data) => {
     console.log(data)
-    const {email,bio,resume} = data
+    const {email,bio,resumeLink} = data
     db
       .collection("users").doc(user.uid)
-      .update({email,bio,resume})
+      .update({email,bio,resumeLink})
     
     UpdateUserSkills(user.uid, skills, data.skills)
 

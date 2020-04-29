@@ -23,14 +23,11 @@
 
 .ProjectEntry h2 {
     color: rgb(63, 62, 62);
-    font: Relaway small-caps bold;
     font-size: 30px;
-    margin-left: 15px;
     margin-bottom: 0px; /* spacings between title and description */
 }
 
 .ProjectEntry p {
-    font-family: Relaway;
     font-size: 12px;
     margin-left: 20px;
     margin-top: -5px;
@@ -38,7 +35,6 @@
 }
 
 .ProjectEntry h3 {
-    font-style: Relaway;
     font-size: 15px;
     margin-left: 15px;
     color: rgb(112, 110, 110)
@@ -55,7 +51,6 @@
     width: 10%;
     margin-top: 0px;
     color: solid black;
-    font: Relaway small-caps bold;
     background-color: rgb(230, 160, 150);
     position: relative;
     left: 86%;

@@ -27,9 +27,9 @@ const UpdateUserSkills = (uid, skills_before, skills_after) => {
             .doc(uid)
             .collection("skills");
 
-        let appended = skills_after.filter(x => x.id =="")
-        let removed = skills_before.filter(e => !skills_after.find(a => e.id == a.id))
-        let updated = skills_after.filter(e => skills_before.find(a => (e.id == a.id) && (e.name != a.name)))
+        let appended = (skills_after) ? skills_after.filter(x => x.id =="") : []
+        let removed = (skills_before) ? skills_before.filter(e => !skills_after.find(a => e.id == a.id)) : []
+        let updated = (skills_before) ? skills_after.filter(e => skills_before.find(a => (e.id == a.id) && (e.name != a.name))) : []
 
         // console.log("appended", appended)
         // console.log("removed", removed)

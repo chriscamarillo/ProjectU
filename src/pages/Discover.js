@@ -4,6 +4,7 @@ import ProjectList from '../components/frontend/ProjectList'
 import ProjectEntry from '../components/frontend/ProjectEntry'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
+import Logo1 from '../Logo1.png'
 import '../styles/Discover.css'
 
 const Discover = () => {
@@ -28,13 +29,11 @@ const Discover = () => {
   return (
     <div className='Discover'>
         <div className="jumbotron jumbotron-fluid logo">
-            <SearchBar text={text} handleTextChange={handleTextChange} />
-            <ProjectList projects={projects} canApply={true}/>
+           <img src={Logo1} id="logo" />
         </div>
-        
-        
-{/* random section for test code */}
-        
+        <h2 id="logo-text">ProjectU</h2>
+        <SearchBar text={text} handleTextChange={handleTextChange} />
+        <ProjectList projects={projects} canApply={true}/>
     </div>
   )
 }

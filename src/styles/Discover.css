@@ -2,11 +2,39 @@
     background-color: white;
 }
 
+#logo-text {
+    text-align: center;
+    font-size: 8em;
+    color: #fc834f;
+    font-weight: 39;
+    letter-spacing: -5px;
+    line-height: 80px;
+    margin-bottom: 40px;
+}
+
+
+#logo {
+    text-align: center;
+    height: 200px;
+    width: auto;
+    position: absolute;
+    /* Centering */
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    bottom: 40px;
+}
+
 .jumbotron {
-    background-image: url('../Logo1.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-color:white;
-    
+    height: 300px;
+}
+
+.jumbotron.jumbotron-fluid.logo {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top:0px;
+    padding-bottom: 0px;
+    position: relative;
+    background-color: white;
 }

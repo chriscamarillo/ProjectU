@@ -13,8 +13,7 @@ function SearchBar(props) {
 
     return(    
         <div className='SearchBar'>
-            <h1>Discover New Projects</h1>
-            <input type = "text" placeholder = "Search Bar" value={props.text} onChange={props.handleTextChange}/>         
+            <input type = "text" placeholder = "Discover New Projects" value={props.text} onChange={props.handleTextChange}/>         
         </div>
     );
 }

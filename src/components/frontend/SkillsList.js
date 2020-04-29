@@ -1,7 +1,4 @@
 import React from 'react'
-import { useUser } from "./UserProvider"
-import { getUserSkills } from './Backend'
-
 
 const SkillsList = props => {
 

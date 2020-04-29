@@ -5,6 +5,7 @@
     margin-top: 2%;
     text-align: center;
     color: white;
+    background-color: whitesmoke;
 }
 
 .NavigationBar img{
@@ -17,5 +18,9 @@
 }
 .NavigationBar div{
     color: white;
+}
+
+.NavigationBar button{
+    border: 1px solid black;
 }
 

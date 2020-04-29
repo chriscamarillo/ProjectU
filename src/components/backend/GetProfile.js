@@ -31,7 +31,7 @@ function GetProfile(uid) {
             .get().
                 then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        skillsArr.push(doc.data());
+                        skillsArr.push({id:doc.id,...doc.data()});
                     });
                     setSkills(skillsArr);
                 });

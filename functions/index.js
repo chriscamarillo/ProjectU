@@ -15,28 +15,14 @@ const index = client.initIndex('projects')
 exports.addToIndex = functions.firestore.document('projects/{projectId}')
     .onCreate((snapshot) => {
         // Filter based off these items
-        const {title, description, createdBy, status, owner} = snapshot.data()
         const objectID = snapshot.id;
-
-        return index.saveObject({title,
-            title,
-            description,
-            createdBy,
-            status,
-            objectID})
+        return index.saveObject({objectID, ...snapshot.data()})
     })
 
 exports.updateIndex = functions.firestore.document('projects/{projectId}')
 .onUpdate((change) => {
-    const {title, description, createdBy, status, owner} = change.after.data()
-    const objectID = snapshot.after.id;
-
-    return index.saveObject({title,
-        title,
-        description,
-        createdBy,
-        status,
-        objectID})
+    const objectID = change.after.id;
+    return index.saveObject({objectID, ...change.after.data()});
 })
 
 

@@ -27,12 +27,12 @@ const Profile = () => {
                     <div>
                         <h1>My Profile</h1>
                         <h3>{user.displayName}</h3>
-                        <Link to='/edit/profile'>Edit Profile</Link>
+                        <Link to={{pathname: "/edit/profile/", skills: skills}}>Edit Profile</Link>
                     </div>
                     <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
                     <p>{user.bio}</p>
                     <h2>My Projects</h2>
-                    {/* <ProjectList projects={projects} /> */}
+                    <ProjectList projects={projects} />
                 </div>
             ):(
                 <div>

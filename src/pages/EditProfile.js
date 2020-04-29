@@ -3,40 +3,38 @@ import { useUser } from '../components/backend/UserProvider'
 import { useHistory } from 'react-router-dom'
 import { useForm, useFieldArray } from "react-hook-form";
 import ProfileForm from '../components/frontend/forms/ProfileForm'
-import { UpdateUserSkills, GetUserSkills } from "../components/backend/UpdateUserSkills";
+import UpdateUserSkills from "../components/backend/UpdateUserSkills";
 
 //That's the way uhhu uhhu i like it...
 
-const EditProfile =  () => {
+const EditProfile =  props => {
   const user = useUser()
   const history = useHistory()
-  let skills = [{skill:"false", id:"async"}]
-  skills = GetUserSkills(user.uid)
-  console.log(skills)
-  //let sheit = skills[0]
-  const {register, control, handleSubmit, reset} = useForm({
+  const skills = props.location.skills
+  const {register, control, handleSubmit} = useForm({
     defaultValues: {
-      poop: [{ skill: "Bill", id: "Lua" },
-      { skill: "caca", id: "pipi" },
-      { skill: "poo", id: "ca" }, GetUserSkills(user.uid)]
+      skills:skills
     }
   });
   const { fields, append, remove} = useFieldArray(
     {
       control,
-      name: "poop",
+      id: "id",
+      name: "skills"
     }
   );
-
-  console.log(fields)
 
   const onSubmit = (data) => {
     // NOT YET
     // db
     //   .collection("users").doc(user.uid)
     //   .update(data)
-    let sk = data.skills.map((s, i) => (s.skill))
-    UpdateUserSkills(user.uid, sk)
+    //console.log(data)
+    // console.log(data.skills)
+    //
+    //console.log(sk)
+    console.log("skills", skills)
+    UpdateUserSkills(user.uid, skills, data.skills)
 
     history.push(`/users/${user.uid}`)
   }
@@ -48,5 +46,4 @@ const EditProfile =  () => {
   );
 }
 
-  
 export default EditProfile

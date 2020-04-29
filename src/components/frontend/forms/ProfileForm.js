@@ -37,8 +37,15 @@ const ProfileForm = (props) =>{
                 return (
                     <li key={item.id}>
                     <input
-                        name={`skills[${index}].skill`}
-                        defaultValue={`${item.skill}`} // make sure to set up defaultValue
+                        type="hidden"
+                        name={`skills[${index}].id`}
+                        defaultValue={`${item.id}`} // make sure to set up defaultValue
+                        ref={props.register()}
+                    />
+                    <input
+                        id={`${item.id}`}
+                        name={`skills[${index}].name`}
+                        defaultValue={`${item.name}`} // make sure to set up defaultValue
                         ref={props.register()}
                     />
                     <button type="button" onClick={() => props.remove(index)}>
@@ -52,7 +59,7 @@ const ProfileForm = (props) =>{
                 <button
                 type="button"
                 onClick={() => {
-                    props.append({ skill: "new skill" });
+                    props.append({ id:"", name: "new skill" });
                 }}
                 >
                 Add Skill

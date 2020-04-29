@@ -26,11 +26,12 @@ const EditProfile =  props => {
   );
 
   const onSubmit = (data) => {
-    // NOT YET
+    console.log(data)
+    const {email,bio,resume} = data
     db
       .collection("users").doc(user.uid)
-      .update(data)
-
+      .update({email,bio,resume})
+    
     UpdateUserSkills(user.uid, skills, data.skills)
 
     history.push(`/users/${user.uid}`)

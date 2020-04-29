@@ -22,7 +22,7 @@ const ProfileForm = (props) =>{
                 <input type="text" placeholder={user.contactEmail} name="email" ref={props.register}></input>
             <br />
             Resume Link
-                <input type="text" placeholder={user.resumeLink} name="resume" ref={props.register}></input>
+                <input type="text" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
         </div>
         <div className="skills">
             <h2>Qualifications</h2>

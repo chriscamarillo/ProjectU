@@ -50,22 +50,16 @@ function GetProfile(uid) {
                 });
 
     //get projects
-        db
-            .collection('users')
-            .doc(uid)
-            .collection('projects')
-            .get().
-                then(function (querySnapshot) {
-                    if(querySnapshot.length > 0){
-                        querySnapshot.forEach(function (doc) {
-                            doc.data().proj_ref.get()
-                            .then(res => { 
-                                projsArr.push(res.data());
-                            }) 
-                        });
-                    }
-                    setProjects(projsArr);
-                });            
+    db
+    .collection('projects')
+    .where("owner", "==", uid)
+    .onSnapshot((snapshot)=> {
+        const projects = snapshot.docs.map((project)=>({
+            id: project.id,
+            ...project.data()
+        }))
+        setProjects(projects)
+    })     
 
         },[uid]);
     

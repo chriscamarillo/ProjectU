@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import GetProject from './../components/backend/GetProject'
 import Thread from '../components/frontend/Thread'
 import MemberList from "../components/frontend/MemberList";
+import { Card } from 'react-bootstrap'
 
 const Project = (props) => {
     const pid = useParams().pid

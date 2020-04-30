@@ -3,6 +3,7 @@ import { useUser } from '../components/backend/UserProvider'
 import { Link } from "react-router-dom"
 import '../styles/MyProjects.css'
 import  { Card } from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
 
 // import components here
 import CreateProject from '../components/backend/CreateProject'
@@ -29,7 +30,7 @@ const MyProjects = () => {
                             <Card.Link href={`/projects/${project.id}`}>Go To Project</Card.Link>
                             <Card.Link href={`/delete/project/${project.id}`}>Delete</Card.Link>
                         </Card.Body>
-                        </ul>
+                    </ul>
                     </Card>
                     //project component should replace this
                 )}

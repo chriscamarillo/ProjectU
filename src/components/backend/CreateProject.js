@@ -88,8 +88,10 @@ const CreateProject = () => {
     <div className='CreateProject'>
         <h1>Create a New Project</h1>
         <form>
-            <input type="text" placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} ></input>
-            <input type="text" placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)}></input>
+            <h2 id = "title">Project Title</h2>
+            <input type="text" id = "titleInput" placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} ></input><br ></br>
+            <h2 id = "description">Project Description</h2>
+            <input type="text" id = "descriptionInput" placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)}></input>
             <button type="submit" onClick={createAndEmpty}>Submit</button>
         </form>
     </div>

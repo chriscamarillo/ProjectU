@@ -1,30 +1,32 @@
 
 .CreateProject{
     background-color: white;
-    height: 350px;
+    height: 450px;
     margin-left: auto;
     margin-right: auto;
     text-align: center; 
     background-image: url('../Logo.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: local;
     background-position: center;
     background-size: 500px;
-    background-position-y: 100px;
+    background-position-y: 25px;
 }
 
 .CreateProject h1 {
-    font-size: 300%;
-    color: rgb(63, 62, 62);
+    font-size: 400%;
+    color: #fc834f;
     font: Raleway small-caps bold;
     border-bottom: 2px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .CreateProject input{
-    height: 50px;
+    display: block;
+    height: 60px;
     width: 400px;
-    margin: 2px;
+  /*  margin: 10px; 
+    margin: auto; */
     margin-top: 2%; 
     border: 3px solid black;
     border-radius: 10px;
@@ -32,13 +34,46 @@
     text-align: center;
 }
 
+.CreateProject h2[id="title"]{
+    position: relative; 
+    left: -162px;
+    display: inline-block;
+}
+
+.CreateProject input[id="titleInput"]{
+    display: inline-block;
+    position: relative;
+    right: -170px;
+    line-height: 5px;  
+}
+
+.CreateProject h2[id="description"]{
+    position: relative;
+    left: -110px;
+    display: inline-block;   
+}
+
+.CreateProject input[id="descriptionInput"]{
+    display: inline-block;
+    position: relative;
+    right: -120px;
+    height: 180px;
+    width: 400px;
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+
 .CreateProject button{
+    display: block;
     border: 3px solid black;
     border-radius: 10px;
     opacity: 0.6;
     margin: 2px;
     width: 100px;
+    margin: auto;
+    margin-top: 2%;
 }
+
 .CreateProject form {
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold; 

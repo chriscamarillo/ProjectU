@@ -5,7 +5,7 @@ import ProjectEntry from '../components/frontend/ProjectEntry'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
 import { useUser } from '../components/backend/UserProvider'
-import Logo1 from '../Logo1.png'
+import Logo1 from '../Logo2.png'
 import '../styles/Discover.css'
 
 const Discover = () => {
@@ -37,7 +37,7 @@ const Discover = () => {
         <div className="jumbotron jumbotron-fluid logo">
            <img src={Logo1} id="logo" />
         </div>
-        <h2 id="logo-text">ProjectU</h2>
+        
         <SearchBar text={text} handleTextChange={handleTextChange} />
         <div class='container justify-content-center'>
           <ProjectList projects={projects} canApply={true}/>

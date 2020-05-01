@@ -2,7 +2,7 @@
     background-color: #f8f9fa;
 }
 
-#logo-text {
+/*#logo-text {
     text-align: center;
     font-size: 8em;
     color: #fc834f;
@@ -10,8 +10,7 @@
     letter-spacing: -5px;
     line-height: 80px;
     margin-bottom: 40px;
-}
-
+}*/
 
 #logo {
     text-align: center;
@@ -20,7 +19,7 @@
     position: absolute;
     /* Centering */
     top: 50%;
-    left: 50%;
+    left: 45%;
     margin-top: -50px;
     margin-left: -100px;
     bottom: 40px;

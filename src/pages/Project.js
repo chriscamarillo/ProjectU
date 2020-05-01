@@ -24,8 +24,9 @@ const Project = (props) => {
             return(
                 <div className="Project">
                     <h1>{details.title}</h1>
+                    <div className="text">
                     <p>{details.description}</p>
-                    <h1>THIS IS MY PROJECT!</h1>
+                    </div>
                     {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
                     <div className="margin">
                     <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
@@ -40,9 +41,11 @@ const Project = (props) => {
         }else{
             return(
                 <div className="Project">
-                    <h2>{details.title}</h2>
+                    <h1>{details.title}</h1>
+                    <div className="text">
                     <p>{details.description}</p>
-                    {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}
+                    </div>
+                    {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
                     <h4>posted by <Link to={`/users/${details.owner}`}>{details.createdBy}</Link></h4>
                 </div>
             )

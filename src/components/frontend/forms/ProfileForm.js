@@ -9,8 +9,6 @@ const ProfileForm = (props) =>{
 
     return(
         <div className= 'EditProfile'>
-        
-        <h5><i>A better form component now</i></h5>
         <h3>Edit Profile</h3> 
         <h1>{user.displayName}</h1>
         <div>

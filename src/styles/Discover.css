@@ -1,5 +1,6 @@
 .Discover {
     background-color: #f8f9fa;
+    background-color: white;
 }
 
 /*#logo-text {
@@ -18,7 +19,7 @@
     width: auto;
     position: absolute;
     /* Centering */
-    top: 50%;
+    top: 40%;
     left: 45%;
     margin-top: -50px;
     margin-left: -100px;
@@ -35,7 +36,7 @@
     padding-top:0px;
     padding-bottom: 0px;
     position: relative;
-    background-color: #f8f9fa;
+    background-color: white;
 }
 
 /* This adjust the max-width of the project list entries! */

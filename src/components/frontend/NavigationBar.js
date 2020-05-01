@@ -1,71 +1,49 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useUser } from '../backend/UserProvider'
-import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import { signInWithGoogle, signOut} from "../../services/firebase"
 import styled from 'styled-components' 
 import '../../styles/NavigationBar.css'
+import Logo1 from '../../Logo1.png'
 
 const Styles = styled.div`
-  .navbar { background-color: #222; }
-  a, .navbar-nav, .navbar-light .nav-link {
-    color: #9FFFCB;
-    &:hover { color: white; }
-  }
-  .navbar-brand {
-    font-size: 1.4em;
-    color: #9FFFCB;
-    &:hover { color: white; }
-  }
-  .form-center {
-    position: absolute !important;
-    left: 25%;
-    right: 25%;
-  }
-;
+  
 `
 
 const NavigationBar = () => {
     var currentUser = useUser()
     return(
-    <Styles className='NavigationBar'>
-      <Navbar expand="lg">
-        <Navbar.Brand href="/">Discover</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-               {/* <Link to="/">Discover </Link> */}
-               {(currentUser)?(
-                  [
-                      <Nav.Item>
-                        <Nav.Link>
-                          <Link to={`/users/${currentUser.uid}`}>Profile </Link>
-                        </Nav.Link>
-                      </Nav.Item>,
-                      <Nav.Item>
-                        <Nav.Link>
-                          <Link to="/MyProjects">Projects </Link>
-                        </Nav.Link>
-                      </Nav.Item>,
-                      <Nav.Item>
-                        <Nav.Link>
-                          <Link to ="/">
-                            <button onClick={()=> {signOut()}}>Sign out</button>
-                          </Link>
-                        </Nav.Link>
-                      </Nav.Item>
-                  ]
-              ):(<Nav.Item><button onClick={signInWithGoogle}>Sign in with Google</button></Nav.Item>)}              
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </Styles>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className="navbar-brand" to="/">
+          <img src={Logo1} id="navbar-logo" />
+          Discover
+        </Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+            
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+            {(currentUser)?(
+                [
+                  <li className="nav-item">
+                      <Link to={`/users/${currentUser.uid}`} className='nav-link'>Profile </Link>
+                   </li>,
+                  <li className="nav-item">
+                    <Link to="/MyProjects" className='nav-link'>Projects </Link>
+                  </li>
+                ]
+            ):<></>}
+            </ul>
+          </div>
+        <span className="navbar-inline">
+          {(currentUser) ? (
+              <a href="/"><button className="btn btn-outline-* signout" aria-pressed="false" onClick={()=> {signOut()}}>Sign out</button></a>
+          ):(<button className="btn btn-outline-* signin" aria-pressed="false" onClick={signInWithGoogle}>Sign in with Google</button>)}
+        </span>
+      </nav>
 
     )
-    // return(
-    //     <div>
-    //     </div>
-    // )
 }
 
 export default NavigationBar;

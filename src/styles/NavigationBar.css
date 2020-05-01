@@ -1,24 +1,68 @@
-.NavigationBar{
-    font-size: large;
-    font: Relaway;
-    text-align: center;
+.navbar { background-color: #222; }
+  a, .navbar-nav, .navbar-light .nav-link {
+    color: #9FFFCB;
+  }
+
+.navbar:hover { color: white; }
+
+.navbar-brand {
+    font-size: 1.7em;
+    color: #9FFFCB;
+  }
+.navbar-brand:hover { color: white; }
+
+.form-center {
+    position: absolute !important;
+    left: 25%;
+    right: 25%;
+}
+
+#navbar-logo {
+    height: 37px;
+    padding-right: 12px;
+    width: auto;
+}
+
+.signin {
+    border-color: #26c46e;
+    color: #26c46e;
+}
+
+.signin:hover {
+    background-color: #fc834f;
+    border-color: white;
     color: white;
-    background-color: whitesmoke;
+    -webkit-box-shadow: 0px 0px 5px 2px #fc834f;
+    -moz-box-shadow: 0px 0px 5px 2px #fc834f;
+    box-shadow: 0px 0px 5px 2px #fc834f;
 }
 
-.NavigationBar img{
-    margin-top: 2%;
-    margin-bottom: 3%;
-    width: 15%;
+.signin:active {
+    box-shadow: none;
 }
-.NavigationBar span{
-    margin-right: 15px;
+
+.signin:focus {
+    box-shadow: none;
 }
-.NavigationBar div{
+
+.signout {
+    border-color: #fc834f;
+    color: #fc834f;
+}
+
+.signout:hover {
+    background-color: #26c46e;
+    border-color: white;
     color: white;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
 
-.NavigationBar button{
-    border: 1px solid black;
+.signout:active {
+    box-shadow: none;
 }
 
+.signout:focus {
+    box-shadow: none;
+}

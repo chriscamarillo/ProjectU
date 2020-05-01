@@ -20,11 +20,12 @@ const MyProjects = () => {
             <CreateProject />
             <div className='MyProjects'>
             <h1>My Projects</h1>
+            <div class="container">
+                <div class="row">
                 {projects.map((project,i)=>
-                <div className="information">
-                <div class="card-decks">
-                   <div class="card col">
-                    <ul key={i}>
+                // <div className="information">
+                   <div class="col">
+                    <ul id="card" key={i}>
                         <div class="card-body">
                             <h5 class="card-title">{project.title}</h5>
                             <p class="card-text">{project.description}</p>
@@ -33,10 +34,11 @@ const MyProjects = () => {
                         </div>
                     </ul>
                     </div>
-                    </div>
-                    </div>
+                    // </div>
                     //project component should replace this
                 )}
+                    </div>
+                </div>
             </div>
         </div>
     )

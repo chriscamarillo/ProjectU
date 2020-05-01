@@ -1,21 +1,22 @@
-body{
-    background-color: white;
-}
-
 .MyProjects{
     border-style: solid;
     border-color: #B7C6BA;
     border-width: 4px;
     border-radius: 10px;
-    background-color: white;
+    background-color: #f8f9fa;
     height: 90%;
-    width: 96%;
+    width: 90%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
     flex-wrap: wrap;
     transition: 0.3s;
+}
+
+.MyProjects:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-color: #fdae78;
 }
 
 .MyProjects h1 {
@@ -26,34 +27,37 @@ body{
     border-bottom: 2px;
     text-align: center;
 }
-.MyProjects div[class="card-decks"]:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border: 1px solid #26c46e;
-    background-color: #26c46e;
+
+.col{
+    margin: 2%;
+    border: solid #B7C6BA;
+    border-radius: 10px;
 }
 
-.MyProjects div[class="card-decks"]{
-    display: flex;
-    flex: 1 0 auto;
-    border-radius: 5px;
+.MyProjects ul[id="card"]{
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-body{
+    padding: 0px;
 } 
 
-.MyProjects div[class="card-body"]{
-  flex: 1 1 0%;
-  border: none;
-  border-radius: 0;
-} 
 .card {
     width: 100%;
-}
+} 
 
 .MyProjects h5.card-title{
-    text-align: left;
+    margin-top: 5%;
+    /* text-align: left; */
+    font-weight: bold;
 } 
 
 .MyProjects a{
-    color: #6DE081;
+    margin-bottom: 5%;
+    color: #fc834f;
     font-weight: bold;
+    
 }
 
 .MyProjects a:hover{

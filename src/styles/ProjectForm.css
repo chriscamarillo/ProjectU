@@ -1,6 +1,4 @@
-
-.CreateProject{
-    /*background-color: whitesmoke;*/
+.ProjectForm{
     border-color: #99f0a6;
     background-color:#99f0a6;
     height: 450px;
@@ -9,17 +7,9 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    /*
-    background-image: url('../Logo.png');
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-position: center;
-    background-size: 500px;
-    background-position-y: 25px;
-    */
 }
 
-.CreateProject h1 {
+.ProjectForm h1{
     font-size: 400%;
     color: #212529;
     font-weight: bolder;
@@ -29,36 +19,38 @@
     margin-top: 20px;
 }
 
-.CreateProject form{
+.ProjectForm form{
     display: block;
     margin-top: 2%;
 }
 
-.CreateProject label[for="projectTitle"]{
+.ProjectForm label[for="projectTitle"]{
     font-size: 20px;
     font-weight: bold;
     margin-left: 1.5%;
 }
 
-.CreateProject textarea[id="titleInput"]{
+.ProjectForm textarea[id="titleInput"]{
+    display: block;
     margin: auto;
     width: 97%;
 }
 
-.CreateProject label[for="projectDescription"]{
+.ProjectForm label[for="projectDescription"]{
     font-size: 20px;
     font-weight: bold;
     margin-left: 1.5%;
 }
 
-.CreateProject textarea[id="descriptionInput"]{
+.ProjectForm textarea[id="descriptionInput"]{
+    display: block;
     margin: auto;
     width: 97%;
     height: 80px;
     word-wrap: break-word;
 }
 
-.CreateProject button{
+.ProjectForm button{
     font-size: 20px;
     margin-left: 1.5%;
 }

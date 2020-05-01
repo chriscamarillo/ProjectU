@@ -3,7 +3,6 @@ import { useUser } from '../components/backend/UserProvider'
 import { Link } from "react-router-dom"
 import '../styles/MyProjects.css'
 import  { Card } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
 
 // import components here
 import CreateProject from '../components/backend/CreateProject'
@@ -22,31 +21,26 @@ const MyProjects = () => {
             <div className='MyProjects'>
             <h1>My Projects</h1>
                 {projects.map((project,i)=>
-                   <Card style ={{ width: '18rem', display: 'flex', flexDirection: 'row'}}>
+                <div class="card-decks">
+                   <div class="card" style ={{ width: '18rem', display: 'flex', flexDirection: 'row'}}>
                     <ul key={i}>
-                        <Card.Body>
-                            <Card.Title>{project.title}</Card.Title>
-                            <Card.Text>{project.description}</Card.Text>
-                            <Card.Link href={`/projects/${project.id}`}>Go To Project</Card.Link>
-                            <Card.Link href={`/delete/project/${project.id}`}>Delete</Card.Link>
-                        </Card.Body>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{project.title}</h5>
+                            <p class="card-text">{project.description}</p>
+                            <a href={`/projects/${project.id}`}>Go To Project</a>
+                            <a href={`/delete/project/${project.id}`}>Delete</a>
+                        </div>
                     </ul>
-                    </Card>
+                    </div>
+                    </div>
                     //project component should replace this
                 )}
-            
-           {/* <ul>
-                {projects.map((project,i)=>
-                    <li key={i}>
-                        <Link to={`/projects/${project.id}`}><h2>{project.title}</h2></Link>
-                        <p>{project.description}</p>
-                        <Link to={`/delete/project/${project.id}`}>delete</Link>
-                    </li>
-                    //project component should replace this
-                )}
-                </ul> */}
             </div>
         </div>
     )
 }
+/*
+
+*/
 export default MyProjects

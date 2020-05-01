@@ -88,13 +88,18 @@ const CreateProject = () => {
     <div className='CreateProject'>
         <h1>Create a New Project</h1>
         <form>
-            <h2 id = "title">Project Title</h2>
-            <input type="text" id = "titleInput" placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} ></input><br ></br>
-            <h2 id = "description">Project Description</h2>
-            <input type="text" id = "descriptionInput" placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)}></input>
-            <button type="submit" onClick={createAndEmpty}>Submit</button>
+            <div class="form-group">
+              <label for="projectTitle">Project Title</label>
+              <textarea type="text" class="form-control" id="titleInput" placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="projectDescription">Project Description</label>
+              <textarea type="text" class="form-control" id="descriptionInput" placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" onClick={createAndEmpty}>Submit</button>
         </form>
     </div>
   )
 }
+
 export default CreateProject

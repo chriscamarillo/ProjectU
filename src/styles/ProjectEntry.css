@@ -12,8 +12,9 @@
     display: block;
     margin: auto;
     border-radius: 10px;
-    width: 100%;
+    width: 113.5%;
     margin-bottom: 15px;
+    margin-left: -49px;
 }
 
 .ProjectEntry:hover{

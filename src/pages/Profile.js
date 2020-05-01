@@ -42,7 +42,9 @@ const Profile = () => {
                 </div>
                 <div className='projects-section col'>
                     <h1>Projects</h1>
+                    <div>
                     <ProjectList projects={projects} />
+                    </div>
                 </div>
             </div>
         )

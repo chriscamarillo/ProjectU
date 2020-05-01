@@ -1,12 +1,12 @@
 .skills-full {
     border-radius: 10px;
-    background-color: #eee;
+    background-color: #f8f9fa;
     padding:2px;
+    transition: 0.2s;
 }
 
 .skills-full:hover {
-    transition: 1s;
-    background-color: #eee;
+    background-color: #FDAE78;
 }
 
 .skills-full h3 {
@@ -20,14 +20,14 @@
 }
 
 .skill {
-    background-color: #eee;
     border-radius: 10px;
     margin-bottom: 7px;
     padding: 10px;
-    width: 100%; 
+    width: 100%;
 }
 
 .skill:hover {
     transition: 0.7s;
-    background-color: blue; 
+    font-weight: 700;
+    background-color: #f8f9fa;
 }

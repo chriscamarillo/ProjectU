@@ -4,19 +4,9 @@
     Feel free to play with this and make the rest of the .css files
     for the other components in this folder, then import them for the component.
 */
-
-.ProjectList {
-    width: 72%;
-    margin: auto;
-}
-
 .ProjectList ul {
     list-style-type: none;
-    /* text-align: center; */
-    border: 2px solid rgba(63, 62, 62, 0.788);
-    padding: 60px 20px 20px 20px ;
-    /* background-image: url(../Background.png); */
-    border-radius: 10px;
-    
+    padding: 20px;
+    border-radius: 10px;    
 }
 

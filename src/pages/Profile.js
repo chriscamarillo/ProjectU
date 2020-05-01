@@ -25,7 +25,7 @@ const Profile = () => {
     if(user){
         
         return(
-            <div className='Profile'>
+            <div className='Profile container-fluid'>
                 <div className= 'information'>
                     <div className="profile-card">
                         <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
@@ -40,7 +40,7 @@ const Profile = () => {
                     </div>
                     <SkillsList skills={skills} />
                 </div>
-                <div className='projects-section'>
+                <div className='projects-section col'>
                     <h1>Projects</h1>
                     <ProjectList projects={projects} />
                 </div>

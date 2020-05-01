@@ -22,7 +22,7 @@ const MyProjects = () => {
             <h1>My Projects</h1>
                 {projects.map((project,i)=>
                 <div class="card-decks">
-                   <div class="card" style ={{ width: '18rem', display: 'flex', flexDirection: 'row'}}>
+                   <div class="card col">
                     <ul key={i}>
                         <div class="card-body">
                             <h5 class="card-title">{project.title}</h5>

@@ -23,7 +23,7 @@ async function CheckCanApply(uid, project_ref){
     
     let uidIsOwner = (proj_owner == uid) ? true : false;    
 
-    return (matching_m.length === 0 && matching_usr_app.length === 0 && !uidIsOwner)
+    return (matching_m.length === 0 && matching_usr_app.length === 0 && !uidIsOwner && uid)
 }
 
 export default CheckCanApply

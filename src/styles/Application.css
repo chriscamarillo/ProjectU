@@ -1,0 +1,17 @@
+/*
+    It's easier to use 1 file for something,
+    import it on a higher order component,
+    and just reference class names here
+
+    Since Applicants are under ApplicationList
+    this file may be used for both and imported
+    soley into ApplicantList.js
+*/
+
+.applicant-list {
+    list-style-type: none;
+}
+
+.applicant {
+    
+}

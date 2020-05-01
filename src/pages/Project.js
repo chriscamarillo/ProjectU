@@ -5,7 +5,8 @@ import GetProject from './../components/backend/GetProject'
 import Thread from '../components/frontend/Thread'
 import MemberList from "../components/frontend/MemberList";
 import '../styles/Project.css'
-
+import ApplicantList from "../components/frontend/ApplicantList";
+import GetApplicants from "../components/backend/GetApplications"
 const Project = (props) => {
     const pid = useParams().pid
     const currentUser = useUser() || {uid: null}
@@ -13,20 +14,10 @@ const Project = (props) => {
     // Backend call
     //let project = GetProject(pid);
     let details = (props.location.state) ? (props.location.state) : GetProject(pid).details
-    //console.log(details)
-    //let apps = project.apps;
-    //let members = project.members;
-    //let thread = project.thread;
+    let apps = (pid) ? GetApplicants(pid) : [];
+    // let members = project.members;
+    // let thread = project.thread;
     
-    // This function will run batch reads and gather
-    // information for each applicant and member in order
-    // to display them as a list
-
-    // need this to be all located in some other file for styling 
-    let someStyle = {
-        color: '#d4af37'
-    }
-
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
@@ -34,11 +25,12 @@ const Project = (props) => {
                 <div className="Project">
                     <h1>{details.title}</h1>
                     <p>{details.description}</p>
-                    <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
+                    <h1>THIS IS MY PROJECT!</h1>
                     {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}
+                    <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
                     {/* <Thread thread={project.thread}/>
                     <MemberList members={members} /> */}
-                    <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
+                    {(apps) ? <ApplicantList apps={apps} /> : <></>}
 
                 </div>
 

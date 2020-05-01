@@ -26,8 +26,10 @@ const Project = (props) => {
                     <h1>{details.title}</h1>
                     <p>{details.description}</p>
                     <h1>THIS IS MY PROJECT!</h1>
-                    {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}
+                    {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
+                    <div className="margin">
                     <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
+                    </div>
                     {/* <Thread thread={project.thread}/>
                     <MemberList members={members} /> */}
                     {(apps) ? <ApplicantList apps={apps} /> : <></>}
@@ -37,7 +39,7 @@ const Project = (props) => {
             )
         }else{
             return(
-                <div>
+                <div className="Project">
                     <h2>{details.title}</h2>
                     <p>{details.description}</p>
                     {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}

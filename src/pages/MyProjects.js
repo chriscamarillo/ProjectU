@@ -21,6 +21,7 @@ const MyProjects = () => {
             <div className='MyProjects'>
             <h1>My Projects</h1>
                 {projects.map((project,i)=>
+                <div className="information">
                 <div class="card-decks">
                    <div class="card col">
                     <ul key={i}>
@@ -31,6 +32,7 @@ const MyProjects = () => {
                             <a id = "delete" href={`/delete/project/${project.id}`}>Delete</a>
                         </div>
                     </ul>
+                    </div>
                     </div>
                     </div>
                     //project component should replace this

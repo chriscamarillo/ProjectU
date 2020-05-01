@@ -15,6 +15,7 @@ body{
     margin-right: auto;
     margin-bottom: 2%;
     flex-wrap: wrap;
+    transition: 0.3s;
 }
 
 .MyProjects h1 {
@@ -25,11 +26,16 @@ body{
     border-bottom: 2px;
     text-align: center;
 }
+.MyProjects div[class="card-decks"]:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border: 1px solid #26c46e;
+    background-color: #26c46e;
+}
 
 .MyProjects div[class="card-decks"]{
     display: flex;
     flex: 1 0 auto;
-    border-radius: 3px;
+    border-radius: 5px;
 } 
 
 .MyProjects div[class="card-body"]{

@@ -32,7 +32,7 @@
 }
 
 .information {
-    border: 1px solid #f8f9fa; 
+    border: 3px solid #f8f9fa; 
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -50,7 +50,7 @@
 .information:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-color: #fdae78;
-    background-color: #fdae78;
+    
 }
 .projects-section {
     border: 1px solid #f8f9fa;
@@ -64,7 +64,6 @@
 
 .projects-section:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border: 1px solid #26c46e;
-    background-color: #26c46e;
-    color: white;
+    border: 3px solid #26c46e;
+    
 }

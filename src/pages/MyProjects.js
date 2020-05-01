@@ -24,12 +24,11 @@ const MyProjects = () => {
                 <div class="card-decks">
                    <div class="card" style ={{ width: '18rem', display: 'flex', flexDirection: 'row'}}>
                     <ul key={i}>
-                        
                         <div class="card-body">
                             <h5 class="card-title">{project.title}</h5>
                             <p class="card-text">{project.description}</p>
-                            <a href={`/projects/${project.id}`}>Go To Project</a>
-                            <a href={`/delete/project/${project.id}`}>Delete</a>
+                            <a id = "project" href={`/projects/${project.id}`}>Go To Project</a>
+                            <a id = "delete" href={`/delete/project/${project.id}`}>Delete</a>
                         </div>
                     </ul>
                     </div>

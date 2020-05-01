@@ -1,32 +1,29 @@
+body{
+    background-color: #ADE4B7;
+}
 
 .CreateProject{
-    /*background-color: whitesmoke;*/
+    border-style: solid;
     border-color: #99f0a6;
-    background-color:#99f0a6;
+    border-color: #B7C6BA;
+    border-width: 4px;
+    border-radius: 10px;
+    background-color: white;
     height: 450px;
-    width: 93%;
-    margin-top: auto;
+    width: 96%;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
-    /*
-    background-image: url('../Logo.png');
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-position: center;
-    background-size: 500px;
-    background-position-y: 25px;
-    */
 }
 
 .CreateProject h1 {
-    font-size: 400%;
-    color: #212529;
-    font-weight: bolder;
+    font-size: 325%;
+    color: rgb(63, 62, 62);
+    font-weight: bold;
     font: Raleway small-caps bold;
     text-align: center;
     border-bottom: 2px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .CreateProject form{
@@ -36,6 +33,7 @@
 
 .CreateProject label[for="projectTitle"]{
     font-size: 20px;
+    color: rgb(63, 62, 62);
     font-weight: bold;
     margin-left: 1.5%;
 }
@@ -47,6 +45,7 @@
 
 .CreateProject label[for="projectDescription"]{
     font-size: 20px;
+    color: rgb(63, 62, 62);
     font-weight: bold;
     margin-left: 1.5%;
 }
@@ -54,11 +53,21 @@
 .CreateProject textarea[id="descriptionInput"]{
     margin: auto;
     width: 97%;
-    height: 80px;
+    height: 100px;
     word-wrap: break-word;
 }
 
 .CreateProject button{
+    color: black;
     font-size: 20px;
+    font-weight: bold;
+    background-color: #99f0a6;
+    border-color: #99f0a6;
     margin-left: 1.5%;
+}
+
+.CreateProject button:hover{
+    color: rgb(63, 62, 62);
+    background-color: #82E994;
+    border-color: #82E994;
 }

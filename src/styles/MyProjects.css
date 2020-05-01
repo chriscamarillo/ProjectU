@@ -1,24 +1,25 @@
+body{
+    background-color: #ADE4B7;
+}
+
 .MyProjects{
-   /* background-image: url('../Logo.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 500px;*/
-  /*  background-position-y: 100px; */
-    border-color: #99f0a6;
-    background-color:#99f0a6;
+    border-style: solid;
+    border-color: #B7C6BA;
+    border-width: 4px;
+    border-radius: 10px;
+    background-color: white;
     height: 90%;
-    width: 93%;
+    width: 96%;
     margin-top: 2%;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
+    margin-bottom: 2%;
 }
 
 .MyProjects h1 {
-    font-size: 300%;
+    font-size: 325%;
     color: rgb(63, 62, 62);
+    font-weight: bold;
     font: Raleway small-caps bold;
     border-bottom: 2px;
     text-align: center;
@@ -36,6 +37,26 @@
   border-radius: 0;
 } 
 
-.MyProjects h5[class="card-title"]{
-    justify-content: left;
+h5.card-title{
+    text-align: left;
 } 
+
+a{
+    color: #6DE081;
+    font-weight: bold;
+}
+
+a:hover{
+    color: #3BC553;
+    font-weight: bold;
+}
+
+a[id="project"]{
+    position: relative;
+    left: -10%;
+}
+
+a[id="delete"]{
+    position: relative;
+    right: -10%;
+}

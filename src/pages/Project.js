@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import GetProject from './../components/backend/GetProject'
 import Thread from '../components/frontend/Thread'
 import MemberList from "../components/frontend/MemberList";
+import '../styles/Project.css'
 
 const Project = (props) => {
     const pid = useParams().pid
@@ -30,8 +31,8 @@ const Project = (props) => {
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
             return(
-                <div>
-                    <h2>{details.title}</h2>
+                <div className="Project">
+                    <h1>{details.title}</h1>
                     <p>{details.description}</p>
                     <h1 style={someStyle}>THIS IS MY PROJECT!</h1>
                     {(details.status) ? <h3>Open</h3> : <h3>Closed</h3>}

@@ -1,11 +1,16 @@
 .EditProfile {
-    width: 90%;
+    width: 80%;
     margin: auto;
     margin-top: 3%;
-    text-align: center;
     transition: 0.3s;
     border-radius: 10px;
     background-color: #f8f9fa;
+    text-align: right;
+    border-style: solid;
+    border-color: #99f0a6;
+    border-color: #B7C6BA;
+    border-width: 3px;
+    border-radius: 10px;
 }
 
 .EditProfile:hover{
@@ -14,6 +19,7 @@
 }
 
 .EditProfile h3{
+    text-align: center;
     font-size: 300%;
     color: rgb(63, 62, 62);
     font: Raleway small-caps bold;
@@ -25,10 +31,15 @@
     align-items: left;
     overflow: hidden;
     width: 90%;
-    margin: auto;
-    border-radius: 10px;
-    margin-bottom: 25px;
+    margin: auto; 
+    margin-top: 25px;
     background-color: white;
+    border-style: solid;
+    border-color: #99f0a6;
+    border-color: #B7C6BA;
+    border-width: 3px;
+    border-radius: 10px;
+
 
 }
 
@@ -37,56 +48,69 @@
     border: 3px solid #fc834f;
 }
 
+.EditProfile h1{
+    text-align: left;
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold; 
+    margin-left: 80px; 
+    font-size: 250%;
+}
+
 .EditProfile img{
     height: 100px;
     width: 100px;
-    text-align: right;
-    margin-left: 30px;
-    margin-top: 5px;
+    margin-top: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3%;
 }
 
-.EditProfile h1{
-    text-align: left;
-    color: rgb(63, 62, 62);
-    font: Raleway small-caps bold; 
-    margin-left: 80px; 
-}
-
-.EditProfile form{
-    background-color: whitesmoke;
-    text-align: left;
-    font-size: large;
-   /* margin-left: 25px;
-    margin-bottom: 50px; */
-    display: block;
-    margin-left: 20%;
-    color: rgb(63, 62, 62);
-    font: Raleway small-caps bold;
-    
-}
-
 .EditProfile input{
-    margin-left: 20%;
-    margin-bottom: 10px;
+    margin-left: auto;
+    margin-bottom: 15px;
+    margin-right: 20%;
+    margin-left: 8%;
     font-size: large;
     border: 1px solid rgb(134, 128, 128);
     border-radius: 10px;
     opacity: 0.6;
     background-color: #f8f9fa;
+    width: 40%;
+}
+
+.skills {
+    text-align: center;
+}
+.skills h2{
+    color: rgb(63, 62, 62);
+    font: Raleway small-caps bold; 
+    font-size: 250%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+}
+.skills ul{
+ width: 80%;
+ margin-left: 5%;
+
+ 
+}
+
+.skills section{
+    text-align: left;
+    margin-left: 27%;
+    
 }
 
 .EditProfile button{
     font: Raleway small-caps bold;
     margin-top: 8px;
     margin-bottom: 8px;
+    width: 15%;
     border-width: 2px;
     border-color: rgb(45, 102, 10);
     border-radius: 3px;
-    width: 10%;
     color: solid black;
     border-color: #fc834f;
     color: #fc834f;
@@ -101,11 +125,5 @@
     box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
 
-.skills {
-    margin: 40px;
-    
-}
 
-.submit{
-    justify-content: center;  
-}
+

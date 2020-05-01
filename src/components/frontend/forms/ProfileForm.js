@@ -29,7 +29,7 @@ const ProfileForm = (props) =>{
                 //console.log(item)
                 // console.log("this is skills ", skills)
                 return (
-                    <li key={item.id}>
+                    <ul key={item.id}>
                     <input
                         type="hidden"
                         name={`skills[${index}].id`}
@@ -45,7 +45,7 @@ const ProfileForm = (props) =>{
                     <button type="button" onClick={() => props.remove(index)}>
                         Delete
                     </button>
-                    </li>
+                    </ul>
                 );
                 })}
             </ul>
@@ -59,7 +59,7 @@ const ProfileForm = (props) =>{
                 Add Skill
                 </button>
             </section>
-            <input type="submit" />
+            <button type="submit"> Submit </button>
         </div>
         </div>
     )

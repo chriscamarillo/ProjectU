@@ -59,21 +59,32 @@
 }
 
 .EditProfile button{
-    background-color: rgb(237, 242, 234);
-    color: black;
     font: Raleway small-caps bold;
     margin-top: 8px;
     margin-bottom: 8px;
     border-width: 2px;
     border-color: rgb(45, 102, 10);
     border-radius: 3px;
+    width: 10%;
+    color: solid black;
+    border-color: #fc834f;
+    color: #fc834f;
+}
+
+.EditProfile button:hover{
+    background-color: #26c46e;
+    border-color: white;
+    color: white;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
 
 .skills {
     margin: 40px;
-    background-color: rgb(110, 185, 62);
+    
 }
 
 .submit{
-    justify-content: center;
+    justify-content: center;    
 }

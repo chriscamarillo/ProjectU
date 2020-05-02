@@ -34,8 +34,8 @@ const Project = (props) => {
                     <Link to={{pathname: "/edit/project/" + pid, project:details}}>Edit Project</Link>
                     </div>
                     <Thread thread={project.thread}/>
-                    <MemberList members={members} /> 
-                    {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <p>Loading Applicants</p>}
+                    {(members) ? <MemberList members={members} />: <p>Loading Members...</p>} 
+                    {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <p>Loading Applicants...</p>}
 
                 </div>
 

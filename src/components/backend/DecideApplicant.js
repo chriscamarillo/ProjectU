@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react"
 import {db} from '../../services/firebase'
+import { stat } from '../../services/firebase'
 
 // delete the application
 async function remove(application) {
@@ -7,11 +8,7 @@ async function remove(application) {
 }
 
 function accept(application) {
-    let date = new Date();
-    let timestamp = date.getTime();
-    let readTime = new Intl.DateTimeFormat('en-US', 
-        {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'})
-        .format(timestamp)
+    let date_added = stat.FieldValue.serverTimestamp();
 
     remove(application)
     .then(() => {
@@ -23,7 +20,7 @@ function accept(application) {
     application.project
       .collection('members').doc(application.user)
       .set({
-          date_added: readTime,
+          date_added,
       });
 }
 

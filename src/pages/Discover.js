@@ -7,6 +7,7 @@ import { algoliaConfig } from '../services/config'
 import { useUser } from '../components/backend/UserProvider'
 import Logo1 from '../Logo2.png'
 import '../styles/Discover.css'
+import UpdateProjectTechs from '../components/backend/UpdateProjectTechs.js'
 
 const Discover = () => {
   // state management
@@ -18,6 +19,11 @@ const Discover = () => {
   function handleTextChange(e) {
     setText(e.target.value);
   }
+  
+  let before = [{id:'ylwT7yhPKRzZmoLpfktt', name:'pipi'}]
+  let after = [{id:"ylwT7yhPKRzZmoLpfktt", name:'pipi'},
+               {id:"", name: 'caca'}] 
+  UpdateProjectTechs('Pq2v96a68SVx0diE4Vmd', before, after)
   
   // Search bar functionality 
   useEffect(() => {

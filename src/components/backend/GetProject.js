@@ -10,10 +10,12 @@ function GetProject(pid) {
     const [apps, setApps] = useState([])
     const [members, setMembers] = useState([])
     const [thread, setThread] = useState([])
+    const [techs, setTechs] = useState()
 
     var appArr = [];
     var memberArr = [];
     var threadArr = [];
+    var techsArr = []
 
     
     useEffect(()=>{
@@ -57,12 +59,25 @@ function GetProject(pid) {
                     });
                     setThread(threadArr);
                 });
+
+        //get techs
+        db
+            .collection('projects')
+            .doc(pid)
+            .collection('techs')
+            .get().
+                then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        techsArr.push({id:doc.id,...doc.data()});
+                    });
+                    setTechs(techsArr);
+                });
         
 
         },[pid])
 
     console.log('loading...')
-    return {details, apps, members, thread};
+    return {details, apps, members, thread, techs};
 }
 
 export default GetProject;

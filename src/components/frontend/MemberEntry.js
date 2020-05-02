@@ -15,7 +15,7 @@ const MemberEntry = (props) => {
         (info) ?
         <div className="MemberEntry">
             <img src={info.photoURL}  alt="profile" width="100" height="100"></img>
-            <h1>{info.displayName} joined {member.date_added}</h1>
+            <h1>{`${info.displayName} joined ${member.date_added.toDate()}`}</h1>
         </div>:
         <h1>Loading...</h1> 
     )

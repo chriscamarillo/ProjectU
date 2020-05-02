@@ -4,7 +4,9 @@
     Feel free to play with this and make the rest of the .css files
     for the other components in this folder, then import them for the component.
 */
-
+.margin{
+    margin:3%;
+}
 .ProjectEntry {
     border: 3px solid #B7C6BA;
     background-color: #f8f9fa;

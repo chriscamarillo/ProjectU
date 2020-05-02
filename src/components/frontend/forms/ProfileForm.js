@@ -22,8 +22,8 @@ const ProfileForm = (props) =>{
             Resume Link
                 <input type="text" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
         </div>
+        <h2>Qualifications</h2>
         <div className="skills">
-            <h2>Qualifications</h2>
             <ul>
                 {props.fields.map((item, index) => {
                 //console.log(item)
@@ -33,13 +33,15 @@ const ProfileForm = (props) =>{
                     <input
                         type="hidden"
                         name={`skills[${index}].id`}
+                        placeholder={"New Skill"}
                         defaultValue={`${item.id}`} // make sure to set up defaultValue
                         ref={props.register()}
                     />
-                    <input
+                    <input className="newSkill"
                         id={`${item.id}`}
                         name={`skills[${index}].name`}
-                        defaultValue={`${item.name}`} // make sure to set up defaultValue
+                        placeholder={"New Skill"}
+                        // defaultValue={`${item.name}`} // make sure to set up defaultValue
                         ref={props.register()}
                     />
                     <button type="button" onClick={() => props.remove(index)}>

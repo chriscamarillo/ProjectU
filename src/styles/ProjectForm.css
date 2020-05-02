@@ -46,9 +46,9 @@
     border-radius: 10px; 
 }
 
-.ProjectForm textarea[id="titleInput"]::placeholder{
+.ProjectForm textarea{
     font-size: 20px;
-    color: #9c9c9d;
+    color: black;
     font-weight: 500;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -71,15 +71,6 @@
     height: 90px;
     word-wrap: break-word;
     border-radius: 10px;
-}
-
-.ProjectForm textarea[id="descriptionInput"]::placeholder{
-    margin-top: 2%;
-    margin-bottom: 2%;
-    padding-left: 10px;
-    font-size: 20px;
-    color: #9c9c9d;
-    font-weight: 500;
 }
 
 .ProjectForm p{

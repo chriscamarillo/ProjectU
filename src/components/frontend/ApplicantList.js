@@ -9,9 +9,9 @@ const ApplicantList = (props) => {
         <div className="container">
             <ul className="applicant-list">
             {(props.apps) ?
-                props.apps.map((applicant, i) => (
+                props.apps.map((application, i) => (
                     <li key={i}>
-                        <Applicant user={applicant.user} date={applicant.date} project={applicant.id} />
+                        <Applicant application={application} proj_id={props.proj_id} owner={props.owner}/>
                     </li>   
                 )) : <></>
             }

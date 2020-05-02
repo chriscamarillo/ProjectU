@@ -9,14 +9,14 @@ import {Link} from 'react-router-dom'
         - photoURL
 */
 const MemberList = (props) => {
+    console.log(props.members)
     return (
         <div>
-            {props.members.map((entry,i)=> (
-                <Link to={`/profile/${entry.id}`}>
+            {props.members.map((member,i)=> (
+                <Link to={`/users/${member.id}`}>
                     <li key={i}>
                         <MemberEntry // Based on Schema
-                            displayName={entry.displayName}
-                            photoURL={entry.photoURL}                     
+                            member={member}                
                         />
                     </li>
                 </Link>

@@ -6,13 +6,14 @@ import { db } from '../services/firebase'
 import algoliasearch from 'algoliasearch';
 import { algoliaConfig } from '../services/config'
 import ProjectForm from '../components/frontend/forms/ProjectForm'
+import GetProject from "../components/backend/GetProject"
 
 const EditProject = (props) => {
     const pid = useParams().pid;
     const history = useHistory()
     const currentUser = useUser() || {uid: null};
     const {register, handleSubmit, errors} = useForm()
-    const project = props.location.project
+    const project = (props.location.project) ? props.location.project : GetProject(pid).details
     
     const onSubmit = (data) => {
         const fields={createdBy: project.createdBy, owner: project.owner, ...data}

@@ -29,17 +29,16 @@ function createProject(user, project_fields) {
       // attach owner to project
       db
       .doc(`projects/${new_project.id}`)
-      .collection('admins').doc(user.uid)
+      .collection('members').doc(user.uid)
       .set({
           date_added: project_fields.date_created,
-          is_owner: true,
       });
 
       // add projects to algolia
       console.log('saving project...');
       console.log('index:')
       console.log(index.saveObject)
-      index.saveObject({title,
+      index.saveObject({
           objectID,
           title,
           description,

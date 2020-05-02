@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react'
 import {db} from '../../services/firebase'
 
-
 function GetProfile(uid) {
     const [user, setUser] = useState()
     const [skills, setSkills] = useState()
     const [links, setLinks] = useState()
     const [projects, setProjects] = useState()
 
-    var projsArr = [];
     var linksArr = [];
     var skillsArr = [];
-
-    var docRef; 
 
     //get shallow data
     useEffect(()=>{
@@ -61,7 +57,7 @@ function GetProfile(uid) {
         setProjects(projects)
     })     
 
-        },[uid]);
+    },[uid]);
     
     return {user, skills,  projects, links};
 }

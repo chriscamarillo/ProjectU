@@ -16,7 +16,7 @@ function GetApplicants(pid) {
             });
             setApps(apps_data);
         });
-    }, []);
+    }, [apps]);
 
     return apps;
 }

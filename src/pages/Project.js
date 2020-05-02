@@ -13,11 +13,13 @@ const Project = (props) => {
 
     // Backend call
     //let project = GetProject(pid);
-    let details = (props.location.state) ? (props.location.state) : GetProject(pid).details
-    let apps = (pid) ? GetApplicants(pid) : [];
-    // let members = project.members;
-    // let thread = project.thread;
+    let project =  GetProject(pid) // (props.location.state && props.location.state.id == pid) ? (props.location.state) : it was bugging out
+    let details = project.details
+    let apps = project.pending_applications;
+    let members = project.members;
+    let thread = project.thread;
     
+    console.log('loaded')
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
@@ -29,11 +31,11 @@ const Project = (props) => {
                     </div>
                     {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
                     <div className="margin">
-                    <Link to={{pathname: "/edit/project/" + pid, project: details,}}>Edit Project</Link>
+                    <Link to={{pathname: "/edit/project/" + pid, project:details}}>Edit Project</Link>
                     </div>
-                    {/* <Thread thread={project.thread}/>
-                    <MemberList members={members} /> */}
-                    {(apps) ? <ApplicantList apps={apps} /> : <></>}
+                    <Thread thread={project.thread}/>
+                    <MemberList members={members} /> 
+                    {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <></>}
 
                 </div>
 

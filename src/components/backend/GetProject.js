@@ -43,7 +43,7 @@ function GetProject(pid) {
             .get().
                 then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        memberArr.push(doc.data());
+                        memberArr.push({id: doc.id, ...doc.data()});
                     });
                     setMembers(memberArr);
                 });
@@ -55,7 +55,7 @@ function GetProject(pid) {
             .get().
                 then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        threadArr.push(doc.data());
+                        threadArr.push({id:doc.id, ...doc.data()});
                     });
                     setThread(threadArr);
                 });
@@ -63,6 +63,7 @@ function GetProject(pid) {
 
         },[pid])
 
+    console.log('loading...')
     return {details, apps, members, thread};
 }
 

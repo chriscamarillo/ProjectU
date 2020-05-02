@@ -36,7 +36,7 @@
 }
 
 .skill:hover {
-    transition: 0.7s;
+    transition: 0.3s;
     font-weight: 700;
     background-color: #f8f9fa;
 }

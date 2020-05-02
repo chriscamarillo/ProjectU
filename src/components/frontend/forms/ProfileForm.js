@@ -14,13 +14,13 @@ const ProfileForm = (props) =>{
         <div>
             <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
             Bio
-                <input type="text" placeholder={user.bio} name="bio" ref={props.register}></input>
+                <input type="text" id="userInfo" placeholder={user.bio} name="bio" ref={props.register}></input>
             <br />
             Contact Email
-                <input type="text" placeholder={user.contactEmail} name="email" ref={props.register}></input>
+                <input type="text" id="userInfo" placeholder={user.contactEmail} name="email" ref={props.register}></input>
             <br />
             Resume Link
-                <input type="text" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
+                <input type="text" id="userInfo" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
         </div>
         <h2>Qualifications</h2>
         <div className="skills">
@@ -30,21 +30,21 @@ const ProfileForm = (props) =>{
                 // console.log("this is skills ", skills)
                 return (
                     <ul key={item.id}>
-                    <input
+                    <input class="hidden"
                         type="hidden"
                         name={`skills[${index}].id`}
                         placeholder={"New Skill"}
                         defaultValue={`${item.id}`} // make sure to set up defaultValue
                         ref={props.register()}
                     />
-                    <input className="newSkill"
+                    <input class="newSkill"
                         id={`${item.id}`}
                         name={`skills[${index}].name`}
                         placeholder={"New Skill"}
                         // defaultValue={`${item.name}`} // make sure to set up defaultValue
                         ref={props.register()}
                     />
-                    <button type="button" onClick={() => props.remove(index)}>
+                    <button type="button" id="delete" onClick={() => props.remove(index)}>
                         Delete
                     </button>
                     </ul>
@@ -53,7 +53,7 @@ const ProfileForm = (props) =>{
             </ul>
             <section>
                 <button
-                type="button"
+                type="button" id="addSkill"
                 onClick={() => {
                     props.append({ id:"", name: "new skill" });
                 }}
@@ -61,7 +61,7 @@ const ProfileForm = (props) =>{
                 Add Skill
                 </button>
             </section>
-            <button type="submit"> Submit </button>
+            <button type="submit" id="submit"> Submit </button>
         </div>
         </div>
     )

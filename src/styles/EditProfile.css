@@ -69,7 +69,7 @@
     margin-bottom: 3%;
 }
 
-.EditProfile input{
+.EditProfile input[id="userInfo"]{
     margin-left: auto;
     margin-bottom: 15px;
     margin-right: 20%;
@@ -80,6 +80,40 @@
     opacity: 0.6;
     background-color: #f8f9fa;
     width: 40%;
+}
+
+.EditProfile input[class="hidden"]{
+    margin-left: auto;
+    margin-bottom: 15px;
+    margin-right: 20%;
+    margin-left: 8%;
+    font-size: large;
+    border: 1px solid rgb(134, 128, 128);
+    border-radius: 10px;
+    opacity: 0.6;
+    background-color: #f8f9fa;
+    width: 40%;
+}
+
+.EditProfile input[class="hidden"]::placeholder{
+    padding-left: 5%;
+}
+
+.EditProfile input[class="newSkill"]{
+    margin-left: auto;
+    margin-bottom: 15px;
+    margin-right: 20%;
+    margin-left: 8%;
+    font-size: large;
+    border: 1px solid rgb(134, 128, 128);
+    border-radius: 10px;
+    opacity: 0.6;
+    background-color: #f8f9fa;
+    width: 40%;
+}
+
+.EditProfile input[class="newSkill"]::placeholder{
+    padding-left: 5%;
 }
 
 div.skills {
@@ -96,9 +130,6 @@ div.skills {
     font: Raleway small-caps bold; 
     font-size: 245%;
 }
-.skills input::placeholder{
-    margin-left: 5%;
-}
 
 .skills ul{
     width: 80%;
@@ -108,14 +139,10 @@ div.skills {
 
 .skills section{
     text-align: left;
-    margin-left: 27%; 
+    /* margin-left: 27%;  */
 }
 
-.skills button{
-    display: inline-block;
-}
-
-.EditProfile button{
+.EditProfile button[id="delete"]{
     display: inline-block;
     font: Raleway small-caps bold;
     margin-top: 8px;
@@ -129,7 +156,7 @@ div.skills {
     color: #fc834f;
 }
 
-.EditProfile button:hover{
+.EditProfile button[id="delete"]:hover{
     background-color: #26c46e;
     border-color: white;
     color: white;
@@ -138,5 +165,52 @@ div.skills {
     box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
 
+.EditProfile button[id="addSkill"]{
+    font: Raleway small-caps bold;
+    /* margin-top: 8px;
+    margin-bottom: 8px; */
+    width: 15%;
+    border-width: 2px;
+    border-color: rgb(45, 102, 10);
+    border-radius: 3px;
+    color: solid black;
+    border-color: #fc834f;
+    color: #fc834f;
+    position: relative;
+    top: 20px;
+    left: 275px;
+}
 
+.EditProfile button[id="addSkill"]:hover{
+    background-color: #26c46e;
+    border-color: white;
+    color: white;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+}
 
+.EditProfile button[id="submit"]{
+    font: Raleway small-caps bold;
+    /* margin-top: 8px;
+    margin-bottom: 8px; */
+    width: 15%;
+    border-width: 2px;
+    border-color: rgb(45, 102, 10);
+    border-radius: 3px;
+    color: solid black;
+    border-color: #fc834f;
+    color: #fc834f;
+    position: relative;
+    top: -10px;
+    left: 120px;
+}
+
+.EditProfile button[id="submit"]:hover{
+    background-color: #26c46e;
+    border-color: white;
+    color: white;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+}

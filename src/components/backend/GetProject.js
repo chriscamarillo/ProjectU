@@ -1,7 +1,7 @@
 
 import {useState, useEffect} from 'react'
 import {db} from '../../services/firebase'
-
+import { firestore } from 'firebase';
 
 function GetProject(pid) {
     // not sure how to outsource this one
@@ -24,17 +24,15 @@ function GetProject(pid) {
                 setDetails(details.data())
             })
  
-        db
-            .collection('projects')
-            .doc(pid)
-            .collection('pending_applications')
-            .get().
-                then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        appArr.push(doc.data());
-                    });
-                    setApps(appArr);
+        db.collection('applications').where('project', '==', firestore().doc(`projects/${pid}`))
+            .get()
+            .then((applicants) => {
+                let apps_data = []
+                applicants.forEach((applicant) => {
+                    apps_data.push({id: applicant.id, ...applicant.data()})
                 });
+                setApps(apps_data);
+            });
         
         db
             .collection('projects')

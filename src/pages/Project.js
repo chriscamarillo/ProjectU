@@ -15,11 +15,11 @@ const Project = (props) => {
     //let project = GetProject(pid);
     let project =  GetProject(pid) // (props.location.state && props.location.state.id == pid) ? (props.location.state) : it was bugging out
     let details = project.details
-    let apps = project.pending_applications;
+    let apps = project.apps;
     let members = project.members;
     let thread = project.thread;
     
-    console.log('loaded')
+    console.log(apps)
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
         if(currentUser.uid === details.owner){
@@ -35,7 +35,7 @@ const Project = (props) => {
                     </div>
                     <Thread thread={project.thread}/>
                     <MemberList members={members} /> 
-                    {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <></>}
+                    {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <p>Loading Applicants</p>}
 
                 </div>
 

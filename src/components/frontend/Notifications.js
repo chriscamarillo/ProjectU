@@ -7,44 +7,35 @@ import { db } from '../../services/firebase'
 
 const Notifications = props => {
     const user = useUser()
+    const [notifications, setNotifications] = useState([])
 
-    //const [notifications, setNotifications] = useState()
 
-    let notificationsArr = []
-
-    function GetNotifications(uid) {
-    //useEffect(() =>{
-        let ref = db.collection('users').doc(uid).collection('notifications')
-        let ooga = ref.get().then(snapshot => {
-                snapshot.forEach(doc => {
-                    notificationsArr.push({id:doc.id, ...doc.data()})
-                })
+    useEffect(() => {
+        let notificationsArr = []
+        let ref = db.collection('users').doc(user.uid).collection('notifications')
+        // Listen for updates
+        ref.onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+                notificationsArr.push({ id: doc.id, ...doc.data() })
+                setNotifications(notificationsArr)
             })
-        //setNotifications(notificationsArr)
-    //})
+            console.log('some shit updated')
+            
+        });
+    }, [notifications])
 
-        console.log(notificationsArr)
-
-        return notificationsArr
-    }
-
-    async function AddNotification(uid, message, target) {
-        let ref = db.collection('users').doc(uid).collection('notifications')
-        let add = await ref.add({message:message, target:target})
-        console.log('added', {message:message, target:target})
-    }
-
-    async function RemoveNotification(uid, nid) {
-        let ref = db.collection('users').doc(uid).collection('notification')
-        let rem = await ref.doc(nid).delete()
-        console.log('delete', nid)
-    }
 
     return (
-        <div className="Notifications">
-            <button onClick={GetNotifications(user.uid)}>Notifications</button>
-            <button onClick={AddNotification(user.uid, 'message', 'this is the target')}>Add</button>
-            <button onClick={RemoveNotification(user.uid, 'PU2itN8WC1YGaQ6ygu3p')}>Remove</button>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Notifications
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {
+                    notifications.map(n => <li key={n.id} className="dropdown-item">{n.message} targets {n.target}</li>)
+                }
+            </div>
         </div>
     )
 

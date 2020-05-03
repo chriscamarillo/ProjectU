@@ -3,20 +3,13 @@ import { db } from '../../services/firebase'
 
 const MemberEntry = (props) => {
     const member = props.member;
-    const [info, setInfo] = useState();
 
-    useEffect(() => {
-        db.collection('users').doc(member.id).get().then((shallow_info) => {
-            setInfo({...shallow_info.data()});
-        })
-    }, [info]);
-
-    console.log(member)
+    console.log('here are some members: ', member)
     return (
-        (info) ?
+        (member) ?
         <div className="MemberEntry">
-            <img src={info.photoURL}  alt="profile" width="100" height="100"></img>
-            <h1>{`${info.displayName} joined ${member.date_added.toDate().toString()}`}</h1>
+            <img src={member.photoURL}  alt="profile" width="100" height="100"></img>
+            <h2>{`${member.displayName} joined ${member.date_added}`}</h2>
         </div>:
         <h1>Loading...</h1> 
     )

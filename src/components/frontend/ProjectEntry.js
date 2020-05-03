@@ -16,7 +16,7 @@ const ProjectEntry = props => {
             setCanApply(await CheckCanApply(uid,proj_ref))
         }
         canUsrApply(currentUser.uid, firestore().doc(`projects/${props.id}`))
-    }, [])
+    }, [currentUser])
     
     const applyButton = 
     (!usrCanApply) 

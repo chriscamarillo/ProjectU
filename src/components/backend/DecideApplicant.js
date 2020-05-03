@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from "react"
 import {db} from '../../services/firebase'
 import { stat } from '../../services/firebase'
+import { AddNotification } from './Notify'
+
 
 // delete the application
 async function remove(application) {
@@ -22,6 +24,10 @@ function accept(application) {
       .set({
           date_added,
       });
+
+    // notify user
+    AddNotification(application.user, `You've been accepted to ${application.project}`,
+        application.target);
 }
 
 function decline(application) {

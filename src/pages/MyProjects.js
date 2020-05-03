@@ -1,8 +1,6 @@
 import React from "react"
 import { useUser } from '../components/backend/UserProvider'
-import { Link } from "react-router-dom"
 import '../styles/MyProjects.css'
-import  { Card } from 'react-bootstrap'
 
 // import components here
 import CreateProject from '../components/backend/CreateProject'

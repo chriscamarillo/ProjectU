@@ -12,6 +12,8 @@
     "firebase-tools": "^8.1.1",
     "http2": "^3.3.7",
     "jquery": "^3.5.0",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",

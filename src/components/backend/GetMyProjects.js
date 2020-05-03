@@ -6,7 +6,6 @@ import {db} from '../../services/firebase'
 
 const GetMyProjects = (uid) => {
 
-
     const [projects, setProjects] = useState([])
     useEffect(() => {
         const unsubscribe = 

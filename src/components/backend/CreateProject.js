@@ -88,11 +88,11 @@ const CreateProject = () => {
         <h1>Create a New Project</h1>
         <form>
             <div class="form-group">
-              <label for="projectTitle">Project Title</label>
+              <label htmlFor="projectTitle">Project Title</label>
               <textarea type="text" class="form-control" id="titleInput" placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} ></textarea>
             </div>
             <div class="form-group">
-              <label for="projectDescription">Project Description</label>
+              <label htmlFor="projectDescription">Project Description</label>
               <textarea type="text" class="form-control" id="descriptionInput" placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
             </div>
             <button type="submit" class="btn btn-primary" onClick={createAndEmpty}>Submit</button>

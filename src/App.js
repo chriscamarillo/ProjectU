@@ -2,6 +2,7 @@
 import React from "react"
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
 
 //import other components here:
 import ProtectedRoute from './components/backend/ProtectedRoute'

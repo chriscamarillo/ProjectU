@@ -17,6 +17,8 @@ const Applicant = (props) => {
     function handleSubmit(e, take_applicant) {
         e.preventDefault();
         (take_applicant) ? accept(application) : decline(application);
+
+        // random debug code here
     }
     
     return (

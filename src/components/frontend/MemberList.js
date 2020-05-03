@@ -1,5 +1,6 @@
 import React from 'react'
 import MemberEntry from './MemberEntry'
+import { GetMembers } from '../backend/GetProject'
 import {Link} from 'react-router-dom'
 
 /* 
@@ -9,10 +10,12 @@ import {Link} from 'react-router-dom'
         - photoURL
 */
 const MemberList = (props) => {
-    console.log(props.members)
+    const members = GetMembers(props.pid)
+    console.log('re rendered MemberList')
     return (
+        (members) ?
         <div>
-            {props.members.map((member,i)=> (
+            {members.map((member,i)=> (
                 <Link to={`/users/${member.id}`}>
                     <li key={i}>
                         <MemberEntry // Based on Schema
@@ -21,7 +24,7 @@ const MemberList = (props) => {
                     </li>
                 </Link>
             ))}
-        </div>
+        </div>: <p>Loading members...</p>
     )
 }
 

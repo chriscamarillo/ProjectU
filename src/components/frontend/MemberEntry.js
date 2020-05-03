@@ -9,13 +9,14 @@ const MemberEntry = (props) => {
         db.collection('users').doc(member.id).get().then((shallow_info) => {
             setInfo({...shallow_info.data()});
         })
-    }, [member]);
+    }, [info]);
 
+    console.log(member)
     return (
         (info) ?
         <div className="MemberEntry">
             <img src={info.photoURL}  alt="profile" width="100" height="100"></img>
-            <h1>{`${info.displayName} joined ${member.date_added.toDate()}`}</h1>
+            <h1>{`${info.displayName} joined ${member.date_added.toDate().toString()}`}</h1>
         </div>:
         <h1>Loading...</h1> 
     )

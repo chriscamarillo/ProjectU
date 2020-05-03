@@ -22,7 +22,7 @@ const Project = (props) => {
     console.log(apps)
     if(details){
         // TODO: get the rest of the details (collaborator list and thread)
-        if(currentUser.uid === details.owner){
+        // if(currentUser.uid === details.owner){
             return(
                 <div className="Project">
                     <h1>{details.title}</h1>
@@ -40,18 +40,18 @@ const Project = (props) => {
                 </div>
 
             )
-        }else{
-            return(
-                <div className="Project">
-                    <h1>{details.title}</h1>
-                    <div className="text">
-                    <p>{details.description}</p>
-                    </div>
-                    {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
-                    <h4>posted by <Link to={`/users/${details.owner}`}>{details.createdBy}</Link></h4>
-                </div>
-            )
-        }
+        // }else{
+        //     return(
+        //         <div className="Project">
+        //             <h1>{details.title}</h1>
+        //             <div className="text">
+        //             <p>{details.description}</p>
+        //             </div>
+        //             {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
+        //             <h4>posted by <Link to={`/users/${details.owner}`}>{details.createdBy}</Link></h4>
+        //         </div>
+        //     )
+        // }
         
     }else{
         return (

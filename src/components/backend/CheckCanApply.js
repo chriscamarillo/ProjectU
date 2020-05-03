@@ -11,8 +11,10 @@ async function CheckCanApply(uid, project_ref){
 
     //check if user is member
     let m_ref_proj = db.collection('projects').doc(project_ref.id).collection('members');
-    let matching_m_promise = await m_ref_proj.where('user', '==', db.doc(`users/${uid}`)).get()
-    let matching_m = await matching_m_promise.docs.map(x => x.data().user)
+    let matching_m = await m_ref_proj.doc(uid).get().then(doc => {
+        return doc.exists
+    })
+    // let matching_m = await matching_m_promise.docs.map(x => x.data().user)
 
     //check if user is owner
     let proj_owner = await db.collection('projects').doc(project_ref.id).get().then(doc => {
@@ -23,7 +25,7 @@ async function CheckCanApply(uid, project_ref){
     
     let uidIsOwner = (proj_owner == uid) ? true : false;    
 
-    return (matching_m.length === 0 && matching_usr_app.length === 0 && !uidIsOwner && uid)
+    return (matching_m === false && matching_usr_app.length === 0 && !uidIsOwner && uid)
 }
 
 export default CheckCanApply

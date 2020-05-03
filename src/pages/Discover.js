@@ -20,11 +20,6 @@ const Discover = () => {
     setText(e.target.value);
   }
   
-  let before = [{id:'ylwT7yhPKRzZmoLpfktt', name:'pipi'}]
-  let after = [{id:"ylwT7yhPKRzZmoLpfktt", name:'pipi'},
-               {id:"", name: 'caca'}] 
-  UpdateProjectTechs('Pq2v96a68SVx0diE4Vmd', before, after)
-  
   // Search bar functionality 
   useEffect(() => {
     const searchClient = algoliasearch(algoliaConfig.appID, algoliaConfig.searchOnlyKey)

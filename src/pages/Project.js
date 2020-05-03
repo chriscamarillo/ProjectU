@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useUser } from '../components/backend/UserProvider'
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"
 import Thread from '../components/frontend/Thread'
-import MemberList from "../components/frontend/MemberList";
-import GetApplicants from "../components/backend/GetApplications"
+import MemberList from "../components/frontend/MemberList"
+import ApplicantList from '../components/frontend/ApplicantList'
 import { GetDetails } from '../components/backend/GetProject'
 
 import '../styles/Project.css'
@@ -31,7 +31,7 @@ const Project = (props) => {
                     <h5>Applications</h5>
                     <Thread pid={pid} />
                     <MemberList pid={pid} />
-                    {/* <ApplicantList pid={pid} /> : <p>Loading Applicants...</p> */}
+                    <ApplicantList pid={pid} title={details.title}/>
                 </div>
             </div>
 

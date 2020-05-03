@@ -13,7 +13,7 @@ const ApplicantList = (props) => {
                 {(apps) ?
                     apps.map((application, i) => (
                         <li key={i}>
-                            <Applicant application={application} proj_id={props.proj_id} owner={props.owner} />
+                            <Applicant application={application} title={props.title} />
                         </li>
                     )) : <></>
                 }

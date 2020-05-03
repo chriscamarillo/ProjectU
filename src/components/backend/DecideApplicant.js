@@ -9,7 +9,7 @@ async function remove(application) {
     return db.collection('applications').doc(application.id).delete()
 }
 
-function accept(application) {
+function accept(application, title) {
     let date_added = stat.FieldValue.serverTimestamp();
 
     remove(application)
@@ -26,8 +26,9 @@ function accept(application) {
       });
 
     // notify user
-    AddNotification(application.user, `You've been accepted to ${application.project}`,
-        application.target);
+    console.log('project: ', application.project.path)
+    AddNotification(application.user, `You've been accepted to, ${title}`,
+        `/${application.project.path}`);
 }
 
 function decline(application) {

@@ -11,7 +11,7 @@ import {Link} from 'react-router-dom'
 */
 const MemberList = (props) => {
     const members = GetMembers(props.pid)
-    console.log('re rendered MemberList')
+    console.log('re rendered MemberList ', members)
     return (
         (members) ?
         <div>

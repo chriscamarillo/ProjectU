@@ -28,7 +28,7 @@ const NavigationBar = () => {
           ) : <></>}
         </ul>
       </div>
-      {(currentUser) ? <Notifications /> : <></>}
+      {(currentUser) ? <Notifications uid={currentUser.uid}/> : <></>}
       <span className="navbar-inline">
         {(currentUser) ? (
           <a href="/"><button className="btn btn-outline-* signout" aria-pressed="false" onClick={() => { signOut() }}>Sign out</button></a>

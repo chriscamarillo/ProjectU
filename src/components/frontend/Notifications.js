@@ -1,39 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useUser } from '../backend/UserProvider'
-import { db } from '../../services/firebase'
-//import GetNotifications from '../backend/GetNotifications.js'
-
+import { GetNotifications, RemoveNotification } from '../backend/Notify'
+import '../../styles/NotificationBar.css'
+import Bell from '../../bell.svg'
 
 const Notifications = props => {
-    const user = useUser()
-    const [notifications, setNotifications] = useState([])
-
-
-    useEffect(() => {
-        let notificationsArr = []
-        let ref = db.collection('users').doc(user.uid).collection('notifications')
-        // Listen for updates
-        ref.onSnapshot(snapshot => {
-            snapshot.forEach(doc => {
-                notificationsArr.push({ id: doc.id, ...doc.data() })
-                setNotifications(notificationsArr)
-            })
-            console.log('some shit updated')
-            
-        });
-    }, [notifications])
+    const notifications = GetNotifications(props.uid);
+    const badge_style = (notifications.length > 0) ? "btn-danger" : "btn btn-info"
 
 
     return (
         <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Notifications
+            <a class={`btn dropdown-toggle ${badge_style}`} href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src={Bell} class="bell" />
+                {`(${notifications.length})`}
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu dropdown-menu-right notification-bar" aria-labelledby="dropdownMenuLink">
                 {
-                    notifications.map(n => <li key={n.id} className="dropdown-item">{n.message} targets {n.target}</li>)
+                    notifications.map(n =>
+                        <Link to={n.target} onClick={() => RemoveNotification(props.uid, n.id)}>
+                            <li key={n.id} className="dropdown-item">{n.message}</li>)
+                        </Link>
+                    )
                 }
             </div>
         </div>

@@ -45,15 +45,19 @@ function GetMembers(pid) {
             .collection('projects')
             .doc(pid)
             .collection('members')
-            .onSnapshot(function (querySnapshot) {
+            .onSnapshot(async function (querySnapshot) {
                 let memberArr = [];
-                querySnapshot.forEach(async function (doc) {
+                querySnapshot.forEach(function (doc) {
                     // get some shallow profile data
-                    let promise = await db.collection('users').doc(doc.id).get().then((shallow_info) => {
-                        memberArr.push({ id: doc.id, ...doc.data(), ...shallow_info.data() });
-                    })
+                    memberArr.push({ id: doc.id, ...doc.data()}) // ...shallow_info.data() });
                 });
-                setMembers(memberArr);
+
+                let memberWithInfoArr = []
+                for (const doc of memberArr) {
+                    let memberInfo = await db.collection('users').doc(doc.id).get()
+                    memberWithInfoArr.push({...doc, ...memberInfo.data()})
+                }
+                setMembers(memberWithInfoArr);
             });
 
         return () => unsubscribe();

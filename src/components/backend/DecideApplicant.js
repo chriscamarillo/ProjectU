@@ -26,7 +26,7 @@ function accept(application, title) {
       });
 
     // notify user
-    console.log('project: ', application.project.path)
+    console.log('accepted: ', application.user, ' to ', application.project.path)
     AddNotification(application.user, `You've been accepted to, ${title}`,
         `/${application.project.path}`);
 }

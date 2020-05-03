@@ -3,12 +3,12 @@ import ThreadEntry from './ThreadEntry'
 import { GetThread } from '../backend/GetProject'
 
 const Thread = props => {
-    const thread = GetThread(props.pid)
-    console.log('thread re rendered')
+    const thread = GetThread(props.pid, props.uid)
+    console.log('thread rendered')
     return (
-        (thread) ? 
+        (thread.length > 0) ? 
         <div className="Thread">
-            <h1>This is where the thread is at. ONLY MEMBER/OWNER can see me</h1>
+            <h2>Thread</h2>
             <ul>
             {thread.reverse().map((entry,i)=>
                 <li key={i}>
@@ -21,7 +21,7 @@ const Thread = props => {
                 </li>
             )}
             </ul>
-        </div> : <p>Loading thread...</p>
+        </div> : <></>
     )
 }
 

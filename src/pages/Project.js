@@ -13,7 +13,7 @@ const Project = (props) => {
     const currentUser = useUser() || { uid: null }
     const details = GetDetails(pid)
     
-    console.log('page re rendered')
+    console.log('details rendered')
     if (details) {
         // TODO: get the rest of the details (collaborator list and thread)
         // if(currentUser.uid === details.owner){
@@ -27,12 +27,13 @@ const Project = (props) => {
                 <div className="margin">
                     <Link to={{ pathname: "/edit/project/" + pid, project: details }}>Edit Project</Link>
                 </div>
+                {(currentUser.uid && details.owner == currentUser.uid) ?
                 <div className="applications">
                     <h5>Applications</h5>
-                    <Thread pid={pid} />
-                    <MemberList pid={pid} />
                     <ApplicantList pid={pid} title={details.title}/>
-                </div>
+                </div>: <></>}
+                <Thread pid={pid} uid={currentUser.uid}/>
+                <MemberList pid={pid} />
             </div>
 
         )

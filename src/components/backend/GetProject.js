@@ -65,24 +65,31 @@ function GetMembers(pid) {
     return members;
 }
 
-function GetThread(pid) {
+function GetThread(pid, member_id) {
     const [thread, setThread] = useState([])
+    let member_ref = db.collection('projects').doc(pid).collection('members').doc(member_id)
+    
     useEffect(() => {
-        const unsubscribe =
+        async function checkMember() { 
+            return await member_ref.get()
+        }
+        if (checkMember().exists) {
+            const unsubscribe =
             db
-                .collection('projects')
-                .doc(pid)
-                .collection('thread')
-                .onSnapshot(function (querySnapshot) {
-                    let threadArr = [];
-                    querySnapshot.forEach(function (doc) {
-                        threadArr.push({ id: doc.id, ...doc.data() });
-                    });
-                    setThread(threadArr);
+            .collection('projects')
+            .doc(pid)
+            .collection('thread')
+            .onSnapshot(function (querySnapshot) {
+                let threadArr = [];
+                querySnapshot.forEach(function (doc) {
+                    threadArr.push({ id: doc.id, ...doc.data() });
                 });
+                setThread(threadArr);
+            });
+            return () => unsubscribe()
+        }        
+    }, [pid]);
 
-        return () => unsubscribe()
-    }, [pid])
     return thread;
 }
 

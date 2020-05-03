@@ -25,7 +25,7 @@ const ProjectEntry = props => {
         : 
         (<button className= 'margin' onClick={
                 function(e){
-                    AddApplication(currentUser.uid, firestore().doc(`projects/${props.id}`));
+                    AddApplication(currentUser.uid, firestore().doc(`projects/${props.id}`), props.owner, props.title);
                     setCanApply(false);
                 }   
             }

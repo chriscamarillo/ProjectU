@@ -4,19 +4,17 @@
     Feel free to play with this and make the rest of the .css files
     for the other components in this folder, then import them for the component.
 */
-.margin{
-    margin:3%;
-}
+
 .ProjectEntry {
-    border: 3px solid #B7C6BA;
+    border: 3px solid rgba(155, 153, 153, 0.644);
     background-color: #f8f9fa;
-    margin-bottom: 10px; /* spacings between entries */
     display: block;
     margin: auto;
     border-radius: 10px;
     width: 113.5%;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     margin-left: -49px;
+    margin-top: -15px;
 }
 
 .ProjectEntry:hover{
@@ -26,8 +24,9 @@
 .ProjectEntry h2 {
     color: rgb(63, 62, 62);
     font-size: 30px;
-    margin-top: 10px; /* spacings between title and description */
-    
+    margin-top: 20px; /* spacings between title and description */
+    text-transform: capitalize;
+    margin-left: -15px;
 }
 
 .ProjectEntry p {
@@ -39,19 +38,22 @@
 .ProjectEntry h3 {
     font-size: 15px;
     margin-left: 25px;
+    margin-top: -8px;
     color: rgb(112, 110, 110)
 }
+
+
 
 .ProjectEntry h4 {
     font-style: italic;
     font-size: 13px;
     margin-left: 25px;
-    margin-bottom: 10px;
+    margin-top: 20px;
     color: rgb(255, 132, 0)
 }
 
 .ProjectEntry button{
-    width: 10%;
+    width: 15%;
     margin-top: 0px;
     color: solid black;
     border-color: #fc834f;
@@ -70,11 +72,15 @@
     box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
 
-.margin {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    overflow: hidden;
+.line{
+    position: relative;
+    margin-bottom: 30px;
 }
+
+.line button{
+    position: absolute;  
+}
+
+
 
 

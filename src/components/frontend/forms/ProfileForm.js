@@ -11,7 +11,8 @@ const ProfileForm = (props) =>{
         <div className= 'EditProfile'>
         <h3>Edit Profile</h3> 
         <h1>{user.displayName}</h1>
-        <div>
+        <div className="data">
+            <div className="info">
             <img src={user.photoURL}  alt="profile" width="200" height="200"></img>
             Bio
                 <input type="text" id="userInfo" placeholder={user.bio} name="bio" ref={props.register}></input>
@@ -21,7 +22,10 @@ const ProfileForm = (props) =>{
             <br />
             Resume Link
                 <input type="text" id="userInfo" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
+            </div>
+            <button type="submit" id="submit1"> Submit </button>
         </div>
+        
         <h2>Qualifications</h2>
         <div className="skills">
             <ul>

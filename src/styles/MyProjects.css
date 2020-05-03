@@ -6,7 +6,7 @@
     background-color: #f8f9fa;
     height: 90%;
     width: 90%;
-    margin-top: 2%;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
@@ -29,10 +29,16 @@
 }
 
 .col{
-    margin: 2%;
+    margin: 1%;
     border: solid #B7C6BA;
     border-radius: 10px;
     border-width: 3px;
+    margin-bottom: 30px;
+}
+
+.col:hover{
+    border-color: #3BC553;
+    font-weight: bold;
 }
 
 .MyProjects ul[id="card"]{
@@ -47,6 +53,8 @@
 .card {
     width: 100%;
 } 
+
+
 
 .MyProjects h5.card-title{
     margin-top: 5%;

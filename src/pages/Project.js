@@ -33,10 +33,12 @@ const Project = (props) => {
                     <div className="margin">
                     <Link to={{pathname: "/edit/project/" + pid, project:details}}>Edit Project</Link>
                     </div>
+                    <div className="applications">
+                    <h5>Applications</h5>
                     <Thread thread={project.thread}/>
                     {(members) ? <MemberList members={members} />: <p>Loading Members...</p>} 
                     {(apps) ? <ApplicantList apps={apps} proj_id={pid} owner={details.owner} /> : <p>Loading Applicants...</p>}
-
+                    </div>
                 </div>
 
             )

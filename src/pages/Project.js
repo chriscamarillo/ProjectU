@@ -20,7 +20,7 @@ const Project = (props) => {
         // if(currentUser.uid === details.owner){
         return (
             <div className="justify-content-md-center">
-                <div className="Project card row">
+                <div className="Project">
                     <h1>{details.title}</h1>
                     <div className="text">
                         <p>{details.description}</p>
@@ -32,19 +32,20 @@ const Project = (props) => {
                 </div>
                 <div className="app"> 
                 <div className="row">
-                    <div className="col-md-auto media" >
+                    <div className="members" >
                         <div className="card-header">
                             <h2>Members</h2>
                         <MemberList pid={pid} />
                         </div>
                     </div>
                     {(ownerView) ?
-                    <div className="col-md-auto">
+                    <div className="applic">
                         <div className="card-header">
                             <h2>Applications</h2>
                         </div>
                         <ApplicantList pid={pid} title={details.title} />
                     </div> : <></>}
+                    </div>
                     <div className="trd">
                     {(ownerView || memberView) ? // only show thread if you are a member or owner
                     
@@ -52,7 +53,7 @@ const Project = (props) => {
                         <Thread pid={pid} ownerView={ownerView} />
                     </div> : <></>}
                     </div>
-                    </div>
+                    
                 </div>
             </div>
         )

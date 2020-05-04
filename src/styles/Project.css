@@ -7,6 +7,7 @@
     background-color: #f8f9fa;
     margin: auto;
     margin-top: 30px;
+    width: 90%;
 }
 .Project:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -88,8 +89,42 @@
     width: 100;
     text-align: center;
     background-color: white;
-
 }
+.row{
+    margin: auto;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.members{
+    border-style: solid;
+    border-color: #99f0a6;
+    border-color: #B7C6BA;
+    border-radius: 10px;
+    position: relative;
+    margin: 3%;
+    margin-left: 7%;
+    width: 30%;
+}
+
+.members:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border: 3px solid #26c46e;
+}
+.applic{
+    border-style: solid;
+    border-color: #99f0a6;
+    border-color: #B7C6BA;
+    border-radius: 10px;
+    position: relative;
+    margin: 3%;
+    width: 50%;
+}
+
+.applic:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border: 3px solid #26c46e;
+}
+
 
 .col{
     margin-top: 30px;

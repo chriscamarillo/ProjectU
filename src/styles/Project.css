@@ -117,6 +117,43 @@
         -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
         box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
     }
-    .col button{
-        margin: auto;
-    }
+.col button{
+    margin: auto;
+}
+
+.frm{
+    margin: auto;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.frm h2{
+    text-align: center;
+    font: Raleway small-caps bold;
+}
+
+.entry{
+    
+    width: 42%;
+    border: 1px solid rgb(134, 128, 128);
+    border-radius: 10px;
+    opacity: 0.6;
+    margin: 3px;
+}
+
+.bttn{
+    border-color: #fc834f;
+    color: #fc834f;
+    background-color: white;
+    width: 12%;
+    border-radius: 3px;
+    margin-left: 4px;
+}
+
+.bttn:hover {
+    background-color: #26c46e;
+    border-color: white;
+    color: white;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+}

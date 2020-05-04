@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/EditProfile.css'
+import '../../../styles/Project.css'
 import { useForm } from "react-hook-form";
 import { db } from '../../../services/firebase'
 import { AddNotification } from '../../backend/Notify'
@@ -32,13 +32,14 @@ const ThreadForm = (props) =>{
     console.log(errors);
 
     return(
+        <div className="frm">
         <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Add/Remove Thread</h2>
-            <input type="text" placeholder="Title" name="title" ref={register({required: true})} />
-            <input type="text" placeholder="More Details" name="description" ref={register({required: true})} />
-
-            <input type="submit" value="Post"/>
+            <input type="text" placeholder="Title" name="title" ref={register({required: true})} className="entry" />
+            <input type="text" placeholder="More Details" name="description" ref={register({required: true})} className="entry"/>
+            <input type="submit" value="Post" className="bttn"/>
         </form>
+        </div>
     )
 }
 

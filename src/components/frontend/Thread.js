@@ -1,23 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ThreadEntry from './ThreadEntry'
-import { ReadThreads } from '../backend/GetProject'
+import ThreadForm from './forms/ThreadForm'
+import { ReadThreads, isMember } from '../backend/GetProject'
+import { useUser } from '../backend/UserProvider'
+import { db } from '../../services/firebase'
 
 const Thread = props => {
-    const thread = ReadThreads(props.pid, props.uid)
-    console.log('thread rendered')
+    const thread = ReadThreads(props.pid)
+    // hacky tacky way of doing things
+
+    console.log('thread rendered ', thread)
+
+    // Removes a thread
+    function remove(tid) {
+        if (tid) {
+            db
+                .collection(`projects/${props.pid}/threads`)
+                .doc(tid).delete()
+            console.log('remove thread ', tid)
+        }
+    }
+
     return (
-        (thread.length > 0) ? 
-        <div className="Thread">
-            <h2>Thread</h2>
-            <ul>
-            {thread.reverse().map((entry,i)=>
-                <li key={i}>
-                    {/*Don't use index as key b/c it will not print from latest -> earliest message*/}
+        (thread) ?
+        <div className="card">
+            <div className="card-header">
+                <h2>Thread</h2>
+            </div>
+            {(props.ownerView) ?
+                <ThreadForm pid={props.pid}/>
+                :<></>
+            }
+            <ul className="list-group list-group-flush">
+            {thread.slice(0).reverse().map((entry,i)=> // second dirty trick
+                <li className="list-group-item" key={i}>
                     <ThreadEntry // Based on Schema
-                        from={entry.from} 
-                        date={entry.date.toDate().toString()}
-                        msg={entry.msg}
+                        title={entry.title} 
+                        description={entry.description}
                     />
+                    {(props.ownerView) ? // Owner can remove threads
+                        <button class="btn btn-danger" onClick={() => remove(entry.id)}>Remove</button>:
+                        <></>
+                    }
                 </li>
             )}
             </ul>

@@ -5,7 +5,7 @@ import ProjectEntry from '../components/frontend/ProjectEntry'
 import algoliasearch from 'algoliasearch'
 import { algoliaConfig } from '../services/config'
 import { useUser } from '../components/backend/UserProvider'
-import Logo1 from '../Logo2.png'
+import Logo1 from '../Logo1.png'
 import '../styles/Discover.css'
 import UpdateProjectTechs from '../components/backend/UpdateProjectTechs.js'
 
@@ -40,7 +40,7 @@ const Discover = () => {
         </div>
         
         <SearchBar text={text} handleTextChange={handleTextChange} />
-        <div class='container justify-content-center'>
+        <div class='container justify-content-center text-center'>
           <ProjectList projects={projects} canApply={true}/>
         </div>
     </div>

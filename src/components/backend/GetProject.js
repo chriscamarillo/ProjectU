@@ -65,15 +65,10 @@ function GetMembers(pid) {
     return members;
 }
 
-function ReadThreads(pid, member_id) {
+function ReadThreads(pid) {
     const [thread, setThread] = useState([])
-    let member_ref = db.collection('projects').doc(pid).collection('members').doc(member_id)
     
     useEffect(() => {
-        async function checkMember() { 
-            return await member_ref.get()
-        }
-        if (checkMember().exists) {
             const unsubscribe =
             db
             .collection('projects')
@@ -86,11 +81,29 @@ function ReadThreads(pid, member_id) {
                 });
                 setThread(threadArr);
             });
-            return () => unsubscribe()
-        }        
+            return () => unsubscribe()  
     }, [pid]);
 
     return thread;
+}
+
+function IsMember(uid, pid) {
+    const [isMem, setMem] = useState(false)
+
+    useEffect(() => {
+        if (uid)
+        db
+            .collection('projects')
+            .doc(pid)
+            .collection('members')
+            .doc(uid)
+            .get()
+            .then((isMember) => {
+                setMem(isMember.exists)
+            });
+    }, []);
+
+    return isMem;
 }
 
 function GetThreads(pid) {
@@ -185,4 +198,4 @@ function GetProject(pid) {
 }
 
 export default GetProject
-export { GetDetails, GetApps, GetMembers, GetThreads, ReadThreads };
+export { GetDetails, GetApps, GetMembers, GetThreads, ReadThreads, IsMember };

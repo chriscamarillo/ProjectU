@@ -20,7 +20,7 @@
     font: Raleway small-caps bold;
     text-align: center;
     border-bottom: 2px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .text{
@@ -41,26 +41,22 @@
 }
 
 .Project h3{
-    margin-top: 3%;
-    margin-left: 5%;
+    /* margin-top: 3%; */
 }
 
-.margin{
-    margin-left: 5%;
-}
 
 .Project:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-color: #fdae78;
 }
 
-.Project h4{
-    margin-left: 5%;
-}
 
 .Project h5{
-    margin-top: 3%;
     font-size: 20px;
     color: #2b2a2a;
     font-weight: 500;
+}
+
+.open-status {
+    color: green;
 }

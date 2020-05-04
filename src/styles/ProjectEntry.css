@@ -11,10 +11,11 @@
     display: block;
     margin: auto;
     border-radius: 10px;
-    width: 113.5%;
+    /* width: 113.5%; */
     margin-bottom: 30px;
-    margin-left: -49px;
+    /* margin-left: -49px; */
     margin-top: -15px;
+    transition: 0.5s;
 }
 
 .ProjectEntry:hover{
@@ -26,18 +27,18 @@
     font-size: 30px;
     margin-top: 20px; /* spacings between title and description */
     text-transform: capitalize;
-    margin-left: -15px;
+    /* margin-left: -15px; */
 }
 
 .ProjectEntry p {
     font-size: 12px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     margin-right: 30px;
 }
 
 .ProjectEntry h3 {
     font-size: 15px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
     margin-top: -8px;
     color: rgb(112, 110, 110)
 }
@@ -47,7 +48,7 @@
 .ProjectEntry h4 {
     font-style: italic;
     font-size: 13px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
     margin-top: 20px;
     color: rgb(255, 132, 0)
 }

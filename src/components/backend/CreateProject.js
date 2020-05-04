@@ -26,13 +26,13 @@ function createProject(user, project_fields) {
           pinned: true,
       });
 
-      // attach owner to project
-      db
-      .doc(`projects/${new_project.id}`)
-      .collection('members').doc(user.uid)
-      .set({
-          date_added: project_fields.date_created,
-      });
+      // // attach owner to project
+      // db
+      // .doc(`projects/${new_project.id}`)
+      // .collection('members').doc(user.uid)
+      // .set({
+      //     date_added: project_fields.date_created,
+      // });
 
       // add projects to algolia
       console.log('saving project...');

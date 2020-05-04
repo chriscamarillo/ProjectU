@@ -1,6 +1,6 @@
 .Discover {
     background-color: #f8f9fa;
-    background-color: white;
+    /* background-color: white; */
 }
 
 /*#logo-text {
@@ -15,14 +15,14 @@
 
 #logo {
     text-align: center;
-    height: 200px;
+    height: 170px;
     width: auto;
     position: absolute;
     /* Centering */
     top: 40%;
-    left: 47%;
     margin-top: -70px;
-    margin-left: -100px;
+    left: 50%;
+    margin-left: -85px;
 }
 
 .jumbotron {
@@ -31,11 +31,12 @@
 
 .jumbotron.jumbotron-fluid.logo {
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     padding-top:0px;
     padding-bottom: 0px;
     position: relative;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #f8f9fa;
 }
 
 /* This adjust the max-width of the project list entries! */

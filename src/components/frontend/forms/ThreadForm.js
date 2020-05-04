@@ -1,25 +1,46 @@
 import React from 'react'
 import '../../../styles/EditProfile.css'
 import { useForm } from "react-hook-form";
+import { db } from '../../../services/firebase'
+import { AddNotification } from '../../backend/Notify'
 
+const ThreadForm = (props) =>{
+    const pid = props.pid
+    const { register, handleSubmit, errors, reset } = useForm();
 
-const ProjectForm = (props) =>{
-    const project = props.project
+    const onSubmit = (data) => {
+        const {title, description} = data
+        console.log(`posted ${title}:${description} to`, pid)
+
+        // add new thread
+        db
+            .collection(`projects/${pid}/threads`)
+            .add({title, description})
+
+        // notify all the members
+        db
+            .collection(`projects/${pid}/members`)
+            .get()
+            .then((members) => {
+                members.forEach((member) => {
+                    AddNotification(member.id, `New thread update on a project you are a member of!`, 
+                        `/projects/${pid}`)
+                });
+            })
+        reset()
+    }
+    console.log(errors);
+
     return(
-        <div>
-            <h3>Edit Project</h3>
-            <form onSubmit={props.handleSubmit}>
-                Title
-                <input type="text" name="title" placeholder={project.title} ref={props.register} />
-                <p>{props.errors.title && 'Project title is required'}</p>
-                Description
-                <input type="text" name="description" placeholder={project.description} ref={props.register} />
-                <p>{props.errors.description && 'Project description is required'}</p>
-                <input type ="submit" />
-            </form>
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>Add/Remove Thread</h2>
+            <input type="text" placeholder="Title" name="title" ref={register({required: true})} />
+            <input type="text" placeholder="More Details" name="description" ref={register({required: true})} />
+
+            <input type="submit" />
+        </form>
     )
 }
 
-export default ProjectForm
+export default ThreadForm
 

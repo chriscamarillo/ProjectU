@@ -35,7 +35,7 @@ const ProjectEntry = props => {
     
     // not sure how to handle COMPLETED behavior yet.
     return (
-        <div class="card" className='ProjectEntry'>
+        <div class="card" className='ProjectEntry text-center'>
             <div class="card-header" className= 'margin'>
                 <Link to={{pathname: "/projects/" + props.id, state: props}}><h2>{props.title}</h2></Link> 
             </div>

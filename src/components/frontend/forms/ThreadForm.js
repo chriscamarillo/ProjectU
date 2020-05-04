@@ -37,7 +37,7 @@ const ThreadForm = (props) =>{
             <input type="text" placeholder="Title" name="title" ref={register({required: true})} />
             <input type="text" placeholder="More Details" name="description" ref={register({required: true})} />
 
-            <input type="submit" />
+            <input type="submit" value="Post"/>
         </form>
     )
 }

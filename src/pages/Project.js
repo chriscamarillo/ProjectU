@@ -12,7 +12,7 @@ const Project = (props) => {
     const pid = useParams().pid
     const currentUser = useUser() || { uid: null }
     const details = GetDetails(pid)
-    const memberView = IsMember(currentUser.uid, pid) // dirty :D
+    const memberView = IsMember(currentUser.uid, pid) // dirty state changes :D
     const ownerView = currentUser.uid && details.owner == currentUser.uid
     console.log(memberView == true || ownerView == true)
     if (details) {

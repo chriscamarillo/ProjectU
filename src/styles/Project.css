@@ -68,6 +68,7 @@
 .app{
     margin: auto;
     margin-top: 30px;
+    margin-bottom: 30px;
     border-style: solid;
     border-color: #99f0a6;
     border-color: #B7C6BA;
@@ -100,3 +101,22 @@
     margin-top: 30px;
     margin-right: 60px;
 }
+
+.app button{
+        border-color: #fc834f;
+        color: #fc834f;
+        background-color: white;
+        margin-left: 10px;
+}
+    
+.app button:hover {
+        background-color: #26c46e;
+        border-color: white;
+        color: white;
+        -webkit-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+        -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+        box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
+    }
+    .col button{
+        margin: auto;
+    }

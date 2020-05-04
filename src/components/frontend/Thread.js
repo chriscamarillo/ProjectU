@@ -4,6 +4,7 @@ import ThreadForm from './forms/ThreadForm'
 import { ReadThreads, isMember } from '../backend/GetProject'
 import { useUser } from '../backend/UserProvider'
 import { db } from '../../services/firebase'
+import '../../styles/Thread.css'
 
 const Thread = props => {
     const thread = ReadThreads(props.pid)
@@ -23,6 +24,7 @@ const Thread = props => {
 
     return (
         (thread) ?
+        <div className="thread">
         <div className="card">
             <div className="card-header">
                 <h2>Thread</h2>
@@ -45,7 +47,8 @@ const Thread = props => {
                 </li>
             )}
             </ul>
-        </div> : <></>
+            </div>
+        </div> : <></>  
     )
 }
 

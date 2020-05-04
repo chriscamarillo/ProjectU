@@ -5,7 +5,7 @@
     border-width: 4px;
     border-radius: 10px;
     background-color: #f8f9fa;
-    height: 450px;
+    /* height: 450px; */
     width: 90%;
     margin-top: 30px;
     margin-left: auto;
@@ -58,11 +58,6 @@
     margin-left: 5%;
 }
 
-.applications{
-    margin-left: 5%;
-    font-size: 5%;
-    position: absolute;
-}
 .Project h5{
     margin-top: 3%;
     font-size: 20px;

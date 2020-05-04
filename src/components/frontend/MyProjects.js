@@ -1,22 +1,11 @@
-import React from "react"
-import { useUser } from '../components/backend/UserProvider'
-import '../styles/MyProjects.css'
+import React from 'react'
+import GetMyProjects from '../backend/GetMyProjects'
 
-// import components here
-import CreateProject from '../components/backend/CreateProject'
-import GetMyProjects from '../components/backend/GetMyProjects'
-// Moved GetMyProjects
-
-const MyProjects = () => {
-    // Backend call
-    const projects =  GetMyProjects(useUser().uid)
-    
-    return(
-        // Components for these project entries would make these messy links easier
-        // to organize and style
-        <div>
-            <CreateProject />
-            <div className='MyProjects'>
+const MyProjects = (props) => {
+    const projects = props.projects;
+    return (
+        (projects) ?
+        <div className='MyProjects'>
             <h1>My Projects</h1>
             <div class="container">
                 <div class="row">
@@ -35,13 +24,11 @@ const MyProjects = () => {
                     // </div>
                     //project component should replace this
                 )}
-                    </div>
                 </div>
             </div>
-        </div>
+        </div> :
+        <p>Loading My Projects...</p> 
     )
 }
-/*
 
-*/
-export default MyProjects
+export default MyProjects;

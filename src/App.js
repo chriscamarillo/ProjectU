@@ -14,7 +14,7 @@ import Discover from './pages/Discover'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
 import EditProject from './pages/EditProject'
-import MyProjects from './pages/MyProjects'
+import Dashboard from './pages/Dashboard'
 import Project from './pages/Project'
 
 
@@ -34,7 +34,7 @@ function App() {
         <ProtectedRoute path='/edit/project/:pid' component={EditProject} exact />
         <ProtectedRoute path='/delete/project/:pid' component={DeleteProject} exact />
         <ProtectedRoute path='/profile' component={Profile} />
-        <ProtectedRoute path='/MyProjects' component={MyProjects} />
+        <ProtectedRoute path='/Dashboard' component={Dashboard} />
         
         <Route component={Error} />
       </Switch>

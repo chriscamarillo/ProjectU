@@ -18,24 +18,29 @@ const Project = (props) => {
         // TODO: get the rest of the details (collaborator list and thread)
         // if(currentUser.uid === details.owner){
         return (
-            <div className="Project">
-                <h1>{details.title}</h1>
-                <div className="text">
-                    <p>{details.description}</p>
-                </div>
-                {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
-                <div className="margin">
-                    <Link to={{ pathname: "/edit/project/" + pid, project: details }}>Edit Project</Link>
+            <div className="Project card">
+                <div className="card-body">
+                    <h1>{details.title}</h1>
+                    <div className="text">
+                        <p>{details.description}</p>
+                    </div>
+                    {(details.status) ? <h3>Status: Open</h3> : <h3>Status: Closed</h3>}
+                    <div className="margin">
+                        <Link to={{ pathname: "/edit/project/" + pid, project: details }}>Edit Project</Link>
+                    </div>
                 </div>
                 {(currentUser.uid && details.owner == currentUser.uid) ?
-                <div className="applications">
+                <div className="card-body">
                     <h5>Applications</h5>
                     <ApplicantList pid={pid} title={details.title}/>
                 </div>: <></>}
-                <Thread pid={pid} uid={currentUser.uid}/>
-                <MemberList pid={pid} />
+                <div className="card-body">
+                    <Thread pid={pid} uid={currentUser.uid}/>
+                </div>
+                <div className="card-body" >
+                    <MemberList pid={pid} />
+                </div>
             </div>
-
         )
 
     } else {

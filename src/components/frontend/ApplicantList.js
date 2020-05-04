@@ -8,18 +8,16 @@ const ApplicantList = (props) => {
     console.log('re rendered applications')
     return (
         (apps) ?
-        <div className="container">
-            <ul className="applicant-list">
+            <ul className="list-group list-group-flush">
                 {(apps) ?
                     apps.map((application, i) => (
-                        <li key={i}>
+                        <li className="list-group-item" key={i}>
                             <Applicant application={application} title={props.title} />
                         </li>
                     )) : <></>
                 }
-            </ul>
-        </div>:
-        <p>Loading Applications...</p>
+            </ul> :
+            <p>Loading Applications...</p>
     )
 }
 

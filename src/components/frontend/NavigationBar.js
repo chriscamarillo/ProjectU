@@ -22,7 +22,7 @@ const NavigationBar = () => {
                 <Link to={`/users/${currentUser.uid}`} className='nav-link'>Profile </Link>
               </li>,
               <li className="nav-item">
-                <Link to="/MyProjects" className='nav-link'>Projects </Link>
+                <Link to="/Dashboard" className='nav-link'>Dashboard </Link>
               </li>
             ]
           ) : <></>}

@@ -17,7 +17,7 @@ const MemberEntry = (props) => {
 
     return (
         (member) ?
-        <div className="MemberEntry">
+        <div className="">
             <img src={member.photoURL}  alt="profile" width="100" height="100"></img>
             <h2>{`${member.displayName} joined ${date}`}</h2>
         </div>:

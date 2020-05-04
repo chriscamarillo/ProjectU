@@ -31,7 +31,7 @@ const Project = (props) => {
                 </div>
                 {(currentUser.uid && details.owner == currentUser.uid) ?
                 <div className="card-body">
-                    <h5>Applications</h5>
+                    <h5>Applications</h5> 
                     <ApplicantList pid={pid} title={details.title}/>
                 </div>: <></>}
                 <div className="card-body">

@@ -1,9 +1,9 @@
 import React from 'react'
 import ThreadEntry from './ThreadEntry'
-import { GetThread } from '../backend/GetProject'
+import { ReadThreads } from '../backend/GetProject'
 
 const Thread = props => {
-    const thread = GetThread(props.pid, props.uid)
+    const thread = ReadThreads(props.pid, props.uid)
     console.log('thread rendered')
     return (
         (thread.length > 0) ? 

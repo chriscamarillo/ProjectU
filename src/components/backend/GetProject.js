@@ -65,7 +65,7 @@ function GetMembers(pid) {
     return members;
 }
 
-function GetThread(pid, member_id) {
+function ReadThreads(pid, member_id) {
     const [thread, setThread] = useState([])
     let member_ref = db.collection('projects').doc(pid).collection('members').doc(member_id)
     
@@ -78,7 +78,7 @@ function GetThread(pid, member_id) {
             db
             .collection('projects')
             .doc(pid)
-            .collection('thread')
+            .collection('threads')
             .onSnapshot(function (querySnapshot) {
                 let threadArr = [];
                 querySnapshot.forEach(function (doc) {
@@ -93,7 +93,24 @@ function GetThread(pid, member_id) {
     return thread;
 }
 
-function GetTech(pid) {
+function GetThreads(pid) {
+    const [thread, setThread] = useState([])
+    var threadArr = [];
+    useEffect(() => { 
+        db
+            .collection('projects')
+            .doc(pid)
+            .collection('threads')
+            .get().
+            then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    threadArr.push({ id: doc.id, ...doc.data() });
+                });
+                setThread(threadArr);
+            });
+        }, [])
+    return thread
+        
 
 }
 function GetProject(pid) {
@@ -148,7 +165,7 @@ function GetProject(pid) {
         db
             .collection('projects')
             .doc(pid)
-            .collection('thread')
+            .collection('threads')
             .get().
             then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
@@ -158,24 +175,14 @@ function GetProject(pid) {
             });
 
         //get techs
-        db
-            .collection('projects')
-            .doc(pid)
-            .collection('techs')
-            .get().
-            then(function (querySnapshot) {
-                querySnapshot.forEach(function (doc) {
-                    techsArr.push({ id: doc.id, ...doc.data() });
-                });
-                setTechs(techsArr);
-            });
+        
 
 
     }, [])
 
     console.log('loading...')
-    return { details, apps, members, thread, techs };
+    return { details, apps, members, thread };
 }
 
 export default GetProject
-export { GetDetails, GetApps, GetMembers, GetThread, GetTech };
+export { GetDetails, GetApps, GetMembers, GetThreads, ReadThreads };

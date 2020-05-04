@@ -1,5 +1,7 @@
 import React from 'react'
 import '../../../styles/EditProfile.css'
+import { useForm } from "react-hook-form";
+
 
 const ProjectForm = (props) =>{
     const project = props.project

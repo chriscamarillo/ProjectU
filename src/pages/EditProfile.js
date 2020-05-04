@@ -26,7 +26,7 @@ const EditProfile =  props => {
   );
 
   const onSubmit = (data) => {
-    console.log(data)
+    //console.log(data)
     const {email,bio,resumeLink} = data
     db
       .collection("users").doc(user.uid)

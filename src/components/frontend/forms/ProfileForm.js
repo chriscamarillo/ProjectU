@@ -23,7 +23,7 @@ const ProfileForm = (props) =>{
             Resume Link
                 <input type="text" id="userInfo" placeholder={user.resumeLink} name="resumeLink" ref={props.register}></input>
             </div>
-            <button type="submit" id="submit1"> Submit </button>
+            
         </div>
         
         <h2>Qualifications</h2>

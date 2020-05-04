@@ -8,10 +8,9 @@ const MyApps = (props) => {
     console.log(apps)
     return (
         (apps) ?
-            <div className='MyProjects'>
+            <div className="MyApps">
                 <h1>Pending Applications</h1>
-                <div class="container ">
-                    <div class="row">
+                    <div class="alist">
                         {apps.map((app, i) =>
                             // <div className="information">
                             <div class="col myapp-entry">
@@ -21,7 +20,6 @@ const MyApps = (props) => {
                             </div>
                         )}
                     </div>
-                </div>
             </div> :
             <p>Loading My Projects...</p>
     )

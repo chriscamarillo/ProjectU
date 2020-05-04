@@ -45,8 +45,6 @@
     color: rgb(112, 110, 110)
 }
 
-
-
 .ProjectEntry h4 {
     font-style: italic;
     font-size: 13px;
@@ -62,7 +60,7 @@
     border-color: #fc834f;
     color: #fc834f;
     position: relative;
-    left: 75%;
+    left: 70%;
     border-radius: 3px;
 }
 

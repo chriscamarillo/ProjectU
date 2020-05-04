@@ -5,12 +5,12 @@
     border-width: 4px;
     border-radius: 10px;
     background-color: #f8f9fa;
-    /* height: 450px; */
-    width: 90%;
+    margin: auto;
     margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+}
+.Project:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border: 3px solid #26c46e;
 }
 
 .Project h1{
@@ -46,13 +46,6 @@
     margin-bottom: 30px;
 }
 
-
-.Project:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-color: #fdae78;
-}
-
-
 .Project h5{
     font-size: 20px;
     color: #2b2a2a;
@@ -62,7 +55,6 @@
 .open-status {
     color: green;
     margin-left: 60px;
-
 }
 
 .app{
@@ -72,6 +64,7 @@
     border-style: solid;
     border-color: #99f0a6;
     border-color: #B7C6BA;
+    background-color: #f8f9fa;
     border-width: 4px;
     border-radius: 10px;
     width: 90%;
@@ -80,13 +73,13 @@
 
 .app:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border: 3px solid #26c46e;
+    border: 3px solid #fdae78;
 }
 .card-header{
     border-style: solid;
     border-color: #99f0a6;
     border-color: #B7C6BA;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -94,6 +87,7 @@
     margin-right: 30px;
     width: 100;
     text-align: center;
+    background-color: white;
 
 }
 
@@ -117,9 +111,21 @@
         -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
         box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
     }
+.trd{
+ position: relative;
+ margin: auto;
+ width: 70%;
+}
+
 .col button{
     margin: auto;
 }
+
+.card{
+    border: solid #f8f9fa;
+    background-color: #f8f9fa;
+}
+
 
 .frm{
     margin: auto;
@@ -129,10 +135,10 @@
 .frm h2{
     text-align: center;
     font: Raleway small-caps bold;
+    margin-bottom: 2%;
 }
 
 .entry{
-    
     width: 42%;
     border: 1px solid rgb(134, 128, 128);
     border-radius: 10px;
@@ -157,3 +163,8 @@
     -moz-box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
     box-shadow: 0px 0px 5px 2px rgba(15,200,52,1);
 }
+
+.listapp{
+    padding: 2%;
+}
+

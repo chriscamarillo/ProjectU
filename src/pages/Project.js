@@ -45,11 +45,13 @@ const Project = (props) => {
                         </div>
                         <ApplicantList pid={pid} title={details.title} />
                     </div> : <></>}
+                    <div className="trd">
                     {(ownerView || memberView) ? // only show thread if you are a member or owner
                     
                     <div className=" col">
                         <Thread pid={pid} ownerView={ownerView} />
                     </div> : <></>}
+                    </div>
                     </div>
                 </div>
             </div>

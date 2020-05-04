@@ -27,7 +27,8 @@
     font-size: 30px;
     margin-top: 20px; /* spacings between title and description */
     text-transform: capitalize;
-    /* margin-left: -15px; */
+    margin-left: -50px;
+    margin-right: 10px;
 }
 
 .ProjectEntry p {

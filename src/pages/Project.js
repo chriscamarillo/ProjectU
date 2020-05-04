@@ -30,6 +30,7 @@ const Project = (props) => {
                         <Link to={{ pathname: "/edit/project/" + pid, project: details }}>Edit Project</Link>
                     </div>
                 </div>
+                <div className="app"> 
                 <div className="row">
                     <div className="col-md-auto media" >
                         <div className="card-header">
@@ -45,9 +46,11 @@ const Project = (props) => {
                         <ApplicantList pid={pid} title={details.title} />
                     </div> : <></>}
                     {(ownerView || memberView) ? // only show thread if you are a member or owner
+                    
                     <div className=" col">
                         <Thread pid={pid} ownerView={ownerView} />
                     </div> : <></>}
+                    </div>
                 </div>
             </div>
         )

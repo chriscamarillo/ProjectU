@@ -60,6 +60,7 @@
     margin-top: 5%;
     /* text-align: left; */
     font-weight: bold;
+    text-transform: capitalize;
 } 
 
 .MyProjects a{
